@@ -1,0 +1,9 @@
+plugins {
+    id 'java-library'
+    id 'eclipse'
+}
+
+dependencies {
+	implementation 'org.projectlombok:lombok:1.18.4'
+	implementation 'com.squareup:javapoet:1.11.1'
+}
