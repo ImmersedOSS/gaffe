@@ -1,38 +1,21 @@
 package org.immersed.gaffe;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.function.Predicate;
-
-import io.github.classgraph.ClassGraph;
-import io.github.classgraph.ClassInfo;
-import io.github.classgraph.MethodInfo;
-import io.github.classgraph.ScanResult;
+import java.io.PrintStream;
 
 public class FindAllFunctionInterfaces
 {
-    public static <T> Predicate<T> not(Predicate<T> predicate)
-    {
-        return predicate.negate();
-    }
-
     public static void main(String[] args) throws IOException
     {
-        try (ScanResult scanResult = new ClassGraph().verbose()
-                                                     .enableSystemJarsAndModules()
-                                                     .enableAllInfo()
-                                                     .whitelistLibOrExtJars("rt.jar", "jfxrt.jar")
-                                                     .whitelistPackages("java", "javax", "org", "javafx")
-                                                     .scan())
-        {
-            scanResult.getAllClasses()
-                      .stream()
-                      .filter(ClassInfo::isInterface)
-                      .filter(c -> c.getMethodInfo()
-                                    .stream()
-                                    .filter(not(MethodInfo::isDefault))
-                                    .count() == 1)
-                      .forEach(System.out::println);
-        }
-    }
+        PrintStream stream = new PrintStream(new File("out.txt"));
+        System.setErr(stream);
 
+        FunctionInterfaceFinder.jdk()
+                               .findAll()
+                               .stream()
+                               .map(spec -> spec.classInfo())
+                               .map(ci -> ci.getPackageName() + "." + ci.getName())
+                               .forEach(System.out::println);
+    }
 }
