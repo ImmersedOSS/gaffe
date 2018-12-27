@@ -16,7 +16,7 @@ public class FindAllFunctionInterfaces
         FunctionalInterfaceSet.jdk()
                               .toList()
                               .stream()
-                              .map(spec -> spec.classInfo())
+                              .map(spec -> spec.superClassInfo())
                               .map(ci -> ci.getName())
                               .map(name -> count.incrementAndGet() + " " + name)
                               .forEach(System.out::println);

@@ -1,6 +1,6 @@
 package org.immersed.gaffe;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.Test;
 
@@ -27,9 +27,9 @@ public class FunctionInterfaceSpecTest
         final MethodInfo method = cls.getMethodInfo("test")
                                      .get(0);
 
-        FunctionalInterfaceSpec spec = new FunctionalInterfaceSpec.Builder().classInfo(cls)
-                                                                        .methodInfo(method)
-                                                                        .build();
+        FunctionalInterfaceSpec spec = new FunctionalInterfaceSpec.Builder().superClassInfo(cls)
+                                                                            .superMethodInfo(method)
+                                                                            .build();
         assertThat(spec.className()).isEqualTo("ThrowingLongPredicate");
         assertThat(spec.methodName()).isEqualTo("tryTest");
     }
