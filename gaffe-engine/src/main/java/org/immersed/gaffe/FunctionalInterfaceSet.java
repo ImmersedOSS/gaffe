@@ -75,9 +75,8 @@ public final class FunctionalInterfaceSet
         {
             FunctionInterfaceSpec.Builder builder = new FunctionInterfaceSpec.Builder();
 
-            return scanResult.getAllClasses()
+            return scanResult.getAllInterfaces()
                              .stream()
-                             .filter(ClassInfo::isInterface)
                              .filter(this::isVisibleToClients)
                              .peek(builder::classInfo)
                              .filter(c -> c.getMethodInfo()

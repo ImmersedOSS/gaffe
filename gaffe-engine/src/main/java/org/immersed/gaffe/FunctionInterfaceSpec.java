@@ -18,11 +18,21 @@ public interface FunctionInterfaceSpec
     }
 
     /**
-     * The info for this class.
+     * The info describing this interface.
      * 
      * @return an object holding all class information.
      */
     ClassInfo classInfo();
+
+    /**
+     * Gets the class name of the new object.
+     * 
+     * @return
+     */
+    default String className()
+    {
+        return "Throwing" + classInfo().getSimpleName();
+    }
 
     /**
      * The info for the functional method.
@@ -31,13 +41,13 @@ public interface FunctionInterfaceSpec
      */
     MethodInfo methodInfo();
 
-    /**
-     * Gets the name of the class.
-     * 
-     * @return
-     */
-    default String className()
+    default String methodName()
     {
-        return classInfo().getName();
+        final String name = methodInfo().getName();
+
+        return new StringBuilder().append("try")
+                                  .append(Character.toUpperCase(name.charAt(0)))
+                                  .append(name.substring(1))
+                                  .toString();
     }
 }
