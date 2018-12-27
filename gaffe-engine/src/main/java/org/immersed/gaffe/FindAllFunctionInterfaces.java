@@ -3,6 +3,7 @@ package org.immersed.gaffe;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class FindAllFunctionInterfaces
 {
@@ -11,11 +12,13 @@ public class FindAllFunctionInterfaces
         PrintStream stream = new PrintStream(new File("out.txt"));
         System.setErr(stream);
 
-        FunctionInterfaceFinder.jdk()
-                               .findAll()
-                               .stream()
-                               .map(spec -> spec.classInfo())
-                               .map(ci -> ci.getPackageName() + "." + ci.getName())
-                               .forEach(System.out::println);
+        AtomicInteger count = new AtomicInteger();
+        FunctionalInterfaceSet.jdk()
+                              .toList()
+                              .stream()
+                              .map(spec -> spec.classInfo())
+                              .map(ci -> ci.getName())
+                              .map(name -> count.incrementAndGet() + " " + name)
+                              .forEach(System.out::println);
     }
 }
