@@ -69,11 +69,11 @@ public final class FunctionalInterfaceSet
      * @return a list of specification objects representing the function interfaces
      *         in this library set.
      */
-    public final List<FunctionInterfaceSpec> toList()
+    public final List<FunctionalInterfaceSpec> toList()
     {
         try (ScanResult scanResult = graph.scan())
         {
-            FunctionInterfaceSpec.Builder builder = new FunctionInterfaceSpec.Builder();
+            FunctionalInterfaceSpec.Builder builder = new FunctionalInterfaceSpec.Builder();
 
             return scanResult.getAllInterfaces()
                              .stream()

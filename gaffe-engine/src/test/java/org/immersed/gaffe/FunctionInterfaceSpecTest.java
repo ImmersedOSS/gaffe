@@ -27,7 +27,7 @@ public class FunctionInterfaceSpecTest
         final MethodInfo method = cls.getMethodInfo("test")
                                      .get(0);
 
-        FunctionInterfaceSpec spec = new FunctionInterfaceSpec.Builder().classInfo(cls)
+        FunctionalInterfaceSpec spec = new FunctionalInterfaceSpec.Builder().classInfo(cls)
                                                                         .methodInfo(method)
                                                                         .build();
         assertThat(spec.className()).isEqualTo("ThrowingLongPredicate");

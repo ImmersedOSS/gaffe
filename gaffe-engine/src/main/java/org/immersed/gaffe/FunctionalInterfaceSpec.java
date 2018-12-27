@@ -11,9 +11,9 @@ import io.github.classgraph.MethodInfo;
  * @author Dan Avila
  */
 @FreeBuilder
-public interface FunctionInterfaceSpec
+public interface FunctionalInterfaceSpec
 {
-    class Builder extends FunctionInterfaceSpec_Builder
+    class Builder extends FunctionalInterfaceSpec_Builder
     {
     }
 
