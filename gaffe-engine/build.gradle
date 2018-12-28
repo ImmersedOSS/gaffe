@@ -16,8 +16,6 @@ dependencies {
 	implementation "org.gradle:gradle-tooling-api:4.8"
 
 	implementation 'io.github.classgraph:classgraph:4.6.10'
-	
-	api 'org.projectlombok:lombok:1.18.4'
 	implementation 'com.squareup:javapoet:1.11.1'
 	
 	testImplementation 'junit:junit:4.12'

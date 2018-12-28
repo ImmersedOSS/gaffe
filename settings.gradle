@@ -9,3 +9,4 @@
 
 rootProject.name = 'gaffe'
 include 'gaffe-engine'
+include 'gaffe-jdk'
