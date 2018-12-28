@@ -1,9 +1,14 @@
 package org.immersed.gaffe;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.inferred.freebuilder.FreeBuilder;
 
 import io.github.classgraph.ClassInfo;
+import io.github.classgraph.ClassTypeSignature;
 import io.github.classgraph.MethodInfo;
+import io.github.classgraph.TypeParameter;
 
 /**
  * A data object containing everything about a functional interface type.
@@ -50,11 +55,48 @@ public interface FunctionalInterfaceSpec
     ClassInfo superClassInfo();
 
     /**
+     * Provides the
+     * 
+     * @return
+     */
+    default String[] superGenerics()
+    {
+        ClassTypeSignature sigs = superClassInfo().getTypeSignature();
+
+        if (sigs == null)
+        {
+            return new String[0];
+        }
+
+        List<TypeParameter> params = sigs.getTypeParameters();
+        String[] paramArgs = new String[params.size()];
+
+        params.stream()
+              .map(TypeParameter::getName)
+              .collect(Collectors.toList())
+              .toArray(paramArgs);
+
+        return paramArgs;
+    }
+
+    /**
      * The info for the functional method.
      * 
      * @return an object holding information about the method.
      */
     MethodInfo superMethodInfo();
+
+    default String superMethodName()
+    {
+        return superMethodInfo().getName();
+    }
+
+    default String superMethodReturns()
+    {
+        return superMethodInfo().getTypeSignatureOrTypeDescriptor()
+                                .getResultType()
+                                .toString();
+    }
 
     /**
      * Gets the class object for the super interface.
