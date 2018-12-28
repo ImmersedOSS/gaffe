@@ -2,6 +2,7 @@ package org.immersed.gaffe.generation;
 
 import java.nio.file.Path;
 
+import org.immersed.gaffe.FunctionalInterfaceSet;
 import org.inferred.freebuilder.FreeBuilder;
 
 @FreeBuilder
@@ -10,6 +11,8 @@ public interface ProjectSpec
     class Builder extends ProjectSpec_Builder
     {
     }
+
+    FunctionalInterfaceSet functionalInterfaces();
 
     Path projectFolder();
 

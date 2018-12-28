@@ -1,6 +1,7 @@
 package org.immersed.gaffe;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -18,7 +19,7 @@ import io.github.classgraph.ScanResult;
  * 
  * @author Dan Avila
  */
-public final class FunctionalInterfaceSet
+public final class FunctionalInterfaceSet implements Iterable<FunctionalInterfaceSpec>
 {
     /**
      * Provides the set of functional interfaces from the active JDK.
@@ -55,11 +56,18 @@ public final class FunctionalInterfaceSet
         return predicate.negate();
     }
 
-    private ClassGraph graph;
+    private final ScanResult result;
 
     private FunctionalInterfaceSet(ClassGraph graph)
     {
-        this.graph = graph.verbose();
+        this.result = graph.verbose()
+                           .scan();
+    }
+
+    @Override
+    public Iterator<FunctionalInterfaceSpec> iterator()
+    {
+        return toList().iterator();
     }
 
     /**
@@ -71,23 +79,20 @@ public final class FunctionalInterfaceSet
      */
     public final List<FunctionalInterfaceSpec> toList()
     {
-        try (ScanResult scanResult = graph.scan())
-        {
-            FunctionalInterfaceSpec.Builder builder = new FunctionalInterfaceSpec.Builder();
+        FunctionalInterfaceSpec.Builder builder = new FunctionalInterfaceSpec.Builder();
 
-            return scanResult.getAllInterfaces()
-                             .stream()
-                             .filter(this::isVisibleToClients)
-                             .peek(builder::superClassInfo)
-                             .filter(c -> c.getMethodInfo()
-                                           .stream()
-                                           .filter(not(MethodInfo::isDefault))
-                                           .filter(not(MethodInfo::isStatic))
-                                           .peek(builder::superMethodInfo)
-                                           .count() == 1L)
-                             .map(c -> builder.build())
-                             .collect(Collectors.toList());
-        }
+        return result.getAllInterfaces()
+                     .stream()
+                     .filter(this::isVisibleToClients)
+                     .peek(builder::superClassInfo)
+                     .filter(c -> c.getMethodInfo()
+                                   .stream()
+                                   .filter(not(MethodInfo::isDefault))
+                                   .filter(not(MethodInfo::isStatic))
+                                   .peek(builder::superMethodInfo)
+                                   .count() == 1L)
+                     .map(c -> builder.build())
+                     .collect(Collectors.toList());
     }
 
     private boolean isVisibleToClients(ClassInfo info)

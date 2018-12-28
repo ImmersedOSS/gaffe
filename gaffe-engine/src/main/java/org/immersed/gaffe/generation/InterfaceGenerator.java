@@ -3,6 +3,7 @@ package org.immersed.gaffe.generation;
 import static javax.lang.model.element.Modifier.*;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -65,9 +66,9 @@ public final class InterfaceGenerator
                                     .addMethod(throwingMethod)
                                     .build();
 
-        JavaFile file = JavaFile.builder("org.immersed.generated", typeSpec)
+        JavaFile file = JavaFile.builder("org.immersed.gaffe", typeSpec)
                                 .build();
-        file.writeTo(proj.sourceFolder());
+        file.writeTo(Files.createDirectories(proj.sourceFolder()));
     }
 
     private CodeBlock callThrowingMethod(MethodSpec throwingMethod)
