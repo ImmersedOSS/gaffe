@@ -1,12 +1,8 @@
 package org.immersed.gaffe;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.inferred.freebuilder.FreeBuilder;
 
 import io.github.classgraph.ClassInfo;
-import io.github.classgraph.ClassTypeSignature;
 import io.github.classgraph.MethodInfo;
 import io.github.classgraph.TypeParameter;
 
@@ -55,28 +51,13 @@ public interface FunctionalInterfaceSpec
     ClassInfo superClassInfo();
 
     /**
-     * Provides the
+     * Gets the generic type declaration of the super class.
      * 
-     * @return
+     * @return a string containing the generic names.
      */
     default String[] superGenerics()
     {
-        ClassTypeSignature sigs = superClassInfo().getTypeSignature();
-
-        if (sigs == null)
-        {
-            return new String[0];
-        }
-
-        List<TypeParameter> params = sigs.getTypeParameters();
-        String[] paramArgs = new String[params.size()];
-
-        params.stream()
-              .map(TypeParameter::getName)
-              .collect(Collectors.toList())
-              .toArray(paramArgs);
-
-        return paramArgs;
+        return Util.walkTypeParameters(this, TypeParameter::getName);
     }
 
     /**
@@ -106,5 +87,10 @@ public interface FunctionalInterfaceSpec
     default Class<?> superType()
     {
         return superClassInfo().loadClass();
+    }
+
+    default String[] typeDeclarations()
+    {
+        return Util.walkTypeParameters(this, TypeParameter::toString);
     }
 }

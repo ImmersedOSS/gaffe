@@ -48,7 +48,8 @@ public final class FunctionalInterfaceSet implements Iterable<FunctionalInterfac
                                                           .enableAllInfo()
                                                           .whitelistJars("rt.jar", "jfxrt.jar")
                                                           .whitelistLibOrExtJars("rt.jar", "jfxrt.jar")
-                                                          .whitelistPackages("java", "javafx", "org"));
+                                                          .whitelistPackages("java", "javafx", "org")
+                                                          .blacklistPackages("org.jcp"));
     }
 
     private static <T> Predicate<T> not(Predicate<T> predicate)

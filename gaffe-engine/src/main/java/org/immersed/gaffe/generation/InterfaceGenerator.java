@@ -57,16 +57,16 @@ public final class InterfaceGenerator
                                                 .addCode(callThrowingMethod(throwingMethod))
                                                 .build();
 
-        TypeSpec typeSpec = TypeSpec.interfaceBuilder(spec.className())
-                                    .addAnnotation(FunctionalInterface.class)
-                                    .addSuperinterface(superInterface())
-                                    .addTypeVariables(classGenericVars())
-                                    .addModifiers(PUBLIC)
-                                    .addMethod(overriddenMethod)
-                                    .addMethod(throwingMethod)
-                                    .build();
+        TypeSpec throwingInterfaceSpec = TypeSpec.interfaceBuilder(spec.className())
+                                                 .addAnnotation(FunctionalInterface.class)
+                                                 .addSuperinterface(superInterface())
+                                                 .addTypeVariables(classGenericVars())
+                                                 .addModifiers(PUBLIC)
+                                                 .addMethod(overriddenMethod)
+                                                 .addMethod(throwingMethod)
+                                                 .build();
 
-        JavaFile file = JavaFile.builder("org.immersed.gaffe", typeSpec)
+        JavaFile file = JavaFile.builder("org.immersed.gaffe", throwingInterfaceSpec)
                                 .build();
         file.writeTo(Files.createDirectories(proj.sourceFolder()));
     }
@@ -100,7 +100,7 @@ public final class InterfaceGenerator
 
     private Iterable<TypeVariableName> classGenericVars()
     {
-        String[] superGenerics = spec.superGenerics();
+        String[] superGenerics = spec.typeDeclarations();
         TypeVariableName[] superGenericVars = new TypeVariableName[superGenerics.length];
         for (int i = 0; i < superGenericVars.length; i++)
         {

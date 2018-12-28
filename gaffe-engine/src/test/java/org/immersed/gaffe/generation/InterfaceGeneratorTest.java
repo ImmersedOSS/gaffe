@@ -23,7 +23,7 @@ public class InterfaceGeneratorTest
     @Test
     public void testCreatingAnInterface() throws IOException
     {
-        final String name = "javafx.beans.value.ChangeListener";
+        final String name = "javafx.collections.ArrayChangeListener";
 
         final ClassInfo cls = new ClassGraph().enableAllInfo()
                                               .enableSystemJarsAndModules()
