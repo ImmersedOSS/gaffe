@@ -1,6 +1,7 @@
 package org.immersed.gaffe.generation;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,11 +38,35 @@ public final class ProjectGenerator
 
     public void generateAll()
     {
-        this.projects.forEach(this::generateProject);
+        this.projects.forEach(t ->
+        {
+            try
+            {
+                generateProject(t);
+            }
+            catch (IOException e)
+            {
+                throw new IllegalStateException(e);
+            }
+        });
     }
 
-    public void generateProject(ProjectSpec project)
+    public void generateProject(ProjectSpec project) throws IOException
     {
+        Files.walk(project.sourceFolder())
+             .filter(Files::isRegularFile)
+             .forEach(p ->
+             {
+                 try
+                 {
+                     Files.delete(p);
+                 }
+                 catch (IOException e)
+                 {
+                     throw new IllegalStateException(e);
+                 }
+             });
+
         try
         {
             for (FunctionalInterfaceSpec iface : project.functionalInterfaces())
