@@ -128,7 +128,8 @@ public final class InterfaceGenerator
                          name = name == null ? Character.toString((char) character.getAndIncrement()) : name;
                          String type = m.getTypeSignatureOrTypeDescriptor()
                                         .toString();
-                         type = typeTranslations.getOrDefault(type, type);
+                         type = typeTranslations.getOrDefault(type, type)
+                                                .replaceAll("[$]", ".");
 
                          return ParameterSpec.builder(TypeVariableName.get(type), name)
                                              .build();
@@ -142,7 +143,8 @@ public final class InterfaceGenerator
 
         if (superGenerics.length == 0)
         {
-            return TypeName.get(spec.superType());
+            Class<?> type = spec.superType();
+            return TypeName.get(type);
         }
 
         TypeVariableName[] superGenericVars = new TypeVariableName[superGenerics.length];

@@ -20,11 +20,13 @@ public class InterfaceGeneratorTest
     @Test
     public void testCreatingAnInterface() throws IOException
     {
-        final String name = "java.util.function.BinaryOperator";
+        final String name = "java.security.KeyStore$LoadStoreParameter";
 
         FunctionalInterfaceSpec spec = FunctionalInterfaceSet.jdk()
                                                              .toList()
                                                              .stream()
+                                                             .peek(fn -> System.out.println(fn.superClassInfo()
+                                                                                              .getSimpleName()))
                                                              .filter(fn -> name.contains(fn.superClassInfo()
                                                                                            .getSimpleName()))
                                                              .findAny()

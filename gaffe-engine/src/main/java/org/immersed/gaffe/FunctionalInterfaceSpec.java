@@ -27,7 +27,15 @@ public interface FunctionalInterfaceSpec
      */
     default String className()
     {
-        return "Throwing" + superClassInfo().getSimpleName();
+        ClassInfo info = superClassInfo();
+        String name = info.getSimpleName();
+
+        if (info.isInnerClass())
+        {
+            name = name.substring(name.lastIndexOf('$') + 1);
+        }
+
+        return "Throwing" + name;
     }
 
     /**
@@ -93,7 +101,8 @@ public interface FunctionalInterfaceSpec
                                          .toString();
 
         return Util.methodParameterTypes(this)
-                   .getOrDefault(retVal, retVal);
+                   .getOrDefault(retVal, retVal)
+                   .replaceAll("[$]", ".");
     }
 
     /**
