@@ -6,14 +6,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import org.immersed.gaffe.FunctionalInterfaceSet;
 import org.immersed.gaffe.FunctionalInterfaceSpec;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-
-import io.github.classgraph.ClassGraph;
-import io.github.classgraph.ClassInfo;
-import io.github.classgraph.MethodInfo;
 
 public class InterfaceGeneratorTest
 {
@@ -23,19 +20,15 @@ public class InterfaceGeneratorTest
     @Test
     public void testCreatingAnInterface() throws IOException
     {
-        final String name = "javafx.collections.ArrayChangeListener";
+        final String name = "java.util.function.BinaryOperator";
 
-        final ClassInfo cls = new ClassGraph().enableAllInfo()
-                                              .enableSystemJarsAndModules()
-                                              .whitelistJars("rt.jar", "jfxrt.jar")
-                                              .whitelistLibOrExtJars("rt.jar", "jfxrt.jar")
-                                              .whitelistClasses(name)
-                                              .scan()
-                                              .getAllInterfaces()
-                                              .get(0);
-
-        final MethodInfo method = cls.getDeclaredMethodInfo()
-                                     .get(0);
+        FunctionalInterfaceSpec spec = FunctionalInterfaceSet.jdk()
+                                                             .toList()
+                                                             .stream()
+                                                             .filter(fn -> name.contains(fn.superClassInfo()
+                                                                                           .getSimpleName()))
+                                                             .findAny()
+                                                             .get();
 
         Path folder = rule.newFolder()
                           .toPath();
@@ -43,18 +36,16 @@ public class InterfaceGeneratorTest
         ProjectSpec project = mock(ProjectSpec.class);
         when(project.sourceFolder()).thenReturn(folder);
 
-        FunctionalInterfaceSpec spec = new FunctionalInterfaceSpec.Builder().superClassInfo(cls)
-                                                                            .superMethodInfo(method)
-                                                                            .build();
         new InterfaceGenerator(spec, project).generateJavaFile();
 
         Files.walk(folder)
              .filter(Files::isRegularFile)
-             .forEach(t ->
+             .forEach(path ->
              {
                  try
                  {
-                     System.out.println(new String(Files.readAllBytes(t)));
+                     System.out.println(path);
+                     System.out.println(new String(Files.readAllBytes(path)));
                  }
                  catch (IOException e)
                  {

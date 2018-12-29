@@ -1,5 +1,7 @@
 package org.immersed.gaffe;
 
+import java.util.Map;
+
 import org.inferred.freebuilder.FreeBuilder;
 
 import io.github.classgraph.ClassInfo;
@@ -31,7 +33,7 @@ public interface FunctionalInterfaceSpec
     /**
      * The name of the new functional interface method name.
      * 
-     * @return
+     * @return the method name, as a string.
      */
     default String methodName()
     {
@@ -44,7 +46,7 @@ public interface FunctionalInterfaceSpec
     }
 
     /**
-     * The info describing this interface.
+     * The class information describing extends functional interface.
      * 
      * @return an object holding all class information.
      */
@@ -57,7 +59,7 @@ public interface FunctionalInterfaceSpec
      */
     default String[] superGenerics()
     {
-        return Util.walkTypeParameters(this, TypeParameter::getName);
+        return Util.walkTypeParameters(superClassInfo(), TypeParameter::getName);
     }
 
     /**
@@ -67,16 +69,31 @@ public interface FunctionalInterfaceSpec
      */
     MethodInfo superMethodInfo();
 
+    /**
+     * Gets the name of the functional method found in the super interface. Derived
+     * from {@link #superMethodInfo()}.
+     * 
+     * @return the name as a string.
+     */
     default String superMethodName()
     {
         return superMethodInfo().getName();
     }
 
+    /**
+     * Gets the return type for the method of this function interface. This method
+     * accounts for interface hierarchies.
+     * 
+     * @return a string representing the type of the return value.
+     */
     default String superMethodReturns()
     {
-        return superMethodInfo().getTypeSignatureOrTypeDescriptor()
-                                .getResultType()
-                                .toString();
+        String retVal = superMethodInfo().getTypeSignatureOrTypeDescriptor()
+                                         .getResultType()
+                                         .toString();
+
+        return Util.methodParameterTypes(this)
+                   .getOrDefault(retVal, retVal);
     }
 
     /**
@@ -89,8 +106,25 @@ public interface FunctionalInterfaceSpec
         return superClassInfo().loadClass();
     }
 
+    /**
+     * Provides a list of strings that describe the generic types of this interface.
+     * They are based off of the extended interface.
+     * 
+     * @return the type declarations.
+     */
     default String[] typeDeclarations()
     {
-        return Util.walkTypeParameters(this, TypeParameter::toString);
+        return Util.walkTypeParameters(superClassInfo(), TypeParameter::toString);
+    }
+
+    /**
+     * Provides a map that will translate type parameters from this functional
+     * interface if the method is declared in a parent class.
+     * 
+     * @return a map from the super type to the current class's types.
+     */
+    default Map<String, String> typeParameterMappings()
+    {
+        return Util.methodParameterTypes(this);
     }
 }

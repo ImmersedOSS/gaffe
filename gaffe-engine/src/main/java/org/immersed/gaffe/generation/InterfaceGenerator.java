@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
@@ -117,6 +118,8 @@ public final class InterfaceGenerator
     {
         AtomicInteger character = new AtomicInteger('a');
 
+        Map<String, String> typeTranslations = spec.typeParameterMappings();
+
         return Arrays.stream(spec.superMethodInfo()
                                  .getParameterInfo())
                      .map(m ->
@@ -125,6 +128,8 @@ public final class InterfaceGenerator
                          name = name == null ? Character.toString((char) character.getAndIncrement()) : name;
                          String type = m.getTypeSignatureOrTypeDescriptor()
                                         .toString();
+                         type = typeTranslations.getOrDefault(type, type);
+
                          return ParameterSpec.builder(TypeVariableName.get(type), name)
                                              .build();
                      })

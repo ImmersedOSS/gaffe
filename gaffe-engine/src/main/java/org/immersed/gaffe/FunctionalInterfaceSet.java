@@ -61,8 +61,8 @@ public final class FunctionalInterfaceSet implements Iterable<FunctionalInterfac
 
     private FunctionalInterfaceSet(ClassGraph graph)
     {
-        this.result = graph.verbose()
-                           .scan();
+        // add verbose() to see detailed info
+        this.result = graph.scan();
     }
 
     @Override
