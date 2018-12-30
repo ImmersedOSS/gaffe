@@ -1,5 +1,6 @@
 package org.immersed.gaffe.generation;
 
+import static org.immersed.gaffe.generation.Constants.*;
 import static javax.lang.model.element.Modifier.*;
 
 import java.io.IOException;
@@ -27,8 +28,6 @@ import lombok.SneakyThrows;
 
 public final class InterfaceGenerator
 {
-    private static final String EXCEPTION_GENERIC = "X";
-
     private final ProjectSpec proj;
     private final FunctionalInterfaceSpec spec;
 
@@ -67,7 +66,7 @@ public final class InterfaceGenerator
                                                  .addMethod(throwingMethod)
                                                  .build();
 
-        JavaFile file = JavaFile.builder("org.immersed.gaffe", throwingInterfaceSpec)
+        JavaFile file = JavaFile.builder(PACKAGE, throwingInterfaceSpec)
                                 .build();
         file.writeTo(Files.createDirectories(proj.sourceFolder()));
     }

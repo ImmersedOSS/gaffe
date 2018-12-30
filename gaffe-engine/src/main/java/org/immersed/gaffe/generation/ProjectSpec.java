@@ -14,6 +14,8 @@ public interface ProjectSpec
 
     FunctionalInterfaceSet functionalInterfaces();
 
+    String projectName();
+
     Path projectFolder();
 
     default Path sourceFolder()

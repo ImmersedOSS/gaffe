@@ -21,7 +21,8 @@ public final class ProjectGenerator
 {
     public static void main(String... args)
     {
-        ProjectSpec jdkProject = new ProjectSpec.Builder().projectFolder(Paths.get("../", "gaffe-jdk")
+        ProjectSpec jdkProject = new ProjectSpec.Builder().projectName("Jdk")
+                                                          .projectFolder(Paths.get("../", "gaffe-jdk")
                                                                               .toAbsolutePath())
                                                           .functionalInterfaces(FunctionalInterfaceSet.jdk())
                                                           .build();
