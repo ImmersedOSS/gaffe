@@ -1,6 +1,6 @@
 # Gaffe: Error Handling for Functional Interfaces
 
-> **Gaffe** *noun*, /ɡaf/: an unintentional act or remark causing embarrassment to its originator; a blunder.
+> **Gaffe** *noun*, /ɡaf/: an unintentional act or remark causing embarrassment to its originator; a blunder.<br>
 > **Gaffe** *noun*, /ɡaf/: from French, literally ‘boat hook’
 
 Gaffe is a library that simplifies exception handling for functional interfaces in Java libraries. 
