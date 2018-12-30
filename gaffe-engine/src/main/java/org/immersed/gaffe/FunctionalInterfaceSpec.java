@@ -38,6 +38,11 @@ public interface FunctionalInterfaceSpec
         return "Throwing" + name;
     }
 
+    default String packageName(String topLevelPackage)
+    {
+        return topLevelPackage + "." + superClassInfo().getPackageName();
+    }
+
     /**
      * The name of the new functional interface method name.
      * 

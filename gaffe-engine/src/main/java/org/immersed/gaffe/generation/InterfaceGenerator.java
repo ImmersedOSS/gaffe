@@ -66,7 +66,7 @@ public final class InterfaceGenerator
                                                  .addMethod(throwingMethod)
                                                  .build();
 
-        JavaFile file = JavaFile.builder(PACKAGE, throwingInterfaceSpec)
+        JavaFile file = JavaFile.builder(spec.packageName(PACKAGE), throwingInterfaceSpec)
                                 .build();
         file.writeTo(Files.createDirectories(proj.sourceFolder()));
     }

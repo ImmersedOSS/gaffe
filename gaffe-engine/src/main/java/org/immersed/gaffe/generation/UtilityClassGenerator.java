@@ -65,7 +65,7 @@ public class UtilityClassGenerator
         TypeVariableName[] methodGenerics = classGenericVars(spec);
         TypeVariableName[] parameterGenerics = parameterGenerics(spec);
 
-        ClassName paramClassName = ClassName.get(Constants.PACKAGE, spec.className());
+        ClassName paramClassName = ClassName.get(spec.packageName(PACKAGE), spec.className());
         ParameterizedTypeName paramType = ParameterizedTypeName.get(paramClassName, parameterGenerics);
 
         String paramName = spec.className();
