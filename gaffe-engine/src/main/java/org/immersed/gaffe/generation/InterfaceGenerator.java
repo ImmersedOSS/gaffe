@@ -1,7 +1,7 @@
 package org.immersed.gaffe.generation;
 
-import static org.immersed.gaffe.generation.Constants.*;
 import static javax.lang.model.element.Modifier.*;
+import static org.immersed.gaffe.generation.Constants.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -26,7 +26,7 @@ import com.squareup.javapoet.TypeVariableName;
 
 import lombok.SneakyThrows;
 
-public final class InterfaceGenerator
+final class InterfaceGenerator
 {
     private final ProjectSpec proj;
     private final FunctionalInterfaceSpec spec;

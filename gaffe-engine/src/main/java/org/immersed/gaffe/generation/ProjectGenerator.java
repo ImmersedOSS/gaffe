@@ -68,16 +68,11 @@ public final class ProjectGenerator
                  }
              });
 
-        try
+        for (FunctionalInterfaceSpec iface : project.functionalInterfaces())
         {
-            for (FunctionalInterfaceSpec iface : project.functionalInterfaces())
-            {
-                new InterfaceGenerator(iface, project).generateJavaFile();
-            }
+            new InterfaceGenerator(iface, project).generateJavaFile();
         }
-        catch (IOException e)
-        {
-            throw new IllegalStateException(e);
-        }
+
+        new UtilityClassGenerator(project).generateUtilityClass();
     }
 }

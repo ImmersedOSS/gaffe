@@ -5,10 +5,8 @@ import static org.immersed.gaffe.generation.Constants.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 
-import org.immersed.gaffe.FunctionalInterfaceSet;
 import org.immersed.gaffe.FunctionalInterfaceSpec;
 
 import com.squareup.javapoet.ClassName;
@@ -20,19 +18,8 @@ import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.TypeSpec.Builder;
 import com.squareup.javapoet.TypeVariableName;
 
-public class UtilityClassGenerator
+final class UtilityClassGenerator
 {
-    public static void main(String... args) throws IOException
-    {
-        ProjectSpec jdkProject = new ProjectSpec.Builder().projectName("Jdk")
-                                                          .projectFolder(Paths.get("../", "gaffe-jdk")
-                                                                              .toAbsolutePath())
-                                                          .functionalInterfaces(FunctionalInterfaceSet.jdk())
-                                                          .build();
-
-        new UtilityClassGenerator(jdkProject).generateUtilityClass();
-    }
-
     private final ProjectSpec proj;
 
     public UtilityClassGenerator(ProjectSpec spec)
