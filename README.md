@@ -33,7 +33,7 @@ Function<String, User> readUser = *throwing*(client::read);
 readUser.apply("Bob"); // may throw IOException directly
 ```
 
-Gaffe offers several improvements over the original Faux Pas library:
+Gaffe offers several improvements over Faux Pas:
 
 1. Most of the code is automatically generated (see [JavaPoet](https://github.com/square/javapoet), [Classgraph](https://github.com/classgraph/classgraph)).
 2. It will encompass libraries outside of the JDK.
