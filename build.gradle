@@ -1,5 +1,5 @@
 plugins {
-	id 'io.franzbecker.gradle-lombok' version '1.14'
+    id 'io.franzbecker.gradle-lombok' version '3.1.0'
 }
 
 subprojects {
@@ -11,8 +11,8 @@ subprojects {
 	apply plugin: "io.franzbecker.gradle-lombok"
 	
 	lombok { // optional: values below are the defaults
-	    version = "1.18.4"
-	    sha256 = ""
+	    version = "1.18.8"
+	    sha256 = "0396952823579b316a0fe85cbd871bbb3508143c2bcbd985dd7800e806cb24fc"
 	}
 	
 	apply plugin: "java-library"
