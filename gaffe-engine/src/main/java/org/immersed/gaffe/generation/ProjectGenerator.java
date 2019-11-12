@@ -45,14 +45,14 @@ public final class ProjectGenerator
             {
                 generateProject(t);
             }
-            catch (IOException e)
+            catch (IOException | ClassNotFoundException e)
             {
                 throw new IllegalStateException(e);
             }
         });
     }
 
-    public void generateProject(ProjectSpec project) throws IOException
+    public void generateProject(ProjectSpec project) throws IOException, ClassNotFoundException
     {
         Files.walk(project.sourceFolder())
              .filter(Files::isRegularFile)
