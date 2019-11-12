@@ -126,20 +126,39 @@ final class UtilityClassGenerator
                 superInterface = parameterizedType.rawType;
             }
 
-            mB.addCode(CodeBlock.builder()
-                                .add("$L iface = $L($L -> {\n", superInterface, utilityMethod, params)
-                                .indent()
-                                .addStatement("throw new $T()", IOException.class)
-                                .unindent()
-                                .add("});\n")
-                                .addStatement("iface.toString()")
-                                .build());
+            MethodSpec originalMethod = throwingSpec.originalMethod();
+            CodeBlock.Builder builder = CodeBlock.builder();
+            builder.add("$L iface = $L($L -> {\n", superInterface, utilityMethod, params)
+                   .indent()
+                   .addStatement("throw new $T()", IOException.class)
+                   .unindent()
+                   .add("});\n")
+                   .add("assertThatExceptionOfType($T.class).isThrownBy(() -> ", IOException.class)
+                   .add("iface.$L(", originalMethod.name);
+            builder.add(originalMethod.parameters.stream()
+                                                 .map(param ->
+                                                 {
+                                                     if (TypeName.BOOLEAN.equals(param.type))
+                                                     {
+                                                         return "true";
+                                                     }
+                                                     else if (param.type.isPrimitive())
+                                                     {
+                                                         return String.format("(%s)0", param.type.toString());
+                                                     }
+                                                     return "null";
+                                                 })
+                                                 .reduce((a, b) -> a + "," + b)
+                                                 .orElse(""));
+            builder.add("));\n");
+            mB.addCode(builder.build());
 
             utilityTestClass.addMethod(mB.build());
         }
 
         JavaFile file = JavaFile.builder(Constants.PACKAGE, utilityTestClass.build())
                                 .addStaticImport(ClassName.get(Constants.PACKAGE, utilityClass.name), "*")
+                                .addStaticImport(ClassName.get("org.assertj.core.api", "Assertions"), "*")
                                 .build();
         file.writeTo(Files.createDirectories(proj.testFolder()));
     }

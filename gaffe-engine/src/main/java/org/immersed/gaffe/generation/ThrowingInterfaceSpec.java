@@ -9,6 +9,7 @@ import static org.immersed.gaffe.generation.Constants.PACKAGE;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -37,6 +38,17 @@ import lombok.SneakyThrows;
  */
 public class ThrowingInterfaceSpec
 {
+    private static final Map<String, TypeName> TYPES = new HashMap<>();
+
+    static
+    {
+        for (TypeName name : Arrays.asList(TypeName.BOOLEAN, TypeName.BYTE, TypeName.CHAR, TypeName.DOUBLE,
+                TypeName.FLOAT, TypeName.INT, TypeName.LONG, TypeName.SHORT))
+        {
+            TYPES.put(name.toString(), name);
+        }
+    }
+
     private static CodeBlock callThrowingMethod(MethodSpec throwingMethod)
     {
         CodeBlock.Builder builder = CodeBlock.builder();
@@ -95,7 +107,9 @@ public class ThrowingInterfaceSpec
                          type = typeTranslations.getOrDefault(type, type)
                                                 .replaceAll("[$]", ".");
 
-                         return ParameterSpec.builder(TypeVariableName.get(type), name)
+                         TypeName types = TYPES.getOrDefault(type, TypeVariableName.get(type));
+
+                         return ParameterSpec.builder(types, name)
                                              .build();
                      })
                      .collect(Collectors.toList());
