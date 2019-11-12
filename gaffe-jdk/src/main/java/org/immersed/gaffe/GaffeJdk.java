@@ -560,9 +560,9 @@ public final class GaffeJdk {
     return throwingRunnable;
   }
 
-  public static <X extends Throwable> Thread.UncaughtExceptionHandler throwingUncaughtExceptionHandler(
-      ThrowingUncaughtExceptionHandler<X> throwingUncaughtExceptionHandler) {
-    return throwingUncaughtExceptionHandler;
+  public static <X extends Throwable> Thread.UncaughtExceptionHandler throwingThreadUncaughtExceptionHandler(
+      ThrowingUncaughtExceptionHandler<X> throwingThreadUncaughtExceptionHandler) {
+    return throwingThreadUncaughtExceptionHandler;
   }
 
   public static <X extends Throwable> ClassFileTransformer throwingClassFileTransformer(
@@ -620,9 +620,9 @@ public final class GaffeJdk {
     return throwingURLStreamHandlerFactory;
   }
 
-  public static <T, X extends Throwable> DirectoryStream.Filter<T> throwingFilter(
-      ThrowingFilter<T, X> throwingFilter) {
-    return throwingFilter;
+  public static <T, X extends Throwable> DirectoryStream.Filter<T> throwingDirectoryStreamFilter(
+      ThrowingFilter<T, X> throwingDirectoryStreamFilter) {
+    return throwingDirectoryStreamFilter;
   }
 
   public static <X extends Throwable> PathMatcher throwingPathMatcher(
@@ -630,9 +630,9 @@ public final class GaffeJdk {
     return throwingPathMatcher;
   }
 
-  public static <X extends Throwable> WatchEvent.Modifier throwingModifier(
-      ThrowingModifier<X> throwingModifier) {
-    return throwingModifier;
+  public static <X extends Throwable> WatchEvent.Modifier throwingWatchEventModifier(
+      ThrowingModifier<X> throwingWatchEventModifier) {
+    return throwingWatchEventModifier;
   }
 
   public static <X extends Throwable> AttributeView throwingAttributeView(
@@ -689,9 +689,9 @@ public final class GaffeJdk {
     return throwingGuard;
   }
 
-  public static <X extends Throwable> KeyStore.LoadStoreParameter throwingLoadStoreParameter(
-      ThrowingLoadStoreParameter<X> throwingLoadStoreParameter) {
-    return throwingLoadStoreParameter;
+  public static <X extends Throwable> KeyStore.LoadStoreParameter throwingKeyStoreLoadStoreParameter(
+      ThrowingLoadStoreParameter<X> throwingKeyStoreLoadStoreParameter) {
+    return throwingKeyStoreLoadStoreParameter;
   }
 
   public static <T, X extends Throwable> PrivilegedAction<T> throwingPrivilegedAction(
@@ -774,9 +774,9 @@ public final class GaffeJdk {
     return throwingExecutor;
   }
 
-  public static <X extends Throwable> ForkJoinPool.ForkJoinWorkerThreadFactory throwingForkJoinWorkerThreadFactory(
-      ThrowingForkJoinWorkerThreadFactory<X> throwingForkJoinWorkerThreadFactory) {
-    return throwingForkJoinWorkerThreadFactory;
+  public static <X extends Throwable> ForkJoinPool.ForkJoinWorkerThreadFactory throwingForkJoinPoolForkJoinWorkerThreadFactory(
+      ThrowingForkJoinWorkerThreadFactory<X> throwingForkJoinPoolForkJoinWorkerThreadFactory) {
+    return throwingForkJoinPoolForkJoinWorkerThreadFactory;
   }
 
   public static <X extends Throwable> RejectedExecutionHandler throwingRejectedExecutionHandler(
