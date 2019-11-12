@@ -101,7 +101,9 @@ final class UtilityClassGenerator
             String utilityMethod = utilityMethodName(spec);
 
             MethodSpec.Builder mB = MethodSpec.methodBuilder(new StringBuilder().append("test")
-                                                                                .append(utilityMethod)
+                                                                                .append(Character.toUpperCase(
+                                                                                        utilityMethod.charAt(0)))
+                                                                                .append(utilityMethod.substring(1))
                                                                                 .append("CanThrowCheckedException")
                                                                                 .toString())
                                               .addModifiers(Modifier.PUBLIC)

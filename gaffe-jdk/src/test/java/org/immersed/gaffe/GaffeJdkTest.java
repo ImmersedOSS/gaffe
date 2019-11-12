@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public final class GaffeJdkTest {
   @Test
-  public void testthrowingActiveEventCanThrowCheckedException() {
+  public void testThrowingActiveEventCanThrowCheckedException() {
     java.awt.ActiveEvent iface = throwingActiveEvent(() -> {
       throw new IOException();
     });
@@ -15,7 +15,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingCompositeCanThrowCheckedException() {
+  public void testThrowingCompositeCanThrowCheckedException() {
     java.awt.Composite iface = throwingComposite((a,b,c) -> {
       throw new IOException();
     });
@@ -23,7 +23,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingKeyEventDispatcherCanThrowCheckedException() {
+  public void testThrowingKeyEventDispatcherCanThrowCheckedException() {
     java.awt.KeyEventDispatcher iface = throwingKeyEventDispatcher(a -> {
       throw new IOException();
     });
@@ -31,7 +31,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingKeyEventPostProcessorCanThrowCheckedException() {
+  public void testThrowingKeyEventPostProcessorCanThrowCheckedException() {
     java.awt.KeyEventPostProcessor iface = throwingKeyEventPostProcessor(a -> {
       throw new IOException();
     });
@@ -39,7 +39,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingPrintGraphicsCanThrowCheckedException() {
+  public void testThrowingPrintGraphicsCanThrowCheckedException() {
     java.awt.PrintGraphics iface = throwingPrintGraphics(() -> {
       throw new IOException();
     });
@@ -47,7 +47,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingStrokeCanThrowCheckedException() {
+  public void testThrowingStrokeCanThrowCheckedException() {
     java.awt.Stroke iface = throwingStroke(a -> {
       throw new IOException();
     });
@@ -55,7 +55,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingTransparencyCanThrowCheckedException() {
+  public void testThrowingTransparencyCanThrowCheckedException() {
     java.awt.Transparency iface = throwingTransparency(() -> {
       throw new IOException();
     });
@@ -63,7 +63,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingClipboardOwnerCanThrowCheckedException() {
+  public void testThrowingClipboardOwnerCanThrowCheckedException() {
     java.awt.datatransfer.ClipboardOwner iface = throwingClipboardOwner((a,b) -> {
       throw new IOException();
     });
@@ -71,7 +71,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingFlavorListenerCanThrowCheckedException() {
+  public void testThrowingFlavorListenerCanThrowCheckedException() {
     java.awt.datatransfer.FlavorListener iface = throwingFlavorListener(a -> {
       throw new IOException();
     });
@@ -79,7 +79,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDragGestureListenerCanThrowCheckedException() {
+  public void testThrowingDragGestureListenerCanThrowCheckedException() {
     java.awt.dnd.DragGestureListener iface = throwingDragGestureListener(a -> {
       throw new IOException();
     });
@@ -87,7 +87,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDragSourceMotionListenerCanThrowCheckedException() {
+  public void testThrowingDragSourceMotionListenerCanThrowCheckedException() {
     java.awt.dnd.DragSourceMotionListener iface = throwingDragSourceMotionListener(a -> {
       throw new IOException();
     });
@@ -95,7 +95,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingAWTEventListenerCanThrowCheckedException() {
+  public void testThrowingAWTEventListenerCanThrowCheckedException() {
     java.awt.event.AWTEventListener iface = throwingAWTEventListener(a -> {
       throw new IOException();
     });
@@ -103,7 +103,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingActionListenerCanThrowCheckedException() {
+  public void testThrowingActionListenerCanThrowCheckedException() {
     java.awt.event.ActionListener iface = throwingActionListener(a -> {
       throw new IOException();
     });
@@ -111,7 +111,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingAdjustmentListenerCanThrowCheckedException() {
+  public void testThrowingAdjustmentListenerCanThrowCheckedException() {
     java.awt.event.AdjustmentListener iface = throwingAdjustmentListener(a -> {
       throw new IOException();
     });
@@ -119,7 +119,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingHierarchyListenerCanThrowCheckedException() {
+  public void testThrowingHierarchyListenerCanThrowCheckedException() {
     java.awt.event.HierarchyListener iface = throwingHierarchyListener(a -> {
       throw new IOException();
     });
@@ -127,7 +127,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingItemListenerCanThrowCheckedException() {
+  public void testThrowingItemListenerCanThrowCheckedException() {
     java.awt.event.ItemListener iface = throwingItemListener(a -> {
       throw new IOException();
     });
@@ -135,7 +135,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingMouseWheelListenerCanThrowCheckedException() {
+  public void testThrowingMouseWheelListenerCanThrowCheckedException() {
     java.awt.event.MouseWheelListener iface = throwingMouseWheelListener(a -> {
       throw new IOException();
     });
@@ -143,7 +143,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingTextListenerCanThrowCheckedException() {
+  public void testThrowingTextListenerCanThrowCheckedException() {
     java.awt.event.TextListener iface = throwingTextListener(a -> {
       throw new IOException();
     });
@@ -151,7 +151,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingWindowStateListenerCanThrowCheckedException() {
+  public void testThrowingWindowStateListenerCanThrowCheckedException() {
     java.awt.event.WindowStateListener iface = throwingWindowStateListener(a -> {
       throw new IOException();
     });
@@ -159,7 +159,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingImageObserverCanThrowCheckedException() {
+  public void testThrowingImageObserverCanThrowCheckedException() {
     java.awt.image.ImageObserver iface = throwingImageObserver((a,b,c,d,e,f) -> {
       throw new IOException();
     });
@@ -167,7 +167,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingTileObserverCanThrowCheckedException() {
+  public void testThrowingTileObserverCanThrowCheckedException() {
     java.awt.image.TileObserver iface = throwingTileObserver((a,b,c,d) -> {
       throw new IOException();
     });
@@ -175,7 +175,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingRenderedImageFactoryCanThrowCheckedException() {
+  public void testThrowingRenderedImageFactoryCanThrowCheckedException() {
     java.awt.image.renderable.RenderedImageFactory iface = throwingRenderedImageFactory((a,b) -> {
       throw new IOException();
     });
@@ -183,7 +183,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingSystemTrayPeerCanThrowCheckedException() {
+  public void testThrowingSystemTrayPeerCanThrowCheckedException() {
     java.awt.peer.SystemTrayPeer iface = throwingSystemTrayPeer(() -> {
       throw new IOException();
     });
@@ -191,7 +191,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingPrintableCanThrowCheckedException() {
+  public void testThrowingPrintableCanThrowCheckedException() {
     java.awt.print.Printable iface = throwingPrintable((a,b,c) -> {
       throw new IOException();
     });
@@ -199,7 +199,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingPrinterGraphicsCanThrowCheckedException() {
+  public void testThrowingPrinterGraphicsCanThrowCheckedException() {
     java.awt.print.PrinterGraphics iface = throwingPrinterGraphics(() -> {
       throw new IOException();
     });
@@ -207,7 +207,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingExceptionListenerCanThrowCheckedException() {
+  public void testThrowingExceptionListenerCanThrowCheckedException() {
     java.beans.ExceptionListener iface = throwingExceptionListener(a -> {
       throw new IOException();
     });
@@ -215,7 +215,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingPropertyChangeListenerCanThrowCheckedException() {
+  public void testThrowingPropertyChangeListenerCanThrowCheckedException() {
     java.beans.PropertyChangeListener iface = throwingPropertyChangeListener(a -> {
       throw new IOException();
     });
@@ -223,7 +223,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingVetoableChangeListenerCanThrowCheckedException() {
+  public void testThrowingVetoableChangeListenerCanThrowCheckedException() {
     java.beans.VetoableChangeListener iface = throwingVetoableChangeListener(a -> {
       throw new IOException();
     });
@@ -231,7 +231,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingBeanContextChildComponentProxyCanThrowCheckedException() {
+  public void testThrowingBeanContextChildComponentProxyCanThrowCheckedException() {
     java.beans.beancontext.BeanContextChildComponentProxy iface = throwingBeanContextChildComponentProxy(() -> {
       throw new IOException();
     });
@@ -239,7 +239,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingBeanContextContainerProxyCanThrowCheckedException() {
+  public void testThrowingBeanContextContainerProxyCanThrowCheckedException() {
     java.beans.beancontext.BeanContextContainerProxy iface = throwingBeanContextContainerProxy(() -> {
       throw new IOException();
     });
@@ -247,7 +247,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingBeanContextProxyCanThrowCheckedException() {
+  public void testThrowingBeanContextProxyCanThrowCheckedException() {
     java.beans.beancontext.BeanContextProxy iface = throwingBeanContextProxy(() -> {
       throw new IOException();
     });
@@ -255,7 +255,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingBeanContextServiceRevokedListenerCanThrowCheckedException() {
+  public void testThrowingBeanContextServiceRevokedListenerCanThrowCheckedException() {
     java.beans.beancontext.BeanContextServiceRevokedListener iface = throwingBeanContextServiceRevokedListener(a -> {
       throw new IOException();
     });
@@ -263,7 +263,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingCloseableCanThrowCheckedException() {
+  public void testThrowingCloseableCanThrowCheckedException() {
     java.io.Closeable iface = throwingCloseable(() -> {
       throw new IOException();
     });
@@ -271,7 +271,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingFileFilterCanThrowCheckedException() {
+  public void testThrowingFileFilterCanThrowCheckedException() {
     java.io.FileFilter iface = throwingFileFilter(a -> {
       throw new IOException();
     });
@@ -279,7 +279,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingFilenameFilterCanThrowCheckedException() {
+  public void testThrowingFilenameFilterCanThrowCheckedException() {
     java.io.FilenameFilter iface = throwingFilenameFilter((a,b) -> {
       throw new IOException();
     });
@@ -287,7 +287,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingFlushableCanThrowCheckedException() {
+  public void testThrowingFlushableCanThrowCheckedException() {
     java.io.Flushable iface = throwingFlushable(() -> {
       throw new IOException();
     });
@@ -295,7 +295,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingObjectInputValidationCanThrowCheckedException() {
+  public void testThrowingObjectInputValidationCanThrowCheckedException() {
     java.io.ObjectInputValidation iface = throwingObjectInputValidation(() -> {
       throw new IOException();
     });
@@ -303,7 +303,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingAutoCloseableCanThrowCheckedException() {
+  public void testThrowingAutoCloseableCanThrowCheckedException() {
     java.lang.AutoCloseable iface = throwingAutoCloseable(() -> {
       throw new IOException();
     });
@@ -311,7 +311,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingComparableCanThrowCheckedException() {
+  public void testThrowingComparableCanThrowCheckedException() {
     java.lang.Comparable iface = throwingComparable(a -> {
       throw new IOException();
     });
@@ -319,7 +319,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingIterableCanThrowCheckedException() {
+  public void testThrowingIterableCanThrowCheckedException() {
     java.lang.Iterable iface = throwingIterable(() -> {
       throw new IOException();
     });
@@ -327,7 +327,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingReadableCanThrowCheckedException() {
+  public void testThrowingReadableCanThrowCheckedException() {
     java.lang.Readable iface = throwingReadable(a -> {
       throw new IOException();
     });
@@ -335,7 +335,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingRunnableCanThrowCheckedException() {
+  public void testThrowingRunnableCanThrowCheckedException() {
     java.lang.Runnable iface = throwingRunnable(() -> {
       throw new IOException();
     });
@@ -343,7 +343,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingThreadUncaughtExceptionHandlerCanThrowCheckedException() {
+  public void testThrowingThreadUncaughtExceptionHandlerCanThrowCheckedException() {
     java.lang.Thread.UncaughtExceptionHandler iface = throwingThreadUncaughtExceptionHandler((a,b) -> {
       throw new IOException();
     });
@@ -351,7 +351,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingClassFileTransformerCanThrowCheckedException() {
+  public void testThrowingClassFileTransformerCanThrowCheckedException() {
     java.lang.instrument.ClassFileTransformer iface = throwingClassFileTransformer((a,b,c,d,e) -> {
       throw new IOException();
     });
@@ -359,7 +359,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingPlatformManagedObjectCanThrowCheckedException() {
+  public void testThrowingPlatformManagedObjectCanThrowCheckedException() {
     java.lang.management.PlatformManagedObject iface = throwingPlatformManagedObject(() -> {
       throw new IOException();
     });
@@ -367,7 +367,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingGenericArrayTypeCanThrowCheckedException() {
+  public void testThrowingGenericArrayTypeCanThrowCheckedException() {
     java.lang.reflect.GenericArrayType iface = throwingGenericArrayType(() -> {
       throw new IOException();
     });
@@ -375,7 +375,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingInvocationHandlerCanThrowCheckedException() {
+  public void testThrowingInvocationHandlerCanThrowCheckedException() {
     java.lang.reflect.InvocationHandler iface = throwingInvocationHandler((a,b,c) -> {
       throw new IOException();
     });
@@ -383,7 +383,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingContentHandlerFactoryCanThrowCheckedException() {
+  public void testThrowingContentHandlerFactoryCanThrowCheckedException() {
     java.net.ContentHandlerFactory iface = throwingContentHandlerFactory(a -> {
       throw new IOException();
     });
@@ -391,7 +391,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingCookiePolicyCanThrowCheckedException() {
+  public void testThrowingCookiePolicyCanThrowCheckedException() {
     java.net.CookiePolicy iface = throwingCookiePolicy((a,b) -> {
       throw new IOException();
     });
@@ -399,7 +399,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDatagramSocketImplFactoryCanThrowCheckedException() {
+  public void testThrowingDatagramSocketImplFactoryCanThrowCheckedException() {
     java.net.DatagramSocketImplFactory iface = throwingDatagramSocketImplFactory(() -> {
       throw new IOException();
     });
@@ -407,7 +407,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingFileNameMapCanThrowCheckedException() {
+  public void testThrowingFileNameMapCanThrowCheckedException() {
     java.net.FileNameMap iface = throwingFileNameMap(a -> {
       throw new IOException();
     });
@@ -415,7 +415,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingProtocolFamilyCanThrowCheckedException() {
+  public void testThrowingProtocolFamilyCanThrowCheckedException() {
     java.net.ProtocolFamily iface = throwingProtocolFamily(() -> {
       throw new IOException();
     });
@@ -423,7 +423,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingSocketImplFactoryCanThrowCheckedException() {
+  public void testThrowingSocketImplFactoryCanThrowCheckedException() {
     java.net.SocketImplFactory iface = throwingSocketImplFactory(() -> {
       throw new IOException();
     });
@@ -431,7 +431,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingURLStreamHandlerFactoryCanThrowCheckedException() {
+  public void testThrowingURLStreamHandlerFactoryCanThrowCheckedException() {
     java.net.URLStreamHandlerFactory iface = throwingURLStreamHandlerFactory(a -> {
       throw new IOException();
     });
@@ -439,7 +439,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDirectoryStreamFilterCanThrowCheckedException() {
+  public void testThrowingDirectoryStreamFilterCanThrowCheckedException() {
     java.nio.file.DirectoryStream.Filter iface = throwingDirectoryStreamFilter(a -> {
       throw new IOException();
     });
@@ -447,7 +447,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingPathMatcherCanThrowCheckedException() {
+  public void testThrowingPathMatcherCanThrowCheckedException() {
     java.nio.file.PathMatcher iface = throwingPathMatcher(a -> {
       throw new IOException();
     });
@@ -455,7 +455,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingWatchEventModifierCanThrowCheckedException() {
+  public void testThrowingWatchEventModifierCanThrowCheckedException() {
     java.nio.file.WatchEvent.Modifier iface = throwingWatchEventModifier(() -> {
       throw new IOException();
     });
@@ -463,7 +463,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingAttributeViewCanThrowCheckedException() {
+  public void testThrowingAttributeViewCanThrowCheckedException() {
     java.nio.file.attribute.AttributeView iface = throwingAttributeView(() -> {
       throw new IOException();
     });
@@ -471,7 +471,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingFileAttributeViewCanThrowCheckedException() {
+  public void testThrowingFileAttributeViewCanThrowCheckedException() {
     java.nio.file.attribute.FileAttributeView iface = throwingFileAttributeView(() -> {
       throw new IOException();
     });
@@ -479,7 +479,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingFileStoreAttributeViewCanThrowCheckedException() {
+  public void testThrowingFileStoreAttributeViewCanThrowCheckedException() {
     java.nio.file.attribute.FileStoreAttributeView iface = throwingFileStoreAttributeView(() -> {
       throw new IOException();
     });
@@ -487,7 +487,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingActivationInstantiatorCanThrowCheckedException() {
+  public void testThrowingActivationInstantiatorCanThrowCheckedException() {
     java.rmi.activation.ActivationInstantiator iface = throwingActivationInstantiator((a,b) -> {
       throw new IOException();
     });
@@ -495,7 +495,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingActivatorCanThrowCheckedException() {
+  public void testThrowingActivatorCanThrowCheckedException() {
     java.rmi.activation.Activator iface = throwingActivator((a,b) -> {
       throw new IOException();
     });
@@ -503,7 +503,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingRMIClientSocketFactoryCanThrowCheckedException() {
+  public void testThrowingRMIClientSocketFactoryCanThrowCheckedException() {
     java.rmi.server.RMIClientSocketFactory iface = throwingRMIClientSocketFactory((a,b) -> {
       throw new IOException();
     });
@@ -511,7 +511,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingRMIFailureHandlerCanThrowCheckedException() {
+  public void testThrowingRMIFailureHandlerCanThrowCheckedException() {
     java.rmi.server.RMIFailureHandler iface = throwingRMIFailureHandler(a -> {
       throw new IOException();
     });
@@ -519,7 +519,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingRMIServerSocketFactoryCanThrowCheckedException() {
+  public void testThrowingRMIServerSocketFactoryCanThrowCheckedException() {
     java.rmi.server.RMIServerSocketFactory iface = throwingRMIServerSocketFactory(a -> {
       throw new IOException();
     });
@@ -527,7 +527,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingUnreferencedCanThrowCheckedException() {
+  public void testThrowingUnreferencedCanThrowCheckedException() {
     java.rmi.server.Unreferenced iface = throwingUnreferenced(() -> {
       throw new IOException();
     });
@@ -535,7 +535,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDomainCombinerCanThrowCheckedException() {
+  public void testThrowingDomainCombinerCanThrowCheckedException() {
     java.security.DomainCombiner iface = throwingDomainCombiner((a,b) -> {
       throw new IOException();
     });
@@ -543,7 +543,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingGuardCanThrowCheckedException() {
+  public void testThrowingGuardCanThrowCheckedException() {
     java.security.Guard iface = throwingGuard(a -> {
       throw new IOException();
     });
@@ -551,7 +551,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingKeyStoreLoadStoreParameterCanThrowCheckedException() {
+  public void testThrowingKeyStoreLoadStoreParameterCanThrowCheckedException() {
     java.security.KeyStore.LoadStoreParameter iface = throwingKeyStoreLoadStoreParameter(() -> {
       throw new IOException();
     });
@@ -559,7 +559,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingPrivilegedActionCanThrowCheckedException() {
+  public void testThrowingPrivilegedActionCanThrowCheckedException() {
     java.security.PrivilegedAction iface = throwingPrivilegedAction(() -> {
       throw new IOException();
     });
@@ -567,7 +567,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingPrivilegedExceptionActionCanThrowCheckedException() {
+  public void testThrowingPrivilegedExceptionActionCanThrowCheckedException() {
     java.security.PrivilegedExceptionAction iface = throwingPrivilegedExceptionAction(() -> {
       throw new IOException();
     });
@@ -575,7 +575,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingCertPathParametersCanThrowCheckedException() {
+  public void testThrowingCertPathParametersCanThrowCheckedException() {
     java.security.cert.CertPathParameters iface = throwingCertPathParameters(() -> {
       throw new IOException();
     });
@@ -583,7 +583,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingCertPathValidatorResultCanThrowCheckedException() {
+  public void testThrowingCertPathValidatorResultCanThrowCheckedException() {
     java.security.cert.CertPathValidatorResult iface = throwingCertPathValidatorResult(() -> {
       throw new IOException();
     });
@@ -591,7 +591,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingCertStoreParametersCanThrowCheckedException() {
+  public void testThrowingCertStoreParametersCanThrowCheckedException() {
     java.security.cert.CertStoreParameters iface = throwingCertStoreParameters(() -> {
       throw new IOException();
     });
@@ -599,7 +599,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDSAKeyCanThrowCheckedException() {
+  public void testThrowingDSAKeyCanThrowCheckedException() {
     java.security.interfaces.DSAKey iface = throwingDSAKey(() -> {
       throw new IOException();
     });
@@ -607,7 +607,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingECKeyCanThrowCheckedException() {
+  public void testThrowingECKeyCanThrowCheckedException() {
     java.security.interfaces.ECKey iface = throwingECKey(() -> {
       throw new IOException();
     });
@@ -615,7 +615,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingRSAKeyCanThrowCheckedException() {
+  public void testThrowingRSAKeyCanThrowCheckedException() {
     java.security.interfaces.RSAKey iface = throwingRSAKey(() -> {
       throw new IOException();
     });
@@ -623,7 +623,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingECFieldCanThrowCheckedException() {
+  public void testThrowingECFieldCanThrowCheckedException() {
     java.security.spec.ECField iface = throwingECField(() -> {
       throw new IOException();
     });
@@ -631,7 +631,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDriverActionCanThrowCheckedException() {
+  public void testThrowingDriverActionCanThrowCheckedException() {
     java.sql.DriverAction iface = throwingDriverAction(() -> {
       throw new IOException();
     });
@@ -639,7 +639,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingEraCanThrowCheckedException() {
+  public void testThrowingEraCanThrowCheckedException() {
     java.time.chrono.Era iface = throwingEra(() -> {
       throw new IOException();
     });
@@ -647,7 +647,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingTemporalAdjusterCanThrowCheckedException() {
+  public void testThrowingTemporalAdjusterCanThrowCheckedException() {
     java.time.temporal.TemporalAdjuster iface = throwingTemporalAdjuster(a -> {
       throw new IOException();
     });
@@ -655,7 +655,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingTemporalQueryCanThrowCheckedException() {
+  public void testThrowingTemporalQueryCanThrowCheckedException() {
     java.time.temporal.TemporalQuery iface = throwingTemporalQuery(a -> {
       throw new IOException();
     });
@@ -663,7 +663,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingFormattableCanThrowCheckedException() {
+  public void testThrowingFormattableCanThrowCheckedException() {
     java.util.Formattable iface = throwingFormattable((a,b,c,d) -> {
       throw new IOException();
     });
@@ -671,7 +671,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingObserverCanThrowCheckedException() {
+  public void testThrowingObserverCanThrowCheckedException() {
     java.util.Observer iface = throwingObserver((a,b) -> {
       throw new IOException();
     });
@@ -679,7 +679,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingCallableCanThrowCheckedException() {
+  public void testThrowingCallableCanThrowCheckedException() {
     java.util.concurrent.Callable iface = throwingCallable(() -> {
       throw new IOException();
     });
@@ -687,7 +687,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingExecutorCanThrowCheckedException() {
+  public void testThrowingExecutorCanThrowCheckedException() {
     java.util.concurrent.Executor iface = throwingExecutor(a -> {
       throw new IOException();
     });
@@ -695,7 +695,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingForkJoinPoolForkJoinWorkerThreadFactoryCanThrowCheckedException() {
+  public void testThrowingForkJoinPoolForkJoinWorkerThreadFactoryCanThrowCheckedException() {
     java.util.concurrent.ForkJoinPool.ForkJoinWorkerThreadFactory iface = throwingForkJoinPoolForkJoinWorkerThreadFactory(a -> {
       throw new IOException();
     });
@@ -703,7 +703,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingRejectedExecutionHandlerCanThrowCheckedException() {
+  public void testThrowingRejectedExecutionHandlerCanThrowCheckedException() {
     java.util.concurrent.RejectedExecutionHandler iface = throwingRejectedExecutionHandler((a,b) -> {
       throw new IOException();
     });
@@ -711,7 +711,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingThreadFactoryCanThrowCheckedException() {
+  public void testThrowingThreadFactoryCanThrowCheckedException() {
     java.util.concurrent.ThreadFactory iface = throwingThreadFactory(a -> {
       throw new IOException();
     });
@@ -719,7 +719,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingBiConsumerCanThrowCheckedException() {
+  public void testThrowingBiConsumerCanThrowCheckedException() {
     java.util.function.BiConsumer iface = throwingBiConsumer((a,b) -> {
       throw new IOException();
     });
@@ -727,7 +727,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingBiFunctionCanThrowCheckedException() {
+  public void testThrowingBiFunctionCanThrowCheckedException() {
     java.util.function.BiFunction iface = throwingBiFunction((a,b) -> {
       throw new IOException();
     });
@@ -735,7 +735,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingBiPredicateCanThrowCheckedException() {
+  public void testThrowingBiPredicateCanThrowCheckedException() {
     java.util.function.BiPredicate iface = throwingBiPredicate((a,b) -> {
       throw new IOException();
     });
@@ -743,7 +743,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingBinaryOperatorCanThrowCheckedException() {
+  public void testThrowingBinaryOperatorCanThrowCheckedException() {
     java.util.function.BinaryOperator iface = throwingBinaryOperator((a,b) -> {
       throw new IOException();
     });
@@ -751,7 +751,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingBooleanSupplierCanThrowCheckedException() {
+  public void testThrowingBooleanSupplierCanThrowCheckedException() {
     java.util.function.BooleanSupplier iface = throwingBooleanSupplier(() -> {
       throw new IOException();
     });
@@ -759,7 +759,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingConsumerCanThrowCheckedException() {
+  public void testThrowingConsumerCanThrowCheckedException() {
     java.util.function.Consumer iface = throwingConsumer(a -> {
       throw new IOException();
     });
@@ -767,7 +767,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDoubleBinaryOperatorCanThrowCheckedException() {
+  public void testThrowingDoubleBinaryOperatorCanThrowCheckedException() {
     java.util.function.DoubleBinaryOperator iface = throwingDoubleBinaryOperator((a,b) -> {
       throw new IOException();
     });
@@ -775,7 +775,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDoubleConsumerCanThrowCheckedException() {
+  public void testThrowingDoubleConsumerCanThrowCheckedException() {
     java.util.function.DoubleConsumer iface = throwingDoubleConsumer(a -> {
       throw new IOException();
     });
@@ -783,7 +783,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDoubleFunctionCanThrowCheckedException() {
+  public void testThrowingDoubleFunctionCanThrowCheckedException() {
     java.util.function.DoubleFunction iface = throwingDoubleFunction(a -> {
       throw new IOException();
     });
@@ -791,7 +791,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDoublePredicateCanThrowCheckedException() {
+  public void testThrowingDoublePredicateCanThrowCheckedException() {
     java.util.function.DoublePredicate iface = throwingDoublePredicate(a -> {
       throw new IOException();
     });
@@ -799,7 +799,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDoubleSupplierCanThrowCheckedException() {
+  public void testThrowingDoubleSupplierCanThrowCheckedException() {
     java.util.function.DoubleSupplier iface = throwingDoubleSupplier(() -> {
       throw new IOException();
     });
@@ -807,7 +807,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDoubleToIntFunctionCanThrowCheckedException() {
+  public void testThrowingDoubleToIntFunctionCanThrowCheckedException() {
     java.util.function.DoubleToIntFunction iface = throwingDoubleToIntFunction(a -> {
       throw new IOException();
     });
@@ -815,7 +815,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDoubleToLongFunctionCanThrowCheckedException() {
+  public void testThrowingDoubleToLongFunctionCanThrowCheckedException() {
     java.util.function.DoubleToLongFunction iface = throwingDoubleToLongFunction(a -> {
       throw new IOException();
     });
@@ -823,7 +823,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDoubleUnaryOperatorCanThrowCheckedException() {
+  public void testThrowingDoubleUnaryOperatorCanThrowCheckedException() {
     java.util.function.DoubleUnaryOperator iface = throwingDoubleUnaryOperator(a -> {
       throw new IOException();
     });
@@ -831,7 +831,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingFunctionCanThrowCheckedException() {
+  public void testThrowingFunctionCanThrowCheckedException() {
     java.util.function.Function iface = throwingFunction(a -> {
       throw new IOException();
     });
@@ -839,7 +839,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingIntBinaryOperatorCanThrowCheckedException() {
+  public void testThrowingIntBinaryOperatorCanThrowCheckedException() {
     java.util.function.IntBinaryOperator iface = throwingIntBinaryOperator((a,b) -> {
       throw new IOException();
     });
@@ -847,7 +847,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingIntConsumerCanThrowCheckedException() {
+  public void testThrowingIntConsumerCanThrowCheckedException() {
     java.util.function.IntConsumer iface = throwingIntConsumer(a -> {
       throw new IOException();
     });
@@ -855,7 +855,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingIntFunctionCanThrowCheckedException() {
+  public void testThrowingIntFunctionCanThrowCheckedException() {
     java.util.function.IntFunction iface = throwingIntFunction(a -> {
       throw new IOException();
     });
@@ -863,7 +863,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingIntPredicateCanThrowCheckedException() {
+  public void testThrowingIntPredicateCanThrowCheckedException() {
     java.util.function.IntPredicate iface = throwingIntPredicate(a -> {
       throw new IOException();
     });
@@ -871,7 +871,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingIntSupplierCanThrowCheckedException() {
+  public void testThrowingIntSupplierCanThrowCheckedException() {
     java.util.function.IntSupplier iface = throwingIntSupplier(() -> {
       throw new IOException();
     });
@@ -879,7 +879,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingIntToDoubleFunctionCanThrowCheckedException() {
+  public void testThrowingIntToDoubleFunctionCanThrowCheckedException() {
     java.util.function.IntToDoubleFunction iface = throwingIntToDoubleFunction(a -> {
       throw new IOException();
     });
@@ -887,7 +887,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingIntToLongFunctionCanThrowCheckedException() {
+  public void testThrowingIntToLongFunctionCanThrowCheckedException() {
     java.util.function.IntToLongFunction iface = throwingIntToLongFunction(a -> {
       throw new IOException();
     });
@@ -895,7 +895,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingIntUnaryOperatorCanThrowCheckedException() {
+  public void testThrowingIntUnaryOperatorCanThrowCheckedException() {
     java.util.function.IntUnaryOperator iface = throwingIntUnaryOperator(a -> {
       throw new IOException();
     });
@@ -903,7 +903,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingLongBinaryOperatorCanThrowCheckedException() {
+  public void testThrowingLongBinaryOperatorCanThrowCheckedException() {
     java.util.function.LongBinaryOperator iface = throwingLongBinaryOperator((a,b) -> {
       throw new IOException();
     });
@@ -911,7 +911,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingLongConsumerCanThrowCheckedException() {
+  public void testThrowingLongConsumerCanThrowCheckedException() {
     java.util.function.LongConsumer iface = throwingLongConsumer(a -> {
       throw new IOException();
     });
@@ -919,7 +919,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingLongFunctionCanThrowCheckedException() {
+  public void testThrowingLongFunctionCanThrowCheckedException() {
     java.util.function.LongFunction iface = throwingLongFunction(a -> {
       throw new IOException();
     });
@@ -927,7 +927,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingLongPredicateCanThrowCheckedException() {
+  public void testThrowingLongPredicateCanThrowCheckedException() {
     java.util.function.LongPredicate iface = throwingLongPredicate(a -> {
       throw new IOException();
     });
@@ -935,7 +935,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingLongSupplierCanThrowCheckedException() {
+  public void testThrowingLongSupplierCanThrowCheckedException() {
     java.util.function.LongSupplier iface = throwingLongSupplier(() -> {
       throw new IOException();
     });
@@ -943,7 +943,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingLongToDoubleFunctionCanThrowCheckedException() {
+  public void testThrowingLongToDoubleFunctionCanThrowCheckedException() {
     java.util.function.LongToDoubleFunction iface = throwingLongToDoubleFunction(a -> {
       throw new IOException();
     });
@@ -951,7 +951,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingLongToIntFunctionCanThrowCheckedException() {
+  public void testThrowingLongToIntFunctionCanThrowCheckedException() {
     java.util.function.LongToIntFunction iface = throwingLongToIntFunction(a -> {
       throw new IOException();
     });
@@ -959,7 +959,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingLongUnaryOperatorCanThrowCheckedException() {
+  public void testThrowingLongUnaryOperatorCanThrowCheckedException() {
     java.util.function.LongUnaryOperator iface = throwingLongUnaryOperator(a -> {
       throw new IOException();
     });
@@ -967,7 +967,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingObjDoubleConsumerCanThrowCheckedException() {
+  public void testThrowingObjDoubleConsumerCanThrowCheckedException() {
     java.util.function.ObjDoubleConsumer iface = throwingObjDoubleConsumer((a,b) -> {
       throw new IOException();
     });
@@ -975,7 +975,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingObjIntConsumerCanThrowCheckedException() {
+  public void testThrowingObjIntConsumerCanThrowCheckedException() {
     java.util.function.ObjIntConsumer iface = throwingObjIntConsumer((a,b) -> {
       throw new IOException();
     });
@@ -983,7 +983,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingObjLongConsumerCanThrowCheckedException() {
+  public void testThrowingObjLongConsumerCanThrowCheckedException() {
     java.util.function.ObjLongConsumer iface = throwingObjLongConsumer((a,b) -> {
       throw new IOException();
     });
@@ -991,7 +991,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingPredicateCanThrowCheckedException() {
+  public void testThrowingPredicateCanThrowCheckedException() {
     java.util.function.Predicate iface = throwingPredicate(a -> {
       throw new IOException();
     });
@@ -999,7 +999,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingSupplierCanThrowCheckedException() {
+  public void testThrowingSupplierCanThrowCheckedException() {
     java.util.function.Supplier iface = throwingSupplier(() -> {
       throw new IOException();
     });
@@ -1007,7 +1007,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingToDoubleBiFunctionCanThrowCheckedException() {
+  public void testThrowingToDoubleBiFunctionCanThrowCheckedException() {
     java.util.function.ToDoubleBiFunction iface = throwingToDoubleBiFunction((a,b) -> {
       throw new IOException();
     });
@@ -1015,7 +1015,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingToDoubleFunctionCanThrowCheckedException() {
+  public void testThrowingToDoubleFunctionCanThrowCheckedException() {
     java.util.function.ToDoubleFunction iface = throwingToDoubleFunction(a -> {
       throw new IOException();
     });
@@ -1023,7 +1023,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingToIntBiFunctionCanThrowCheckedException() {
+  public void testThrowingToIntBiFunctionCanThrowCheckedException() {
     java.util.function.ToIntBiFunction iface = throwingToIntBiFunction((a,b) -> {
       throw new IOException();
     });
@@ -1031,7 +1031,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingToIntFunctionCanThrowCheckedException() {
+  public void testThrowingToIntFunctionCanThrowCheckedException() {
     java.util.function.ToIntFunction iface = throwingToIntFunction(a -> {
       throw new IOException();
     });
@@ -1039,7 +1039,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingToLongBiFunctionCanThrowCheckedException() {
+  public void testThrowingToLongBiFunctionCanThrowCheckedException() {
     java.util.function.ToLongBiFunction iface = throwingToLongBiFunction((a,b) -> {
       throw new IOException();
     });
@@ -1047,7 +1047,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingToLongFunctionCanThrowCheckedException() {
+  public void testThrowingToLongFunctionCanThrowCheckedException() {
     java.util.function.ToLongFunction iface = throwingToLongFunction(a -> {
       throw new IOException();
     });
@@ -1055,7 +1055,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingUnaryOperatorCanThrowCheckedException() {
+  public void testThrowingUnaryOperatorCanThrowCheckedException() {
     java.util.function.UnaryOperator iface = throwingUnaryOperator(a -> {
       throw new IOException();
     });
@@ -1063,7 +1063,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingFilterCanThrowCheckedException() {
+  public void testThrowingFilterCanThrowCheckedException() {
     java.util.logging.Filter iface = throwingFilter(a -> {
       throw new IOException();
     });
@@ -1071,7 +1071,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingPreferenceChangeListenerCanThrowCheckedException() {
+  public void testThrowingPreferenceChangeListenerCanThrowCheckedException() {
     java.util.prefs.PreferenceChangeListener iface = throwingPreferenceChangeListener(a -> {
       throw new IOException();
     });
@@ -1079,7 +1079,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingResourceBundleControlProviderCanThrowCheckedException() {
+  public void testThrowingResourceBundleControlProviderCanThrowCheckedException() {
     java.util.spi.ResourceBundleControlProvider iface = throwingResourceBundleControlProvider(a -> {
       throw new IOException();
     });
@@ -1087,7 +1087,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingInterpolatableCanThrowCheckedException() {
+  public void testThrowingInterpolatableCanThrowCheckedException() {
     javafx.animation.Interpolatable iface = throwingInterpolatable((a,b) -> {
       throw new IOException();
     });
@@ -1095,7 +1095,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingInvalidationListenerCanThrowCheckedException() {
+  public void testThrowingInvalidationListenerCanThrowCheckedException() {
     javafx.beans.InvalidationListener iface = throwingInvalidationListener(a -> {
       throw new IOException();
     });
@@ -1103,7 +1103,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingWeakListenerCanThrowCheckedException() {
+  public void testThrowingWeakListenerCanThrowCheckedException() {
     javafx.beans.WeakListener iface = throwingWeakListener(() -> {
       throw new IOException();
     });
@@ -1111,7 +1111,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingChangeListenerCanThrowCheckedException() {
+  public void testThrowingChangeListenerCanThrowCheckedException() {
     javafx.beans.value.ChangeListener iface = throwingChangeListener((a,b,c) -> {
       throw new IOException();
     });
@@ -1119,7 +1119,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingArrayChangeListenerCanThrowCheckedException() {
+  public void testThrowingArrayChangeListenerCanThrowCheckedException() {
     javafx.collections.ArrayChangeListener iface = throwingArrayChangeListener((a,b,c,d) -> {
       throw new IOException();
     });
@@ -1127,7 +1127,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingListChangeListenerCanThrowCheckedException() {
+  public void testThrowingListChangeListenerCanThrowCheckedException() {
     javafx.collections.ListChangeListener iface = throwingListChangeListener(a -> {
       throw new IOException();
     });
@@ -1135,7 +1135,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingMapChangeListenerCanThrowCheckedException() {
+  public void testThrowingMapChangeListenerCanThrowCheckedException() {
     javafx.collections.MapChangeListener iface = throwingMapChangeListener(a -> {
       throw new IOException();
     });
@@ -1143,7 +1143,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingSetChangeListenerCanThrowCheckedException() {
+  public void testThrowingSetChangeListenerCanThrowCheckedException() {
     javafx.collections.SetChangeListener iface = throwingSetChangeListener(a -> {
       throw new IOException();
     });
@@ -1151,7 +1151,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingEventDispatcherCanThrowCheckedException() {
+  public void testThrowingEventDispatcherCanThrowCheckedException() {
     javafx.event.EventDispatcher iface = throwingEventDispatcher((a,b) -> {
       throw new IOException();
     });
@@ -1159,7 +1159,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingEventHandlerCanThrowCheckedException() {
+  public void testThrowingEventHandlerCanThrowCheckedException() {
     javafx.event.EventHandler iface = throwingEventHandler(a -> {
       throw new IOException();
     });
@@ -1167,7 +1167,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingEventTargetCanThrowCheckedException() {
+  public void testThrowingEventTargetCanThrowCheckedException() {
     javafx.event.EventTarget iface = throwingEventTarget(a -> {
       throw new IOException();
     });
@@ -1175,7 +1175,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingInitializableCanThrowCheckedException() {
+  public void testThrowingInitializableCanThrowCheckedException() {
     javafx.fxml.Initializable iface = throwingInitializable((a,b) -> {
       throw new IOException();
     });
@@ -1183,7 +1183,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingAudioSpectrumListenerCanThrowCheckedException() {
+  public void testThrowingAudioSpectrumListenerCanThrowCheckedException() {
     javafx.scene.media.AudioSpectrumListener iface = throwingAudioSpectrumListener((a,b,c,d) -> {
       throw new IOException();
     });
@@ -1191,7 +1191,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingBuilderCanThrowCheckedException() {
+  public void testThrowingBuilderCanThrowCheckedException() {
     javafx.util.Builder iface = throwingBuilder(() -> {
       throw new IOException();
     });
@@ -1199,7 +1199,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingBuilderFactoryCanThrowCheckedException() {
+  public void testThrowingBuilderFactoryCanThrowCheckedException() {
     javafx.util.BuilderFactory iface = throwingBuilderFactory(a -> {
       throw new IOException();
     });
@@ -1207,7 +1207,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingCallbackCanThrowCheckedException() {
+  public void testThrowingCallbackCanThrowCheckedException() {
     javafx.util.Callback iface = throwingCallback(a -> {
       throw new IOException();
     });
@@ -1215,7 +1215,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDomainManagerOperationsCanThrowCheckedException() {
+  public void testThrowingDomainManagerOperationsCanThrowCheckedException() {
     org.omg.CORBA.DomainManagerOperations iface = throwingDomainManagerOperations(a -> {
       throw new IOException();
     });
@@ -1223,7 +1223,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingInvokeHandlerCanThrowCheckedException() {
+  public void testThrowingInvokeHandlerCanThrowCheckedException() {
     org.omg.CORBA.portable.InvokeHandler iface = throwingInvokeHandler((a,b,c) -> {
       throw new IOException();
     });
@@ -1231,7 +1231,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingValueBaseCanThrowCheckedException() {
+  public void testThrowingValueBaseCanThrowCheckedException() {
     org.omg.CORBA.portable.ValueBase iface = throwingValueBase(() -> {
       throw new IOException();
     });
@@ -1239,7 +1239,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingValueFactoryCanThrowCheckedException() {
+  public void testThrowingValueFactoryCanThrowCheckedException() {
     org.omg.CORBA.portable.ValueFactory iface = throwingValueFactory(a -> {
       throw new IOException();
     });
@@ -1247,7 +1247,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingCodecFactoryOperationsCanThrowCheckedException() {
+  public void testThrowingCodecFactoryOperationsCanThrowCheckedException() {
     org.omg.IOP.CodecFactoryOperations iface = throwingCodecFactoryOperations(a -> {
       throw new IOException();
     });
@@ -1255,7 +1255,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingPolicyFactoryOperationsCanThrowCheckedException() {
+  public void testThrowingPolicyFactoryOperationsCanThrowCheckedException() {
     org.omg.PortableInterceptor.PolicyFactoryOperations iface = throwingPolicyFactoryOperations((a,b) -> {
       throw new IOException();
     });
@@ -1263,7 +1263,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingAdapterActivatorOperationsCanThrowCheckedException() {
+  public void testThrowingAdapterActivatorOperationsCanThrowCheckedException() {
     org.omg.PortableServer.AdapterActivatorOperations iface = throwingAdapterActivatorOperations((a,b) -> {
       throw new IOException();
     });
@@ -1271,7 +1271,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDOMErrorHandlerCanThrowCheckedException() {
+  public void testThrowingDOMErrorHandlerCanThrowCheckedException() {
     org.w3c.dom.DOMErrorHandler iface = throwingDOMErrorHandler(a -> {
       throw new IOException();
     });
@@ -1279,7 +1279,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingUserDataHandlerCanThrowCheckedException() {
+  public void testThrowingUserDataHandlerCanThrowCheckedException() {
     org.w3c.dom.UserDataHandler iface = throwingUserDataHandler((a,b,c,d,e) -> {
       throw new IOException();
     });
@@ -1287,7 +1287,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingElementCSSInlineStyleCanThrowCheckedException() {
+  public void testThrowingElementCSSInlineStyleCanThrowCheckedException() {
     org.w3c.dom.css.ElementCSSInlineStyle iface = throwingElementCSSInlineStyle(() -> {
       throw new IOException();
     });
@@ -1295,7 +1295,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDocumentEventCanThrowCheckedException() {
+  public void testThrowingDocumentEventCanThrowCheckedException() {
     org.w3c.dom.events.DocumentEvent iface = throwingDocumentEvent(a -> {
       throw new IOException();
     });
@@ -1303,7 +1303,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingEventListenerCanThrowCheckedException() {
+  public void testThrowingEventListenerCanThrowCheckedException() {
     org.w3c.dom.events.EventListener iface = throwingEventListener(a -> {
       throw new IOException();
     });
@@ -1311,7 +1311,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingLSResourceResolverCanThrowCheckedException() {
+  public void testThrowingLSResourceResolverCanThrowCheckedException() {
     org.w3c.dom.ls.LSResourceResolver iface = throwingLSResourceResolver((a,b,c,d,e) -> {
       throw new IOException();
     });
@@ -1319,7 +1319,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDocumentRangeCanThrowCheckedException() {
+  public void testThrowingDocumentRangeCanThrowCheckedException() {
     org.w3c.dom.ranges.DocumentRange iface = throwingDocumentRange(() -> {
       throw new IOException();
     });
@@ -1327,7 +1327,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDocumentStyleCanThrowCheckedException() {
+  public void testThrowingDocumentStyleCanThrowCheckedException() {
     org.w3c.dom.stylesheets.DocumentStyle iface = throwingDocumentStyle(() -> {
       throw new IOException();
     });
@@ -1335,7 +1335,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingLinkStyleCanThrowCheckedException() {
+  public void testThrowingLinkStyleCanThrowCheckedException() {
     org.w3c.dom.stylesheets.LinkStyle iface = throwingLinkStyle(() -> {
       throw new IOException();
     });
@@ -1343,7 +1343,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingNodeFilterCanThrowCheckedException() {
+  public void testThrowingNodeFilterCanThrowCheckedException() {
     org.w3c.dom.traversal.NodeFilter iface = throwingNodeFilter(a -> {
       throw new IOException();
     });
@@ -1351,7 +1351,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingAbstractViewCanThrowCheckedException() {
+  public void testThrowingAbstractViewCanThrowCheckedException() {
     org.w3c.dom.views.AbstractView iface = throwingAbstractView(() -> {
       throw new IOException();
     });
@@ -1359,7 +1359,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingDocumentViewCanThrowCheckedException() {
+  public void testThrowingDocumentViewCanThrowCheckedException() {
     org.w3c.dom.views.DocumentView iface = throwingDocumentView(() -> {
       throw new IOException();
     });
@@ -1367,7 +1367,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingXPathExpressionCanThrowCheckedException() {
+  public void testThrowingXPathExpressionCanThrowCheckedException() {
     org.w3c.dom.xpath.XPathExpression iface = throwingXPathExpression((a,b,c) -> {
       throw new IOException();
     });
@@ -1375,7 +1375,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingXPathNSResolverCanThrowCheckedException() {
+  public void testThrowingXPathNSResolverCanThrowCheckedException() {
     org.w3c.dom.xpath.XPathNSResolver iface = throwingXPathNSResolver(a -> {
       throw new IOException();
     });
@@ -1383,7 +1383,7 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testthrowingEntityResolverCanThrowCheckedException() {
+  public void testThrowingEntityResolverCanThrowCheckedException() {
     org.xml.sax.EntityResolver iface = throwingEntityResolver((a,b) -> {
       throw new IOException();
     });
