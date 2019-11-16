@@ -576,30 +576,6 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testThrowingCertPathParametersCanThrowCheckedException() {
-    java.security.cert.CertPathParameters iface = throwingCertPathParameters(() -> {
-      throw new IOException();
-    });
-    assertThatExceptionOfType(IOException.class).isThrownBy(() -> iface.clone());
-  }
-
-  @Test
-  public void testThrowingCertPathValidatorResultCanThrowCheckedException() {
-    java.security.cert.CertPathValidatorResult iface = throwingCertPathValidatorResult(() -> {
-      throw new IOException();
-    });
-    assertThatExceptionOfType(IOException.class).isThrownBy(() -> iface.clone());
-  }
-
-  @Test
-  public void testThrowingCertStoreParametersCanThrowCheckedException() {
-    java.security.cert.CertStoreParameters iface = throwingCertStoreParameters(() -> {
-      throw new IOException();
-    });
-    assertThatExceptionOfType(IOException.class).isThrownBy(() -> iface.clone());
-  }
-
-  @Test
   public void testThrowingDSAKeyCanThrowCheckedException() {
     java.security.interfaces.DSAKey iface = throwingDSAKey(() -> {
       throw new IOException();

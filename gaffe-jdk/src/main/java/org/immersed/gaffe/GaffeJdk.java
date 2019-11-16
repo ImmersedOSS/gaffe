@@ -72,9 +72,6 @@ import java.security.Guard;
 import java.security.KeyStore;
 import java.security.PrivilegedAction;
 import java.security.PrivilegedExceptionAction;
-import java.security.cert.CertPathParameters;
-import java.security.cert.CertPathValidatorResult;
-import java.security.cert.CertStoreParameters;
 import java.security.interfaces.DSAKey;
 import java.security.interfaces.ECKey;
 import java.security.interfaces.RSAKey;
@@ -223,9 +220,6 @@ import org.immersed.gaffe.java.security.ThrowingGuard;
 import org.immersed.gaffe.java.security.ThrowingLoadStoreParameter;
 import org.immersed.gaffe.java.security.ThrowingPrivilegedAction;
 import org.immersed.gaffe.java.security.ThrowingPrivilegedExceptionAction;
-import org.immersed.gaffe.java.security.cert.ThrowingCertPathParameters;
-import org.immersed.gaffe.java.security.cert.ThrowingCertPathValidatorResult;
-import org.immersed.gaffe.java.security.cert.ThrowingCertStoreParameters;
 import org.immersed.gaffe.java.security.interfaces.ThrowingDSAKey;
 import org.immersed.gaffe.java.security.interfaces.ThrowingECKey;
 import org.immersed.gaffe.java.security.interfaces.ThrowingRSAKey;
@@ -702,21 +696,6 @@ public final class GaffeJdk {
   public static <T, X extends Throwable> PrivilegedExceptionAction<T> throwingPrivilegedExceptionAction(
       ThrowingPrivilegedExceptionAction<T, X> throwingPrivilegedExceptionAction) {
     return throwingPrivilegedExceptionAction;
-  }
-
-  public static <X extends Throwable> CertPathParameters throwingCertPathParameters(
-      ThrowingCertPathParameters<X> throwingCertPathParameters) {
-    return throwingCertPathParameters;
-  }
-
-  public static <X extends Throwable> CertPathValidatorResult throwingCertPathValidatorResult(
-      ThrowingCertPathValidatorResult<X> throwingCertPathValidatorResult) {
-    return throwingCertPathValidatorResult;
-  }
-
-  public static <X extends Throwable> CertStoreParameters throwingCertStoreParameters(
-      ThrowingCertStoreParameters<X> throwingCertStoreParameters) {
-    return throwingCertStoreParameters;
   }
 
   public static <X extends Throwable> DSAKey throwingDSAKey(ThrowingDSAKey<X> throwingDSAKey) {

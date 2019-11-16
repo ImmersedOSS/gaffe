@@ -49,7 +49,10 @@ public final class FunctionalInterfaceSet implements Iterable<FunctionalInterfac
                                                           .whitelistJars("rt.jar", "jfxrt.jar")
                                                           .whitelistLibOrExtJars("rt.jar", "jfxrt.jar")
                                                           .whitelistPackages("java", "javafx", "org")
-                                                          .blacklistPackages("org.jcp"));
+                                                          .blacklistPackages("org.jcp")
+                                                          .blacklistClasses("java.security.cert.CertPathParameters",
+                                                                  "java.security.cert.CertStoreParameters",
+                                                                  "java.security.cert.CertPathValidatorResult"));
     }
 
     private static <T> Predicate<T> not(Predicate<T> predicate)
