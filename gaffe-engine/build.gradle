@@ -10,6 +10,14 @@ configurations {
 	api.extendsFrom autogen
 }
 
+sourceSets {
+    main {
+        java {
+            srcDirs += ["build/generated-src/antlr/main"]
+        }
+    }
+}
+
 dependencies {
 	processor 'org.inferred:freebuilder:1.15.0'
 	antlr 'org.antlr:antlr4:4.7.2'
