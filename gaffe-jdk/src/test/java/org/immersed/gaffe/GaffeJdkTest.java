@@ -347,22 +347,6 @@ public final class GaffeJdkTest {
   }
 
   @Test
-  public void testThrowingSystemTrayPeerCanThrowCheckedException() {
-    java.awt.peer.SystemTrayPeer iface = throwingSystemTrayPeer(() -> {
-      throw new IOException();
-    });
-    assertThatExceptionOfType(IOException.class).isThrownBy(() -> iface.getTrayIconSize());
-  }
-
-  @Test
-  public void testThrowingSystemTrayPeerWithoutIssue() throws Throwable {
-    java.awt.peer.SystemTrayPeer iface = throwingSystemTrayPeer(() -> {
-      return null;
-    });
-    iface.getTrayIconSize();
-  }
-
-  @Test
   public void testThrowingPrintableCanThrowCheckedException() {
     java.awt.print.Printable iface = throwingPrintable((a,b,c) -> {
       throw new IOException();
@@ -2627,38 +2611,6 @@ public final class GaffeJdkTest {
       return null;
     });
     iface.getDefaultView();
-  }
-
-  @Test
-  public void testThrowingXPathExpressionCanThrowCheckedException() {
-    org.w3c.dom.xpath.XPathExpression iface = throwingXPathExpression((a,b,c) -> {
-      throw new IOException();
-    });
-    assertThatExceptionOfType(IOException.class).isThrownBy(() -> iface.evaluate(null,(short)0,null));
-  }
-
-  @Test
-  public void testThrowingXPathExpressionWithoutIssue() throws Throwable {
-    org.w3c.dom.xpath.XPathExpression iface = throwingXPathExpression((a,b,c) -> {
-      return null;
-    });
-    iface.evaluate(null,(short)0,null);
-  }
-
-  @Test
-  public void testThrowingXPathNSResolverCanThrowCheckedException() {
-    org.w3c.dom.xpath.XPathNSResolver iface = throwingXPathNSResolver(a -> {
-      throw new IOException();
-    });
-    assertThatExceptionOfType(IOException.class).isThrownBy(() -> iface.lookupNamespaceURI(null));
-  }
-
-  @Test
-  public void testThrowingXPathNSResolverWithoutIssue() throws Throwable {
-    org.w3c.dom.xpath.XPathNSResolver iface = throwingXPathNSResolver(a -> {
-      return null;
-    });
-    iface.lookupNamespaceURI(null);
   }
 
   @Test

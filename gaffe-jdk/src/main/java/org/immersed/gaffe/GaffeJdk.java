@@ -22,7 +22,6 @@ import java.awt.event.WindowStateListener;
 import java.awt.image.ImageObserver;
 import java.awt.image.TileObserver;
 import java.awt.image.renderable.RenderedImageFactory;
-import java.awt.peer.SystemTrayPeer;
 import java.awt.print.Printable;
 import java.awt.print.PrinterGraphics;
 import java.beans.ExceptionListener;
@@ -171,7 +170,6 @@ import org.immersed.gaffe.java.awt.event.ThrowingWindowStateListener;
 import org.immersed.gaffe.java.awt.image.ThrowingImageObserver;
 import org.immersed.gaffe.java.awt.image.ThrowingTileObserver;
 import org.immersed.gaffe.java.awt.image.renderable.ThrowingRenderedImageFactory;
-import org.immersed.gaffe.java.awt.peer.ThrowingSystemTrayPeer;
 import org.immersed.gaffe.java.awt.print.ThrowingPrintable;
 import org.immersed.gaffe.java.awt.print.ThrowingPrinterGraphics;
 import org.immersed.gaffe.java.beans.ThrowingExceptionListener;
@@ -315,8 +313,6 @@ import org.immersed.gaffe.org.w3c.dom.stylesheets.ThrowingLinkStyle;
 import org.immersed.gaffe.org.w3c.dom.traversal.ThrowingNodeFilter;
 import org.immersed.gaffe.org.w3c.dom.views.ThrowingAbstractView;
 import org.immersed.gaffe.org.w3c.dom.views.ThrowingDocumentView;
-import org.immersed.gaffe.org.w3c.dom.xpath.ThrowingXPathExpression;
-import org.immersed.gaffe.org.w3c.dom.xpath.ThrowingXPathNSResolver;
 import org.immersed.gaffe.org.xml.sax.ThrowingEntityResolver;
 import org.omg.CORBA.DomainManagerOperations;
 import org.omg.CORBA.portable.InvokeHandler;
@@ -337,8 +333,6 @@ import org.w3c.dom.stylesheets.LinkStyle;
 import org.w3c.dom.traversal.NodeFilter;
 import org.w3c.dom.views.AbstractView;
 import org.w3c.dom.views.DocumentView;
-import org.w3c.dom.xpath.XPathExpression;
-import org.w3c.dom.xpath.XPathNSResolver;
 import org.xml.sax.EntityResolver;
 
 public final class GaffeJdk {
@@ -452,11 +446,6 @@ public final class GaffeJdk {
   public static <X extends Throwable> RenderedImageFactory throwingRenderedImageFactory(
       ThrowingRenderedImageFactory<X> throwingRenderedImageFactory) {
     return throwingRenderedImageFactory;
-  }
-
-  public static <X extends Throwable> SystemTrayPeer throwingSystemTrayPeer(
-      ThrowingSystemTrayPeer<X> throwingSystemTrayPeer) {
-    return throwingSystemTrayPeer;
   }
 
   public static <X extends Throwable> Printable throwingPrintable(
@@ -1171,16 +1160,6 @@ public final class GaffeJdk {
   public static <X extends Throwable> DocumentView throwingDocumentView(
       ThrowingDocumentView<X> throwingDocumentView) {
     return throwingDocumentView;
-  }
-
-  public static <X extends Throwable> XPathExpression throwingXPathExpression(
-      ThrowingXPathExpression<X> throwingXPathExpression) {
-    return throwingXPathExpression;
-  }
-
-  public static <X extends Throwable> XPathNSResolver throwingXPathNSResolver(
-      ThrowingXPathNSResolver<X> throwingXPathNSResolver) {
-    return throwingXPathNSResolver;
   }
 
   public static <X extends Throwable> EntityResolver throwingEntityResolver(
