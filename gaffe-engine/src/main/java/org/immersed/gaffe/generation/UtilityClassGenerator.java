@@ -6,20 +6,16 @@ import static javax.lang.model.element.Modifier.PUBLIC;
 import static javax.lang.model.element.Modifier.STATIC;
 import static org.immersed.gaffe.generation.Constants.EXCEPTION_GENERIC;
 import static org.immersed.gaffe.generation.Constants.PACKAGE;
+import static org.immersed.gaffe.generation.Util.className;
+import static org.immersed.gaffe.generation.Util.utilityMethodName;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Arrays;
-import java.util.stream.IntStream;
-
-import javax.lang.model.element.Modifier;
 
 import org.immersed.gaffe.FunctionalInterfaceSpec;
 
-import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterizedTypeName;
@@ -27,8 +23,6 @@ import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.TypeSpec.Builder;
 import com.squareup.javapoet.TypeVariableName;
-
-import io.github.classgraph.ClassInfo;
 
 /**
  * Generates a static class that adds "throwing" methods for each interface
@@ -39,17 +33,6 @@ import io.github.classgraph.ClassInfo;
  */
 final class UtilityClassGenerator
 {
-    private static final ClassName className(ProjectSpec spec, Path location)
-    {
-        boolean isTest = location.equals(spec.testFolder());
-
-        StringBuilder buffer = new StringBuilder("Gaffe");
-        buffer.append(spec.projectName());
-        buffer.append(isTest ? "Test" : "");
-
-        return ClassName.get(Constants.PACKAGE, buffer.toString());
-    }
-
     private final ProjectSpec proj;
 
     public UtilityClassGenerator(ProjectSpec spec)
@@ -83,84 +66,7 @@ final class UtilityClassGenerator
                                 .build();
         file.writeTo(Files.createDirectories(proj.sourceFolder()));
 
-        generateUtilityClassTest(utilityClass);
-    }
-
-    private void generateUtilityClassTest(TypeSpec utilityClass) throws IOException
-    {
-        TypeSpec.Builder utilityTestClass = TypeSpec.classBuilder(className(proj, proj.testFolder()))
-                                                    .addModifiers(PUBLIC, FINAL);
-
-        AnnotationSpec testAnnotation = AnnotationSpec.builder(ClassName.get("org.junit.jupiter.api", "Test"))
-                                                      .build();
-
-        for (FunctionalInterfaceSpec spec : proj.functionalInterfaces())
-        {
-            ThrowingInterfaceSpec throwingSpec = new ThrowingInterfaceSpec(spec);
-
-            String utilityMethod = utilityMethodName(spec);
-
-            MethodSpec.Builder mB = MethodSpec.methodBuilder(new StringBuilder().append("test")
-                                                                                .append(Character.toUpperCase(
-                                                                                        utilityMethod.charAt(0)))
-                                                                                .append(utilityMethod.substring(1))
-                                                                                .append("CanThrowCheckedException")
-                                                                                .toString())
-                                              .addModifiers(Modifier.PUBLIC)
-                                              .addAnnotation(testAnnotation);
-
-            MethodSpec m = throwingSpec.originalMethod();
-            String params = IntStream.range(0, m.parameters.size())
-                                     .mapToObj(i -> Character.toString((char) ('a' + i)))
-                                     .reduce((a, b) -> a + "," + b)
-                                     .map(s -> s.length() == 1 ? s : String.format("(%s)", s))
-                                     .orElse("()");
-
-            TypeName superInterface = throwingSpec.superInterface();
-
-            if (superInterface instanceof ParameterizedTypeName)
-            {
-                ParameterizedTypeName parameterizedType = (ParameterizedTypeName) superInterface;
-                // TypeName[] types = new TypeName[parameterizedType.typeArguments.size()];
-                // Arrays.setAll(types, i -> types[i] = TypeVariableName.get("?"));
-                superInterface = parameterizedType.rawType;
-            }
-
-            MethodSpec originalMethod = throwingSpec.originalMethod();
-            CodeBlock.Builder builder = CodeBlock.builder();
-            builder.add("$L iface = $L($L -> {\n", superInterface, utilityMethod, params)
-                   .indent()
-                   .addStatement("throw new $T()", IOException.class)
-                   .unindent()
-                   .add("});\n")
-                   .add("assertThatExceptionOfType($T.class).isThrownBy(() -> ", IOException.class)
-                   .add("iface.$L(", originalMethod.name);
-            builder.add(originalMethod.parameters.stream()
-                                                 .map(param ->
-                                                 {
-                                                     if (TypeName.BOOLEAN.equals(param.type))
-                                                     {
-                                                         return "true";
-                                                     }
-                                                     else if (param.type.isPrimitive())
-                                                     {
-                                                         return String.format("(%s)0", param.type.toString());
-                                                     }
-                                                     return "null";
-                                                 })
-                                                 .reduce((a, b) -> a + "," + b)
-                                                 .orElse(""));
-            builder.add("));\n");
-            mB.addCode(builder.build());
-
-            utilityTestClass.addMethod(mB.build());
-        }
-
-        JavaFile file = JavaFile.builder(Constants.PACKAGE, utilityTestClass.build())
-                                .addStaticImport(ClassName.get(Constants.PACKAGE, utilityClass.name), "*")
-                                .addStaticImport(ClassName.get("org.assertj.core.api", "Assertions"), "*")
-                                .build();
-        file.writeTo(Files.createDirectories(proj.testFolder()));
+        new UtilityClassTestGenerator(utilityClass, proj).generateUtilityClassTest();
     }
 
     private void installUtilityMethod(Builder utilityClass, FunctionalInterfaceSpec spec)
@@ -179,13 +85,6 @@ final class UtilityClassGenerator
                                          .returns(returnType(spec))
                                          .addCode("return $L;\n", methodName)
                                          .build());
-    }
-
-    private String utilityMethodName(FunctionalInterfaceSpec spec)
-    {
-        ClassInfo superClass = spec.superClassInfo();
-        return "throwing" + superClass.getSimpleName()
-                                      .replace("$", "");
     }
 
     private TypeName returnType(FunctionalInterfaceSpec spec)

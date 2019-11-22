@@ -1,12 +1,17 @@
 package org.immersed.gaffe;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import com.squareup.javapoet.TypeName;
+import com.squareup.javapoet.TypeVariableName;
 
 import io.github.classgraph.ClassInfo;
 import io.github.classgraph.ClassRefTypeSignature;
@@ -23,6 +28,17 @@ import io.github.classgraph.TypeParameter;
  */
 final class Util
 {
+    private static final Map<String, TypeName> TYPES = new HashMap<>();
+
+    static
+    {
+        for (TypeName name : Arrays.asList(TypeName.BOOLEAN, TypeName.BYTE, TypeName.CHAR, TypeName.DOUBLE,
+                TypeName.FLOAT, TypeName.INT, TypeName.LONG, TypeName.SHORT, TypeName.VOID))
+        {
+            TYPES.put(name.toString(), name);
+        }
+    }
+
     /**
      * Provides an array of parameter types for the provided method. This method
      * starts at the class which defines the method, and works it's way back using
@@ -82,7 +98,8 @@ final class Util
                 {
                     translations.put(content[x], childSpec[x]);
                 }
-            } else
+            }
+            else
             {
                 for (int x = 0; x < content.length; x++)
                 {
@@ -125,6 +142,11 @@ final class Util
               .toArray(paramArgs);
 
         return paramArgs;
+    }
+
+    static TypeName get(String type)
+    {
+        return TYPES.computeIfAbsent(type, TypeVariableName::get);
     }
 
     private Util()

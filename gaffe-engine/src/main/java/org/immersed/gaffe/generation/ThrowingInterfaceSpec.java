@@ -156,7 +156,7 @@ public class ThrowingInterfaceSpec
                                    .addParameters(parameters)
                                    .addModifiers(PUBLIC, ABSTRACT)
                                    .addException(TypeVariableName.get(EXCEPTION_GENERIC))
-                                   .returns(TypeVariableName.get(spec.superMethodReturns()))
+                                   .returns(spec.superMethodReturns())
                                    .build();
 
         overriddenMethod = MethodSpec.methodBuilder(spec.superMethodName())
@@ -164,7 +164,7 @@ public class ThrowingInterfaceSpec
                                      .addModifiers(PUBLIC, DEFAULT)
                                      .addAnnotation(Override.class)
                                      .addAnnotation(SneakyThrows.class)
-                                     .returns(TypeVariableName.get(spec.superMethodReturns()))
+                                     .returns(spec.superMethodReturns())
                                      .addCode(callThrowingMethod(throwingMethod))
                                      .build();
 
