@@ -18,6 +18,11 @@ sourceSets {
     }
 }
 
+generateGrammarSource {
+	outputDirectory = file("build/generated-src/antlr/main/org/immersed/gaffe")
+    arguments += ["-package", "org.immersed.gaffe"]
+}
+
 dependencies {
 	processor 'org.inferred:freebuilder:1.15.0'
 	antlr 'org.antlr:antlr4:4.7.2'
