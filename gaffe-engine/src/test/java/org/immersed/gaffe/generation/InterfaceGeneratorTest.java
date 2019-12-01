@@ -1,6 +1,7 @@
 package org.immersed.gaffe.generation;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,17 +9,13 @@ import java.nio.file.Path;
 
 import org.immersed.gaffe.FunctionalInterfaceSet;
 import org.immersed.gaffe.FunctionalInterfaceSpec;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 public class InterfaceGeneratorTest
 {
-    @Rule
-    public final TemporaryFolder rule = new TemporaryFolder();
-
     @Test
-    public void testCreatingAnInterface() throws IOException
+    public void testCreatingAnInterface(@TempDir Path folder) throws IOException
     {
         final String name = "java.security.KeyStore$LoadStoreParameter";
 
@@ -31,9 +28,6 @@ public class InterfaceGeneratorTest
                                                                                            .getSimpleName()))
                                                              .findAny()
                                                              .get();
-
-        Path folder = rule.newFolder()
-                          .toPath();
 
         ProjectSpec project = mock(ProjectSpec.class);
         when(project.sourceFolder()).thenReturn(folder);

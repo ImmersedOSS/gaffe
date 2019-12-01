@@ -22,7 +22,6 @@ import java.awt.event.WindowStateListener;
 import java.awt.image.ImageObserver;
 import java.awt.image.TileObserver;
 import java.awt.image.renderable.RenderedImageFactory;
-import java.awt.peer.SystemTrayPeer;
 import java.awt.print.Printable;
 import java.awt.print.PrinterGraphics;
 import java.beans.ExceptionListener;
@@ -72,9 +71,6 @@ import java.security.Guard;
 import java.security.KeyStore;
 import java.security.PrivilegedAction;
 import java.security.PrivilegedExceptionAction;
-import java.security.cert.CertPathParameters;
-import java.security.cert.CertPathValidatorResult;
-import java.security.cert.CertStoreParameters;
 import java.security.interfaces.DSAKey;
 import java.security.interfaces.ECKey;
 import java.security.interfaces.RSAKey;
@@ -174,7 +170,6 @@ import org.immersed.gaffe.java.awt.event.ThrowingWindowStateListener;
 import org.immersed.gaffe.java.awt.image.ThrowingImageObserver;
 import org.immersed.gaffe.java.awt.image.ThrowingTileObserver;
 import org.immersed.gaffe.java.awt.image.renderable.ThrowingRenderedImageFactory;
-import org.immersed.gaffe.java.awt.peer.ThrowingSystemTrayPeer;
 import org.immersed.gaffe.java.awt.print.ThrowingPrintable;
 import org.immersed.gaffe.java.awt.print.ThrowingPrinterGraphics;
 import org.immersed.gaffe.java.beans.ThrowingExceptionListener;
@@ -223,9 +218,6 @@ import org.immersed.gaffe.java.security.ThrowingGuard;
 import org.immersed.gaffe.java.security.ThrowingLoadStoreParameter;
 import org.immersed.gaffe.java.security.ThrowingPrivilegedAction;
 import org.immersed.gaffe.java.security.ThrowingPrivilegedExceptionAction;
-import org.immersed.gaffe.java.security.cert.ThrowingCertPathParameters;
-import org.immersed.gaffe.java.security.cert.ThrowingCertPathValidatorResult;
-import org.immersed.gaffe.java.security.cert.ThrowingCertStoreParameters;
 import org.immersed.gaffe.java.security.interfaces.ThrowingDSAKey;
 import org.immersed.gaffe.java.security.interfaces.ThrowingECKey;
 import org.immersed.gaffe.java.security.interfaces.ThrowingRSAKey;
@@ -321,8 +313,6 @@ import org.immersed.gaffe.org.w3c.dom.stylesheets.ThrowingLinkStyle;
 import org.immersed.gaffe.org.w3c.dom.traversal.ThrowingNodeFilter;
 import org.immersed.gaffe.org.w3c.dom.views.ThrowingAbstractView;
 import org.immersed.gaffe.org.w3c.dom.views.ThrowingDocumentView;
-import org.immersed.gaffe.org.w3c.dom.xpath.ThrowingXPathExpression;
-import org.immersed.gaffe.org.w3c.dom.xpath.ThrowingXPathNSResolver;
 import org.immersed.gaffe.org.xml.sax.ThrowingEntityResolver;
 import org.omg.CORBA.DomainManagerOperations;
 import org.omg.CORBA.portable.InvokeHandler;
@@ -343,857 +333,836 @@ import org.w3c.dom.stylesheets.LinkStyle;
 import org.w3c.dom.traversal.NodeFilter;
 import org.w3c.dom.views.AbstractView;
 import org.w3c.dom.views.DocumentView;
-import org.w3c.dom.xpath.XPathExpression;
-import org.w3c.dom.xpath.XPathNSResolver;
 import org.xml.sax.EntityResolver;
 
 public final class GaffeJdk {
   private GaffeJdk() {
   }
 
-  public static <X extends Throwable> ActiveEvent throwing(
+  public static <X extends Throwable> ActiveEvent throwingActiveEvent(
       ThrowingActiveEvent<X> throwingActiveEvent) {
     return throwingActiveEvent;
   }
 
-  public static <X extends Throwable> Composite throwing(ThrowingComposite<X> throwingComposite) {
+  public static <X extends Throwable> Composite throwingComposite(
+      ThrowingComposite<X> throwingComposite) {
     return throwingComposite;
   }
 
-  public static <X extends Throwable> KeyEventDispatcher throwing(
+  public static <X extends Throwable> KeyEventDispatcher throwingKeyEventDispatcher(
       ThrowingKeyEventDispatcher<X> throwingKeyEventDispatcher) {
     return throwingKeyEventDispatcher;
   }
 
-  public static <X extends Throwable> KeyEventPostProcessor throwing(
+  public static <X extends Throwable> KeyEventPostProcessor throwingKeyEventPostProcessor(
       ThrowingKeyEventPostProcessor<X> throwingKeyEventPostProcessor) {
     return throwingKeyEventPostProcessor;
   }
 
-  public static <X extends Throwable> PrintGraphics throwing(
+  public static <X extends Throwable> PrintGraphics throwingPrintGraphics(
       ThrowingPrintGraphics<X> throwingPrintGraphics) {
     return throwingPrintGraphics;
   }
 
-  public static <X extends Throwable> Stroke throwing(ThrowingStroke<X> throwingStroke) {
+  public static <X extends Throwable> Stroke throwingStroke(ThrowingStroke<X> throwingStroke) {
     return throwingStroke;
   }
 
-  public static <X extends Throwable> Transparency throwing(
+  public static <X extends Throwable> Transparency throwingTransparency(
       ThrowingTransparency<X> throwingTransparency) {
     return throwingTransparency;
   }
 
-  public static <X extends Throwable> ClipboardOwner throwing(
+  public static <X extends Throwable> ClipboardOwner throwingClipboardOwner(
       ThrowingClipboardOwner<X> throwingClipboardOwner) {
     return throwingClipboardOwner;
   }
 
-  public static <X extends Throwable> FlavorListener throwing(
+  public static <X extends Throwable> FlavorListener throwingFlavorListener(
       ThrowingFlavorListener<X> throwingFlavorListener) {
     return throwingFlavorListener;
   }
 
-  public static <X extends Throwable> DragGestureListener throwing(
+  public static <X extends Throwable> DragGestureListener throwingDragGestureListener(
       ThrowingDragGestureListener<X> throwingDragGestureListener) {
     return throwingDragGestureListener;
   }
 
-  public static <X extends Throwable> DragSourceMotionListener throwing(
+  public static <X extends Throwable> DragSourceMotionListener throwingDragSourceMotionListener(
       ThrowingDragSourceMotionListener<X> throwingDragSourceMotionListener) {
     return throwingDragSourceMotionListener;
   }
 
-  public static <X extends Throwable> AWTEventListener throwing(
+  public static <X extends Throwable> AWTEventListener throwingAWTEventListener(
       ThrowingAWTEventListener<X> throwingAWTEventListener) {
     return throwingAWTEventListener;
   }
 
-  public static <X extends Throwable> ActionListener throwing(
+  public static <X extends Throwable> ActionListener throwingActionListener(
       ThrowingActionListener<X> throwingActionListener) {
     return throwingActionListener;
   }
 
-  public static <X extends Throwable> AdjustmentListener throwing(
+  public static <X extends Throwable> AdjustmentListener throwingAdjustmentListener(
       ThrowingAdjustmentListener<X> throwingAdjustmentListener) {
     return throwingAdjustmentListener;
   }
 
-  public static <X extends Throwable> HierarchyListener throwing(
+  public static <X extends Throwable> HierarchyListener throwingHierarchyListener(
       ThrowingHierarchyListener<X> throwingHierarchyListener) {
     return throwingHierarchyListener;
   }
 
-  public static <X extends Throwable> ItemListener throwing(
+  public static <X extends Throwable> ItemListener throwingItemListener(
       ThrowingItemListener<X> throwingItemListener) {
     return throwingItemListener;
   }
 
-  public static <X extends Throwable> MouseWheelListener throwing(
+  public static <X extends Throwable> MouseWheelListener throwingMouseWheelListener(
       ThrowingMouseWheelListener<X> throwingMouseWheelListener) {
     return throwingMouseWheelListener;
   }
 
-  public static <X extends Throwable> TextListener throwing(
+  public static <X extends Throwable> TextListener throwingTextListener(
       ThrowingTextListener<X> throwingTextListener) {
     return throwingTextListener;
   }
 
-  public static <X extends Throwable> WindowStateListener throwing(
+  public static <X extends Throwable> WindowStateListener throwingWindowStateListener(
       ThrowingWindowStateListener<X> throwingWindowStateListener) {
     return throwingWindowStateListener;
   }
 
-  public static <X extends Throwable> ImageObserver throwing(
+  public static <X extends Throwable> ImageObserver throwingImageObserver(
       ThrowingImageObserver<X> throwingImageObserver) {
     return throwingImageObserver;
   }
 
-  public static <X extends Throwable> TileObserver throwing(
+  public static <X extends Throwable> TileObserver throwingTileObserver(
       ThrowingTileObserver<X> throwingTileObserver) {
     return throwingTileObserver;
   }
 
-  public static <X extends Throwable> RenderedImageFactory throwing(
+  public static <X extends Throwable> RenderedImageFactory throwingRenderedImageFactory(
       ThrowingRenderedImageFactory<X> throwingRenderedImageFactory) {
     return throwingRenderedImageFactory;
   }
 
-  public static <X extends Throwable> SystemTrayPeer throwing(
-      ThrowingSystemTrayPeer<X> throwingSystemTrayPeer) {
-    return throwingSystemTrayPeer;
-  }
-
-  public static <X extends Throwable> Printable throwing(ThrowingPrintable<X> throwingPrintable) {
+  public static <X extends Throwable> Printable throwingPrintable(
+      ThrowingPrintable<X> throwingPrintable) {
     return throwingPrintable;
   }
 
-  public static <X extends Throwable> PrinterGraphics throwing(
+  public static <X extends Throwable> PrinterGraphics throwingPrinterGraphics(
       ThrowingPrinterGraphics<X> throwingPrinterGraphics) {
     return throwingPrinterGraphics;
   }
 
-  public static <X extends Throwable> ExceptionListener throwing(
+  public static <X extends Throwable> ExceptionListener throwingExceptionListener(
       ThrowingExceptionListener<X> throwingExceptionListener) {
     return throwingExceptionListener;
   }
 
-  public static <X extends Throwable> PropertyChangeListener throwing(
+  public static <X extends Throwable> PropertyChangeListener throwingPropertyChangeListener(
       ThrowingPropertyChangeListener<X> throwingPropertyChangeListener) {
     return throwingPropertyChangeListener;
   }
 
-  public static <X extends Throwable> VetoableChangeListener throwing(
+  public static <X extends Throwable> VetoableChangeListener throwingVetoableChangeListener(
       ThrowingVetoableChangeListener<X> throwingVetoableChangeListener) {
     return throwingVetoableChangeListener;
   }
 
-  public static <X extends Throwable> BeanContextChildComponentProxy throwing(
+  public static <X extends Throwable> BeanContextChildComponentProxy throwingBeanContextChildComponentProxy(
       ThrowingBeanContextChildComponentProxy<X> throwingBeanContextChildComponentProxy) {
     return throwingBeanContextChildComponentProxy;
   }
 
-  public static <X extends Throwable> BeanContextContainerProxy throwing(
+  public static <X extends Throwable> BeanContextContainerProxy throwingBeanContextContainerProxy(
       ThrowingBeanContextContainerProxy<X> throwingBeanContextContainerProxy) {
     return throwingBeanContextContainerProxy;
   }
 
-  public static <X extends Throwable> BeanContextProxy throwing(
+  public static <X extends Throwable> BeanContextProxy throwingBeanContextProxy(
       ThrowingBeanContextProxy<X> throwingBeanContextProxy) {
     return throwingBeanContextProxy;
   }
 
-  public static <X extends Throwable> BeanContextServiceRevokedListener throwing(
+  public static <X extends Throwable> BeanContextServiceRevokedListener throwingBeanContextServiceRevokedListener(
       ThrowingBeanContextServiceRevokedListener<X> throwingBeanContextServiceRevokedListener) {
     return throwingBeanContextServiceRevokedListener;
   }
 
-  public static <X extends Throwable> Closeable throwing(ThrowingCloseable<X> throwingCloseable) {
+  public static <X extends Throwable> Closeable throwingCloseable(
+      ThrowingCloseable<X> throwingCloseable) {
     return throwingCloseable;
   }
 
-  public static <X extends Throwable> FileFilter throwing(
+  public static <X extends Throwable> FileFilter throwingFileFilter(
       ThrowingFileFilter<X> throwingFileFilter) {
     return throwingFileFilter;
   }
 
-  public static <X extends Throwable> FilenameFilter throwing(
+  public static <X extends Throwable> FilenameFilter throwingFilenameFilter(
       ThrowingFilenameFilter<X> throwingFilenameFilter) {
     return throwingFilenameFilter;
   }
 
-  public static <X extends Throwable> Flushable throwing(ThrowingFlushable<X> throwingFlushable) {
+  public static <X extends Throwable> Flushable throwingFlushable(
+      ThrowingFlushable<X> throwingFlushable) {
     return throwingFlushable;
   }
 
-  public static <X extends Throwable> ObjectInputValidation throwing(
+  public static <X extends Throwable> ObjectInputValidation throwingObjectInputValidation(
       ThrowingObjectInputValidation<X> throwingObjectInputValidation) {
     return throwingObjectInputValidation;
   }
 
-  public static <X extends Throwable> AutoCloseable throwing(
+  public static <X extends Throwable> AutoCloseable throwingAutoCloseable(
       ThrowingAutoCloseable<X> throwingAutoCloseable) {
     return throwingAutoCloseable;
   }
 
-  public static <T, X extends Throwable> Comparable<T> throwing(
+  public static <T, X extends Throwable> Comparable<T> throwingComparable(
       ThrowingComparable<T, X> throwingComparable) {
     return throwingComparable;
   }
 
-  public static <T, X extends Throwable> Iterable<T> throwing(
+  public static <T, X extends Throwable> Iterable<T> throwingIterable(
       ThrowingIterable<T, X> throwingIterable) {
     return throwingIterable;
   }
 
-  public static <X extends Throwable> Readable throwing(ThrowingReadable<X> throwingReadable) {
+  public static <X extends Throwable> Readable throwingReadable(
+      ThrowingReadable<X> throwingReadable) {
     return throwingReadable;
   }
 
-  public static <X extends Throwable> Runnable throwing(ThrowingRunnable<X> throwingRunnable) {
+  public static <X extends Throwable> Runnable throwingRunnable(
+      ThrowingRunnable<X> throwingRunnable) {
     return throwingRunnable;
   }
 
-  public static <X extends Throwable> Thread.UncaughtExceptionHandler throwing(
-      ThrowingUncaughtExceptionHandler<X> throwingUncaughtExceptionHandler) {
-    return throwingUncaughtExceptionHandler;
+  public static <X extends Throwable> Thread.UncaughtExceptionHandler throwingThreadUncaughtExceptionHandler(
+      ThrowingUncaughtExceptionHandler<X> throwingThreadUncaughtExceptionHandler) {
+    return throwingThreadUncaughtExceptionHandler;
   }
 
-  public static <X extends Throwable> ClassFileTransformer throwing(
+  public static <X extends Throwable> ClassFileTransformer throwingClassFileTransformer(
       ThrowingClassFileTransformer<X> throwingClassFileTransformer) {
     return throwingClassFileTransformer;
   }
 
-  public static <X extends Throwable> PlatformManagedObject throwing(
+  public static <X extends Throwable> PlatformManagedObject throwingPlatformManagedObject(
       ThrowingPlatformManagedObject<X> throwingPlatformManagedObject) {
     return throwingPlatformManagedObject;
   }
 
-  public static <X extends Throwable> GenericArrayType throwing(
+  public static <X extends Throwable> GenericArrayType throwingGenericArrayType(
       ThrowingGenericArrayType<X> throwingGenericArrayType) {
     return throwingGenericArrayType;
   }
 
-  public static <X extends Throwable> InvocationHandler throwing(
+  public static <X extends Throwable> InvocationHandler throwingInvocationHandler(
       ThrowingInvocationHandler<X> throwingInvocationHandler) {
     return throwingInvocationHandler;
   }
 
-  public static <X extends Throwable> ContentHandlerFactory throwing(
+  public static <X extends Throwable> ContentHandlerFactory throwingContentHandlerFactory(
       ThrowingContentHandlerFactory<X> throwingContentHandlerFactory) {
     return throwingContentHandlerFactory;
   }
 
-  public static <X extends Throwable> CookiePolicy throwing(
+  public static <X extends Throwable> CookiePolicy throwingCookiePolicy(
       ThrowingCookiePolicy<X> throwingCookiePolicy) {
     return throwingCookiePolicy;
   }
 
-  public static <X extends Throwable> DatagramSocketImplFactory throwing(
+  public static <X extends Throwable> DatagramSocketImplFactory throwingDatagramSocketImplFactory(
       ThrowingDatagramSocketImplFactory<X> throwingDatagramSocketImplFactory) {
     return throwingDatagramSocketImplFactory;
   }
 
-  public static <X extends Throwable> FileNameMap throwing(
+  public static <X extends Throwable> FileNameMap throwingFileNameMap(
       ThrowingFileNameMap<X> throwingFileNameMap) {
     return throwingFileNameMap;
   }
 
-  public static <X extends Throwable> ProtocolFamily throwing(
+  public static <X extends Throwable> ProtocolFamily throwingProtocolFamily(
       ThrowingProtocolFamily<X> throwingProtocolFamily) {
     return throwingProtocolFamily;
   }
 
-  public static <X extends Throwable> SocketImplFactory throwing(
+  public static <X extends Throwable> SocketImplFactory throwingSocketImplFactory(
       ThrowingSocketImplFactory<X> throwingSocketImplFactory) {
     return throwingSocketImplFactory;
   }
 
-  public static <X extends Throwable> URLStreamHandlerFactory throwing(
+  public static <X extends Throwable> URLStreamHandlerFactory throwingURLStreamHandlerFactory(
       ThrowingURLStreamHandlerFactory<X> throwingURLStreamHandlerFactory) {
     return throwingURLStreamHandlerFactory;
   }
 
-  public static <T, X extends Throwable> DirectoryStream.Filter<T> throwing(
-      ThrowingFilter<T, X> throwingFilter) {
-    return throwingFilter;
+  public static <T, X extends Throwable> DirectoryStream.Filter<T> throwingDirectoryStreamFilter(
+      ThrowingFilter<T, X> throwingDirectoryStreamFilter) {
+    return throwingDirectoryStreamFilter;
   }
 
-  public static <X extends Throwable> PathMatcher throwing(
+  public static <X extends Throwable> PathMatcher throwingPathMatcher(
       ThrowingPathMatcher<X> throwingPathMatcher) {
     return throwingPathMatcher;
   }
 
-  public static <X extends Throwable> WatchEvent.Modifier throwing(
-      ThrowingModifier<X> throwingModifier) {
-    return throwingModifier;
+  public static <X extends Throwable> WatchEvent.Modifier throwingWatchEventModifier(
+      ThrowingModifier<X> throwingWatchEventModifier) {
+    return throwingWatchEventModifier;
   }
 
-  public static <X extends Throwable> AttributeView throwing(
+  public static <X extends Throwable> AttributeView throwingAttributeView(
       ThrowingAttributeView<X> throwingAttributeView) {
     return throwingAttributeView;
   }
 
-  public static <X extends Throwable> FileAttributeView throwing(
+  public static <X extends Throwable> FileAttributeView throwingFileAttributeView(
       ThrowingFileAttributeView<X> throwingFileAttributeView) {
     return throwingFileAttributeView;
   }
 
-  public static <X extends Throwable> FileStoreAttributeView throwing(
+  public static <X extends Throwable> FileStoreAttributeView throwingFileStoreAttributeView(
       ThrowingFileStoreAttributeView<X> throwingFileStoreAttributeView) {
     return throwingFileStoreAttributeView;
   }
 
-  public static <X extends Throwable> ActivationInstantiator throwing(
+  public static <X extends Throwable> ActivationInstantiator throwingActivationInstantiator(
       ThrowingActivationInstantiator<X> throwingActivationInstantiator) {
     return throwingActivationInstantiator;
   }
 
-  public static <X extends Throwable> Activator throwing(ThrowingActivator<X> throwingActivator) {
+  public static <X extends Throwable> Activator throwingActivator(
+      ThrowingActivator<X> throwingActivator) {
     return throwingActivator;
   }
 
-  public static <X extends Throwable> RMIClientSocketFactory throwing(
+  public static <X extends Throwable> RMIClientSocketFactory throwingRMIClientSocketFactory(
       ThrowingRMIClientSocketFactory<X> throwingRMIClientSocketFactory) {
     return throwingRMIClientSocketFactory;
   }
 
-  public static <X extends Throwable> RMIFailureHandler throwing(
+  public static <X extends Throwable> RMIFailureHandler throwingRMIFailureHandler(
       ThrowingRMIFailureHandler<X> throwingRMIFailureHandler) {
     return throwingRMIFailureHandler;
   }
 
-  public static <X extends Throwable> RMIServerSocketFactory throwing(
+  public static <X extends Throwable> RMIServerSocketFactory throwingRMIServerSocketFactory(
       ThrowingRMIServerSocketFactory<X> throwingRMIServerSocketFactory) {
     return throwingRMIServerSocketFactory;
   }
 
-  public static <X extends Throwable> Unreferenced throwing(
+  public static <X extends Throwable> Unreferenced throwingUnreferenced(
       ThrowingUnreferenced<X> throwingUnreferenced) {
     return throwingUnreferenced;
   }
 
-  public static <X extends Throwable> DomainCombiner throwing(
+  public static <X extends Throwable> DomainCombiner throwingDomainCombiner(
       ThrowingDomainCombiner<X> throwingDomainCombiner) {
     return throwingDomainCombiner;
   }
 
-  public static <X extends Throwable> Guard throwing(ThrowingGuard<X> throwingGuard) {
+  public static <X extends Throwable> Guard throwingGuard(ThrowingGuard<X> throwingGuard) {
     return throwingGuard;
   }
 
-  public static <X extends Throwable> KeyStore.LoadStoreParameter throwing(
-      ThrowingLoadStoreParameter<X> throwingLoadStoreParameter) {
-    return throwingLoadStoreParameter;
+  public static <X extends Throwable> KeyStore.LoadStoreParameter throwingKeyStoreLoadStoreParameter(
+      ThrowingLoadStoreParameter<X> throwingKeyStoreLoadStoreParameter) {
+    return throwingKeyStoreLoadStoreParameter;
   }
 
-  public static <T, X extends Throwable> PrivilegedAction<T> throwing(
+  public static <T, X extends Throwable> PrivilegedAction<T> throwingPrivilegedAction(
       ThrowingPrivilegedAction<T, X> throwingPrivilegedAction) {
     return throwingPrivilegedAction;
   }
 
-  public static <T, X extends Throwable> PrivilegedExceptionAction<T> throwing(
+  public static <T, X extends Throwable> PrivilegedExceptionAction<T> throwingPrivilegedExceptionAction(
       ThrowingPrivilegedExceptionAction<T, X> throwingPrivilegedExceptionAction) {
     return throwingPrivilegedExceptionAction;
   }
 
-  public static <X extends Throwable> CertPathParameters throwing(
-      ThrowingCertPathParameters<X> throwingCertPathParameters) {
-    return throwingCertPathParameters;
-  }
-
-  public static <X extends Throwable> CertPathValidatorResult throwing(
-      ThrowingCertPathValidatorResult<X> throwingCertPathValidatorResult) {
-    return throwingCertPathValidatorResult;
-  }
-
-  public static <X extends Throwable> CertStoreParameters throwing(
-      ThrowingCertStoreParameters<X> throwingCertStoreParameters) {
-    return throwingCertStoreParameters;
-  }
-
-  public static <X extends Throwable> DSAKey throwing(ThrowingDSAKey<X> throwingDSAKey) {
+  public static <X extends Throwable> DSAKey throwingDSAKey(ThrowingDSAKey<X> throwingDSAKey) {
     return throwingDSAKey;
   }
 
-  public static <X extends Throwable> ECKey throwing(ThrowingECKey<X> throwingECKey) {
+  public static <X extends Throwable> ECKey throwingECKey(ThrowingECKey<X> throwingECKey) {
     return throwingECKey;
   }
 
-  public static <X extends Throwable> RSAKey throwing(ThrowingRSAKey<X> throwingRSAKey) {
+  public static <X extends Throwable> RSAKey throwingRSAKey(ThrowingRSAKey<X> throwingRSAKey) {
     return throwingRSAKey;
   }
 
-  public static <X extends Throwable> ECField throwing(ThrowingECField<X> throwingECField) {
+  public static <X extends Throwable> ECField throwingECField(ThrowingECField<X> throwingECField) {
     return throwingECField;
   }
 
-  public static <X extends Throwable> DriverAction throwing(
+  public static <X extends Throwable> DriverAction throwingDriverAction(
       ThrowingDriverAction<X> throwingDriverAction) {
     return throwingDriverAction;
   }
 
-  public static <X extends Throwable> Era throwing(ThrowingEra<X> throwingEra) {
+  public static <X extends Throwable> Era throwingEra(ThrowingEra<X> throwingEra) {
     return throwingEra;
   }
 
-  public static <X extends Throwable> TemporalAdjuster throwing(
+  public static <X extends Throwable> TemporalAdjuster throwingTemporalAdjuster(
       ThrowingTemporalAdjuster<X> throwingTemporalAdjuster) {
     return throwingTemporalAdjuster;
   }
 
-  public static <R, X extends Throwable> TemporalQuery<R> throwing(
+  public static <R, X extends Throwable> TemporalQuery<R> throwingTemporalQuery(
       ThrowingTemporalQuery<R, X> throwingTemporalQuery) {
     return throwingTemporalQuery;
   }
 
-  public static <X extends Throwable> Formattable throwing(
+  public static <X extends Throwable> Formattable throwingFormattable(
       ThrowingFormattable<X> throwingFormattable) {
     return throwingFormattable;
   }
 
-  public static <X extends Throwable> Observer throwing(ThrowingObserver<X> throwingObserver) {
+  public static <X extends Throwable> Observer throwingObserver(
+      ThrowingObserver<X> throwingObserver) {
     return throwingObserver;
   }
 
-  public static <V, X extends Throwable> Callable<V> throwing(
+  public static <V, X extends Throwable> Callable<V> throwingCallable(
       ThrowingCallable<V, X> throwingCallable) {
     return throwingCallable;
   }
 
-  public static <X extends Throwable> Executor throwing(ThrowingExecutor<X> throwingExecutor) {
+  public static <X extends Throwable> Executor throwingExecutor(
+      ThrowingExecutor<X> throwingExecutor) {
     return throwingExecutor;
   }
 
-  public static <X extends Throwable> ForkJoinPool.ForkJoinWorkerThreadFactory throwing(
-      ThrowingForkJoinWorkerThreadFactory<X> throwingForkJoinWorkerThreadFactory) {
-    return throwingForkJoinWorkerThreadFactory;
+  public static <X extends Throwable> ForkJoinPool.ForkJoinWorkerThreadFactory throwingForkJoinPoolForkJoinWorkerThreadFactory(
+      ThrowingForkJoinWorkerThreadFactory<X> throwingForkJoinPoolForkJoinWorkerThreadFactory) {
+    return throwingForkJoinPoolForkJoinWorkerThreadFactory;
   }
 
-  public static <X extends Throwable> RejectedExecutionHandler throwing(
+  public static <X extends Throwable> RejectedExecutionHandler throwingRejectedExecutionHandler(
       ThrowingRejectedExecutionHandler<X> throwingRejectedExecutionHandler) {
     return throwingRejectedExecutionHandler;
   }
 
-  public static <X extends Throwable> ThreadFactory throwing(
+  public static <X extends Throwable> ThreadFactory throwingThreadFactory(
       ThrowingThreadFactory<X> throwingThreadFactory) {
     return throwingThreadFactory;
   }
 
-  public static <T, U, X extends Throwable> BiConsumer<T, U> throwing(
+  public static <T, U, X extends Throwable> BiConsumer<T, U> throwingBiConsumer(
       ThrowingBiConsumer<T, U, X> throwingBiConsumer) {
     return throwingBiConsumer;
   }
 
-  public static <T, U, R, X extends Throwable> BiFunction<T, U, R> throwing(
+  public static <T, U, R, X extends Throwable> BiFunction<T, U, R> throwingBiFunction(
       ThrowingBiFunction<T, U, R, X> throwingBiFunction) {
     return throwingBiFunction;
   }
 
-  public static <T, U, X extends Throwable> BiPredicate<T, U> throwing(
+  public static <T, U, X extends Throwable> BiPredicate<T, U> throwingBiPredicate(
       ThrowingBiPredicate<T, U, X> throwingBiPredicate) {
     return throwingBiPredicate;
   }
 
-  public static <T, X extends Throwable> BinaryOperator<T> throwing(
+  public static <T, X extends Throwable> BinaryOperator<T> throwingBinaryOperator(
       ThrowingBinaryOperator<T, X> throwingBinaryOperator) {
     return throwingBinaryOperator;
   }
 
-  public static <X extends Throwable> BooleanSupplier throwing(
+  public static <X extends Throwable> BooleanSupplier throwingBooleanSupplier(
       ThrowingBooleanSupplier<X> throwingBooleanSupplier) {
     return throwingBooleanSupplier;
   }
 
-  public static <T, X extends Throwable> Consumer<T> throwing(
+  public static <T, X extends Throwable> Consumer<T> throwingConsumer(
       ThrowingConsumer<T, X> throwingConsumer) {
     return throwingConsumer;
   }
 
-  public static <X extends Throwable> DoubleBinaryOperator throwing(
+  public static <X extends Throwable> DoubleBinaryOperator throwingDoubleBinaryOperator(
       ThrowingDoubleBinaryOperator<X> throwingDoubleBinaryOperator) {
     return throwingDoubleBinaryOperator;
   }
 
-  public static <X extends Throwable> DoubleConsumer throwing(
+  public static <X extends Throwable> DoubleConsumer throwingDoubleConsumer(
       ThrowingDoubleConsumer<X> throwingDoubleConsumer) {
     return throwingDoubleConsumer;
   }
 
-  public static <R, X extends Throwable> DoubleFunction<R> throwing(
+  public static <R, X extends Throwable> DoubleFunction<R> throwingDoubleFunction(
       ThrowingDoubleFunction<R, X> throwingDoubleFunction) {
     return throwingDoubleFunction;
   }
 
-  public static <X extends Throwable> DoublePredicate throwing(
+  public static <X extends Throwable> DoublePredicate throwingDoublePredicate(
       ThrowingDoublePredicate<X> throwingDoublePredicate) {
     return throwingDoublePredicate;
   }
 
-  public static <X extends Throwable> DoubleSupplier throwing(
+  public static <X extends Throwable> DoubleSupplier throwingDoubleSupplier(
       ThrowingDoubleSupplier<X> throwingDoubleSupplier) {
     return throwingDoubleSupplier;
   }
 
-  public static <X extends Throwable> DoubleToIntFunction throwing(
+  public static <X extends Throwable> DoubleToIntFunction throwingDoubleToIntFunction(
       ThrowingDoubleToIntFunction<X> throwingDoubleToIntFunction) {
     return throwingDoubleToIntFunction;
   }
 
-  public static <X extends Throwable> DoubleToLongFunction throwing(
+  public static <X extends Throwable> DoubleToLongFunction throwingDoubleToLongFunction(
       ThrowingDoubleToLongFunction<X> throwingDoubleToLongFunction) {
     return throwingDoubleToLongFunction;
   }
 
-  public static <X extends Throwable> DoubleUnaryOperator throwing(
+  public static <X extends Throwable> DoubleUnaryOperator throwingDoubleUnaryOperator(
       ThrowingDoubleUnaryOperator<X> throwingDoubleUnaryOperator) {
     return throwingDoubleUnaryOperator;
   }
 
-  public static <T, R, X extends Throwable> Function<T, R> throwing(
+  public static <T, R, X extends Throwable> Function<T, R> throwingFunction(
       ThrowingFunction<T, R, X> throwingFunction) {
     return throwingFunction;
   }
 
-  public static <X extends Throwable> IntBinaryOperator throwing(
+  public static <X extends Throwable> IntBinaryOperator throwingIntBinaryOperator(
       ThrowingIntBinaryOperator<X> throwingIntBinaryOperator) {
     return throwingIntBinaryOperator;
   }
 
-  public static <X extends Throwable> IntConsumer throwing(
+  public static <X extends Throwable> IntConsumer throwingIntConsumer(
       ThrowingIntConsumer<X> throwingIntConsumer) {
     return throwingIntConsumer;
   }
 
-  public static <R, X extends Throwable> IntFunction<R> throwing(
+  public static <R, X extends Throwable> IntFunction<R> throwingIntFunction(
       ThrowingIntFunction<R, X> throwingIntFunction) {
     return throwingIntFunction;
   }
 
-  public static <X extends Throwable> IntPredicate throwing(
+  public static <X extends Throwable> IntPredicate throwingIntPredicate(
       ThrowingIntPredicate<X> throwingIntPredicate) {
     return throwingIntPredicate;
   }
 
-  public static <X extends Throwable> IntSupplier throwing(
+  public static <X extends Throwable> IntSupplier throwingIntSupplier(
       ThrowingIntSupplier<X> throwingIntSupplier) {
     return throwingIntSupplier;
   }
 
-  public static <X extends Throwable> IntToDoubleFunction throwing(
+  public static <X extends Throwable> IntToDoubleFunction throwingIntToDoubleFunction(
       ThrowingIntToDoubleFunction<X> throwingIntToDoubleFunction) {
     return throwingIntToDoubleFunction;
   }
 
-  public static <X extends Throwable> IntToLongFunction throwing(
+  public static <X extends Throwable> IntToLongFunction throwingIntToLongFunction(
       ThrowingIntToLongFunction<X> throwingIntToLongFunction) {
     return throwingIntToLongFunction;
   }
 
-  public static <X extends Throwable> IntUnaryOperator throwing(
+  public static <X extends Throwable> IntUnaryOperator throwingIntUnaryOperator(
       ThrowingIntUnaryOperator<X> throwingIntUnaryOperator) {
     return throwingIntUnaryOperator;
   }
 
-  public static <X extends Throwable> LongBinaryOperator throwing(
+  public static <X extends Throwable> LongBinaryOperator throwingLongBinaryOperator(
       ThrowingLongBinaryOperator<X> throwingLongBinaryOperator) {
     return throwingLongBinaryOperator;
   }
 
-  public static <X extends Throwable> LongConsumer throwing(
+  public static <X extends Throwable> LongConsumer throwingLongConsumer(
       ThrowingLongConsumer<X> throwingLongConsumer) {
     return throwingLongConsumer;
   }
 
-  public static <R, X extends Throwable> LongFunction<R> throwing(
+  public static <R, X extends Throwable> LongFunction<R> throwingLongFunction(
       ThrowingLongFunction<R, X> throwingLongFunction) {
     return throwingLongFunction;
   }
 
-  public static <X extends Throwable> LongPredicate throwing(
+  public static <X extends Throwable> LongPredicate throwingLongPredicate(
       ThrowingLongPredicate<X> throwingLongPredicate) {
     return throwingLongPredicate;
   }
 
-  public static <X extends Throwable> LongSupplier throwing(
+  public static <X extends Throwable> LongSupplier throwingLongSupplier(
       ThrowingLongSupplier<X> throwingLongSupplier) {
     return throwingLongSupplier;
   }
 
-  public static <X extends Throwable> LongToDoubleFunction throwing(
+  public static <X extends Throwable> LongToDoubleFunction throwingLongToDoubleFunction(
       ThrowingLongToDoubleFunction<X> throwingLongToDoubleFunction) {
     return throwingLongToDoubleFunction;
   }
 
-  public static <X extends Throwable> LongToIntFunction throwing(
+  public static <X extends Throwable> LongToIntFunction throwingLongToIntFunction(
       ThrowingLongToIntFunction<X> throwingLongToIntFunction) {
     return throwingLongToIntFunction;
   }
 
-  public static <X extends Throwable> LongUnaryOperator throwing(
+  public static <X extends Throwable> LongUnaryOperator throwingLongUnaryOperator(
       ThrowingLongUnaryOperator<X> throwingLongUnaryOperator) {
     return throwingLongUnaryOperator;
   }
 
-  public static <T, X extends Throwable> ObjDoubleConsumer<T> throwing(
+  public static <T, X extends Throwable> ObjDoubleConsumer<T> throwingObjDoubleConsumer(
       ThrowingObjDoubleConsumer<T, X> throwingObjDoubleConsumer) {
     return throwingObjDoubleConsumer;
   }
 
-  public static <T, X extends Throwable> ObjIntConsumer<T> throwing(
+  public static <T, X extends Throwable> ObjIntConsumer<T> throwingObjIntConsumer(
       ThrowingObjIntConsumer<T, X> throwingObjIntConsumer) {
     return throwingObjIntConsumer;
   }
 
-  public static <T, X extends Throwable> ObjLongConsumer<T> throwing(
+  public static <T, X extends Throwable> ObjLongConsumer<T> throwingObjLongConsumer(
       ThrowingObjLongConsumer<T, X> throwingObjLongConsumer) {
     return throwingObjLongConsumer;
   }
 
-  public static <T, X extends Throwable> Predicate<T> throwing(
+  public static <T, X extends Throwable> Predicate<T> throwingPredicate(
       ThrowingPredicate<T, X> throwingPredicate) {
     return throwingPredicate;
   }
 
-  public static <T, X extends Throwable> Supplier<T> throwing(
+  public static <T, X extends Throwable> Supplier<T> throwingSupplier(
       ThrowingSupplier<T, X> throwingSupplier) {
     return throwingSupplier;
   }
 
-  public static <T, U, X extends Throwable> ToDoubleBiFunction<T, U> throwing(
+  public static <T, U, X extends Throwable> ToDoubleBiFunction<T, U> throwingToDoubleBiFunction(
       ThrowingToDoubleBiFunction<T, U, X> throwingToDoubleBiFunction) {
     return throwingToDoubleBiFunction;
   }
 
-  public static <T, X extends Throwable> ToDoubleFunction<T> throwing(
+  public static <T, X extends Throwable> ToDoubleFunction<T> throwingToDoubleFunction(
       ThrowingToDoubleFunction<T, X> throwingToDoubleFunction) {
     return throwingToDoubleFunction;
   }
 
-  public static <T, U, X extends Throwable> ToIntBiFunction<T, U> throwing(
+  public static <T, U, X extends Throwable> ToIntBiFunction<T, U> throwingToIntBiFunction(
       ThrowingToIntBiFunction<T, U, X> throwingToIntBiFunction) {
     return throwingToIntBiFunction;
   }
 
-  public static <T, X extends Throwable> ToIntFunction<T> throwing(
+  public static <T, X extends Throwable> ToIntFunction<T> throwingToIntFunction(
       ThrowingToIntFunction<T, X> throwingToIntFunction) {
     return throwingToIntFunction;
   }
 
-  public static <T, U, X extends Throwable> ToLongBiFunction<T, U> throwing(
+  public static <T, U, X extends Throwable> ToLongBiFunction<T, U> throwingToLongBiFunction(
       ThrowingToLongBiFunction<T, U, X> throwingToLongBiFunction) {
     return throwingToLongBiFunction;
   }
 
-  public static <T, X extends Throwable> ToLongFunction<T> throwing(
+  public static <T, X extends Throwable> ToLongFunction<T> throwingToLongFunction(
       ThrowingToLongFunction<T, X> throwingToLongFunction) {
     return throwingToLongFunction;
   }
 
-  public static <T, X extends Throwable> UnaryOperator<T> throwing(
+  public static <T, X extends Throwable> UnaryOperator<T> throwingUnaryOperator(
       ThrowingUnaryOperator<T, X> throwingUnaryOperator) {
     return throwingUnaryOperator;
   }
 
-  public static <X extends Throwable> Filter throwing(
+  public static <X extends Throwable> Filter throwingFilter(
       org.immersed.gaffe.java.util.logging.ThrowingFilter<X> throwingFilter) {
     return throwingFilter;
   }
 
-  public static <X extends Throwable> PreferenceChangeListener throwing(
+  public static <X extends Throwable> PreferenceChangeListener throwingPreferenceChangeListener(
       ThrowingPreferenceChangeListener<X> throwingPreferenceChangeListener) {
     return throwingPreferenceChangeListener;
   }
 
-  public static <X extends Throwable> ResourceBundleControlProvider throwing(
+  public static <X extends Throwable> ResourceBundleControlProvider throwingResourceBundleControlProvider(
       ThrowingResourceBundleControlProvider<X> throwingResourceBundleControlProvider) {
     return throwingResourceBundleControlProvider;
   }
 
-  public static <T, X extends Throwable> Interpolatable<T> throwing(
+  public static <T, X extends Throwable> Interpolatable<T> throwingInterpolatable(
       ThrowingInterpolatable<T, X> throwingInterpolatable) {
     return throwingInterpolatable;
   }
 
-  public static <X extends Throwable> InvalidationListener throwing(
+  public static <X extends Throwable> InvalidationListener throwingInvalidationListener(
       ThrowingInvalidationListener<X> throwingInvalidationListener) {
     return throwingInvalidationListener;
   }
 
-  public static <X extends Throwable> WeakListener throwing(
+  public static <X extends Throwable> WeakListener throwingWeakListener(
       ThrowingWeakListener<X> throwingWeakListener) {
     return throwingWeakListener;
   }
 
-  public static <T, X extends Throwable> ChangeListener<T> throwing(
+  public static <T, X extends Throwable> ChangeListener<T> throwingChangeListener(
       ThrowingChangeListener<T, X> throwingChangeListener) {
     return throwingChangeListener;
   }
 
-  public static <T extends javafx.collections.ObservableArray<T>, X extends Throwable> ArrayChangeListener<T> throwing(
+  public static <T extends javafx.collections.ObservableArray<T>, X extends Throwable> ArrayChangeListener<T> throwingArrayChangeListener(
       ThrowingArrayChangeListener<T, X> throwingArrayChangeListener) {
     return throwingArrayChangeListener;
   }
 
-  public static <E, X extends Throwable> ListChangeListener<E> throwing(
+  public static <E, X extends Throwable> ListChangeListener<E> throwingListChangeListener(
       ThrowingListChangeListener<E, X> throwingListChangeListener) {
     return throwingListChangeListener;
   }
 
-  public static <K, V, X extends Throwable> MapChangeListener<K, V> throwing(
+  public static <K, V, X extends Throwable> MapChangeListener<K, V> throwingMapChangeListener(
       ThrowingMapChangeListener<K, V, X> throwingMapChangeListener) {
     return throwingMapChangeListener;
   }
 
-  public static <E, X extends Throwable> SetChangeListener<E> throwing(
+  public static <E, X extends Throwable> SetChangeListener<E> throwingSetChangeListener(
       ThrowingSetChangeListener<E, X> throwingSetChangeListener) {
     return throwingSetChangeListener;
   }
 
-  public static <X extends Throwable> EventDispatcher throwing(
+  public static <X extends Throwable> EventDispatcher throwingEventDispatcher(
       ThrowingEventDispatcher<X> throwingEventDispatcher) {
     return throwingEventDispatcher;
   }
 
-  public static <T extends javafx.event.Event, X extends Throwable> EventHandler<T> throwing(
+  public static <T extends javafx.event.Event, X extends Throwable> EventHandler<T> throwingEventHandler(
       ThrowingEventHandler<T, X> throwingEventHandler) {
     return throwingEventHandler;
   }
 
-  public static <X extends Throwable> EventTarget throwing(
+  public static <X extends Throwable> EventTarget throwingEventTarget(
       ThrowingEventTarget<X> throwingEventTarget) {
     return throwingEventTarget;
   }
 
-  public static <X extends Throwable> Initializable throwing(
+  public static <X extends Throwable> Initializable throwingInitializable(
       ThrowingInitializable<X> throwingInitializable) {
     return throwingInitializable;
   }
 
-  public static <X extends Throwable> AudioSpectrumListener throwing(
+  public static <X extends Throwable> AudioSpectrumListener throwingAudioSpectrumListener(
       ThrowingAudioSpectrumListener<X> throwingAudioSpectrumListener) {
     return throwingAudioSpectrumListener;
   }
 
-  public static <T, X extends Throwable> Builder<T> throwing(
+  public static <T, X extends Throwable> Builder<T> throwingBuilder(
       ThrowingBuilder<T, X> throwingBuilder) {
     return throwingBuilder;
   }
 
-  public static <X extends Throwable> BuilderFactory throwing(
+  public static <X extends Throwable> BuilderFactory throwingBuilderFactory(
       ThrowingBuilderFactory<X> throwingBuilderFactory) {
     return throwingBuilderFactory;
   }
 
-  public static <P, R, X extends Throwable> Callback<P, R> throwing(
+  public static <P, R, X extends Throwable> Callback<P, R> throwingCallback(
       ThrowingCallback<P, R, X> throwingCallback) {
     return throwingCallback;
   }
 
-  public static <X extends Throwable> DomainManagerOperations throwing(
+  public static <X extends Throwable> DomainManagerOperations throwingDomainManagerOperations(
       ThrowingDomainManagerOperations<X> throwingDomainManagerOperations) {
     return throwingDomainManagerOperations;
   }
 
-  public static <X extends Throwable> InvokeHandler throwing(
+  public static <X extends Throwable> InvokeHandler throwingInvokeHandler(
       ThrowingInvokeHandler<X> throwingInvokeHandler) {
     return throwingInvokeHandler;
   }
 
-  public static <X extends Throwable> ValueBase throwing(ThrowingValueBase<X> throwingValueBase) {
+  public static <X extends Throwable> ValueBase throwingValueBase(
+      ThrowingValueBase<X> throwingValueBase) {
     return throwingValueBase;
   }
 
-  public static <X extends Throwable> ValueFactory throwing(
+  public static <X extends Throwable> ValueFactory throwingValueFactory(
       ThrowingValueFactory<X> throwingValueFactory) {
     return throwingValueFactory;
   }
 
-  public static <X extends Throwable> CodecFactoryOperations throwing(
+  public static <X extends Throwable> CodecFactoryOperations throwingCodecFactoryOperations(
       ThrowingCodecFactoryOperations<X> throwingCodecFactoryOperations) {
     return throwingCodecFactoryOperations;
   }
 
-  public static <X extends Throwable> PolicyFactoryOperations throwing(
+  public static <X extends Throwable> PolicyFactoryOperations throwingPolicyFactoryOperations(
       ThrowingPolicyFactoryOperations<X> throwingPolicyFactoryOperations) {
     return throwingPolicyFactoryOperations;
   }
 
-  public static <X extends Throwable> AdapterActivatorOperations throwing(
+  public static <X extends Throwable> AdapterActivatorOperations throwingAdapterActivatorOperations(
       ThrowingAdapterActivatorOperations<X> throwingAdapterActivatorOperations) {
     return throwingAdapterActivatorOperations;
   }
 
-  public static <X extends Throwable> DOMErrorHandler throwing(
+  public static <X extends Throwable> DOMErrorHandler throwingDOMErrorHandler(
       ThrowingDOMErrorHandler<X> throwingDOMErrorHandler) {
     return throwingDOMErrorHandler;
   }
 
-  public static <X extends Throwable> UserDataHandler throwing(
+  public static <X extends Throwable> UserDataHandler throwingUserDataHandler(
       ThrowingUserDataHandler<X> throwingUserDataHandler) {
     return throwingUserDataHandler;
   }
 
-  public static <X extends Throwable> ElementCSSInlineStyle throwing(
+  public static <X extends Throwable> ElementCSSInlineStyle throwingElementCSSInlineStyle(
       ThrowingElementCSSInlineStyle<X> throwingElementCSSInlineStyle) {
     return throwingElementCSSInlineStyle;
   }
 
-  public static <X extends Throwable> DocumentEvent throwing(
+  public static <X extends Throwable> DocumentEvent throwingDocumentEvent(
       ThrowingDocumentEvent<X> throwingDocumentEvent) {
     return throwingDocumentEvent;
   }
 
-  public static <X extends Throwable> EventListener throwing(
+  public static <X extends Throwable> EventListener throwingEventListener(
       ThrowingEventListener<X> throwingEventListener) {
     return throwingEventListener;
   }
 
-  public static <X extends Throwable> LSResourceResolver throwing(
+  public static <X extends Throwable> LSResourceResolver throwingLSResourceResolver(
       ThrowingLSResourceResolver<X> throwingLSResourceResolver) {
     return throwingLSResourceResolver;
   }
 
-  public static <X extends Throwable> DocumentRange throwing(
+  public static <X extends Throwable> DocumentRange throwingDocumentRange(
       ThrowingDocumentRange<X> throwingDocumentRange) {
     return throwingDocumentRange;
   }
 
-  public static <X extends Throwable> DocumentStyle throwing(
+  public static <X extends Throwable> DocumentStyle throwingDocumentStyle(
       ThrowingDocumentStyle<X> throwingDocumentStyle) {
     return throwingDocumentStyle;
   }
 
-  public static <X extends Throwable> LinkStyle throwing(ThrowingLinkStyle<X> throwingLinkStyle) {
+  public static <X extends Throwable> LinkStyle throwingLinkStyle(
+      ThrowingLinkStyle<X> throwingLinkStyle) {
     return throwingLinkStyle;
   }
 
-  public static <X extends Throwable> NodeFilter throwing(
+  public static <X extends Throwable> NodeFilter throwingNodeFilter(
       ThrowingNodeFilter<X> throwingNodeFilter) {
     return throwingNodeFilter;
   }
 
-  public static <X extends Throwable> AbstractView throwing(
+  public static <X extends Throwable> AbstractView throwingAbstractView(
       ThrowingAbstractView<X> throwingAbstractView) {
     return throwingAbstractView;
   }
 
-  public static <X extends Throwable> DocumentView throwing(
+  public static <X extends Throwable> DocumentView throwingDocumentView(
       ThrowingDocumentView<X> throwingDocumentView) {
     return throwingDocumentView;
   }
 
-  public static <X extends Throwable> XPathExpression throwing(
-      ThrowingXPathExpression<X> throwingXPathExpression) {
-    return throwingXPathExpression;
-  }
-
-  public static <X extends Throwable> XPathNSResolver throwing(
-      ThrowingXPathNSResolver<X> throwingXPathNSResolver) {
-    return throwingXPathNSResolver;
-  }
-
-  public static <X extends Throwable> EntityResolver throwing(
+  public static <X extends Throwable> EntityResolver throwingEntityResolver(
       ThrowingEntityResolver<X> throwingEntityResolver) {
     return throwingEntityResolver;
   }

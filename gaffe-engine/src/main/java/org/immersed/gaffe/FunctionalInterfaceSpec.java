@@ -4,6 +4,8 @@ import java.util.Map;
 
 import org.inferred.freebuilder.FreeBuilder;
 
+import com.squareup.javapoet.TypeName;
+
 import io.github.classgraph.ClassInfo;
 import io.github.classgraph.MethodInfo;
 import io.github.classgraph.TypeParameter;
@@ -99,15 +101,13 @@ public interface FunctionalInterfaceSpec
      * 
      * @return a string representing the type of the return value.
      */
-    default String superMethodReturns()
+    default TypeName superMethodReturns()
     {
         String retVal = superMethodInfo().getTypeSignatureOrTypeDescriptor()
                                          .getResultType()
                                          .toString();
-
-        return Util.methodParameterTypes(this)
-                   .getOrDefault(retVal, retVal)
-                   .replaceAll("[$]", ".");
+        return Util.get(typeParameterMappings().getOrDefault(retVal, retVal)
+                                               .replaceAll("[$]", "."));
     }
 
     /**

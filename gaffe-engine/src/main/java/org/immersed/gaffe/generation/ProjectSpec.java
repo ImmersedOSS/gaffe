@@ -24,4 +24,11 @@ public interface ProjectSpec
                               .resolve("main")
                               .resolve("java");
     }
+
+    default Path testFolder()
+    {
+        return projectFolder().resolve("src")
+                              .resolve("test")
+                              .resolve("java");
+    }
 }
