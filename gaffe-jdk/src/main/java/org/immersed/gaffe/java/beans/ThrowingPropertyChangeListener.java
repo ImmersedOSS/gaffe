@@ -6,13 +6,26 @@ import java.lang.Override;
 import java.lang.Throwable;
 import lombok.SneakyThrows;
 
+/**
+ * A "PropertyChange" event gets fired whenever a bean changes a "bound"
+ * property.  You can register a PropertyChangeListener with a source
+ * bean so as to be notified of any bound property updates.
+ * @param <X> the exception this interface may throw.
+ */
 @FunctionalInterface
 public interface ThrowingPropertyChangeListener<X extends Throwable> extends PropertyChangeListener {
   @Override
   @SneakyThrows
-  default void propertyChange(java.beans.PropertyChangeEvent a) {
-    tryPropertyChange(a);
+  default void propertyChange(java.beans.PropertyChangeEvent evt) {
+    tryPropertyChange(evt);
   }
 
-  void tryPropertyChange(java.beans.PropertyChangeEvent a) throws X;
+  /**
+   * This method gets called when a bound property is changed.
+   * @param evt A PropertyChangeEvent object describing the event source
+   * and the property that has changed.
+   *
+   * @throws X any exception that may be thrown.
+   */
+  void tryPropertyChange(java.beans.PropertyChangeEvent evt) throws X;
 }

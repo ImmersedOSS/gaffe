@@ -19,15 +19,16 @@ public class InterfaceGeneratorTest
     {
         final String name = "java.security.KeyStore$LoadStoreParameter";
 
-        FunctionalInterfaceSpec spec = FunctionalInterfaceSet.jdk()
-                                                             .toList()
-                                                             .stream()
-                                                             .peek(fn -> System.out.println(fn.superClassInfo()
-                                                                                              .getSimpleName()))
-                                                             .filter(fn -> name.contains(fn.superClassInfo()
-                                                                                           .getSimpleName()))
-                                                             .findAny()
-                                                             .get();
+        FunctionalInterfaceSpec spec = JdkProject.create()
+                                                 .functionalInterfaces()
+                                                 .toList()
+                                                 .stream()
+                                                 .peek(fn -> System.out.println(fn.superClassInfo()
+                                                                                  .getSimpleName()))
+                                                 .filter(fn -> name.contains(fn.superClassInfo()
+                                                                               .getSimpleName()))
+                                                 .findAny()
+                                                 .get();
 
         ProjectSpec project = mock(ProjectSpec.class);
         when(project.sourceFolder()).thenReturn(folder);

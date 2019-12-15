@@ -52,8 +52,20 @@ final class UtilityClassGenerator
                                                   .addModifiers(PRIVATE)
                                                   .build();
 
-        TypeSpec.Builder utilitySpec = TypeSpec.classBuilder(className(proj, proj.sourceFolder()))
+        ClassName className = className(proj, proj.sourceFolder());
+
+        TypeSpec.Builder utilitySpec = TypeSpec.classBuilder(className)
                                                .addModifiers(PUBLIC, FINAL)
+                                               .addJavadoc(
+                                                       "This utility class is the primary entry point for the <b>$L</b> project.\n",
+                                                       proj.projectName())
+                                               .addJavadoc("<p>Functions names match the associated interface.</p>\n")
+                                               .addJavadoc("General use as follows:\n")
+                                               .addJavadoc("<pre> import static $L.$T.*\n\n", PACKAGE, className)
+                                               .addJavadoc(" throwingFunction(in -> {\n")
+                                               .addJavadoc(
+                                                       "     return Files.readAllBytes(in); // throws IOException!\n")
+                                               .addJavadoc(" }</pre>\n")
                                                .addMethod(utilityConstructor);
 
         for (FunctionalInterfaceSpec spec : proj.functionalInterfaces())
@@ -84,6 +96,13 @@ final class UtilityClassGenerator
                                          .addTypeVariables(Arrays.asList(methodGenerics))
                                          .returns(returnType(spec))
                                          .addCode("return $L;\n", methodName)
+                                         .addJavadoc("Creates a new {@link $T}\n", paramClassName)
+                                         .addJavadoc("that allows for exceptions to be thrown.\n")
+                                         .addJavadoc("@param $L the interface that can throw check exceptions.\n",
+                                                 methodName)
+                                         .addJavadoc("@param <X> the type of checked exception.\n")
+                                         .addJavadoc("@returns the parameter '$L' behind the original interface.\n",
+                                                 methodName)
                                          .build());
     }
 

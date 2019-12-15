@@ -37,24 +37,6 @@ public final class FunctionalInterfaceSet implements Iterable<FunctionalInterfac
                                                           .whitelistJars(jars));
     }
 
-    /**
-     * Provides the set of functional interfaces from the active JDK.
-     * 
-     * @return the set of functional interfaces.
-     */
-    public static FunctionalInterfaceSet jdk()
-    {
-        return new FunctionalInterfaceSet(new ClassGraph().enableSystemJarsAndModules()
-                                                          .enableAllInfo()
-                                                          .whitelistJars("rt.jar", "jfxrt.jar")
-                                                          .whitelistLibOrExtJars("rt.jar", "jfxrt.jar")
-                                                          .whitelistPackages("java", "javafx", "org")
-                                                          .blacklistPackages("org.jcp", "java.awt.peer", "org.w3c.dom.xpath")
-                                                          .blacklistClasses("java.security.cert.CertPathParameters",
-                                                                  "java.security.cert.CertStoreParameters",
-                                                                  "java.security.cert.CertPathValidatorResult"));
-    }
-
     private static <T> Predicate<T> not(Predicate<T> predicate)
     {
         return predicate.negate();
@@ -62,7 +44,7 @@ public final class FunctionalInterfaceSet implements Iterable<FunctionalInterfac
 
     private final ScanResult result;
 
-    private FunctionalInterfaceSet(ClassGraph graph)
+    public FunctionalInterfaceSet(ClassGraph graph)
     {
         // add verbose() to see detailed info
         this.result = graph.scan();

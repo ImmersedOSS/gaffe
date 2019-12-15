@@ -1,6 +1,7 @@
 package org.immersed.gaffe.generation;
 
 import java.nio.file.Path;
+import java.util.List;
 
 import org.immersed.gaffe.FunctionalInterfaceSet;
 import org.inferred.freebuilder.FreeBuilder;
@@ -18,6 +19,19 @@ public interface ProjectSpec
 
     Path projectFolder();
 
+    /**
+     * A group of paths representing the original source code. zip, jar, and folders
+     * are supported.
+     * 
+     * @return 0 or more files representing the original source code.
+     */
+    List<Path> originalJavaSource();
+
+    /**
+     * The location of the source code in the project.
+     * 
+     * @return
+     */
     default Path sourceFolder()
     {
         return projectFolder().resolve("src")

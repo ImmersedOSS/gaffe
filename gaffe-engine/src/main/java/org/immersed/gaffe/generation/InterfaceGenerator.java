@@ -11,7 +11,7 @@ final class InterfaceGenerator
 
     public InterfaceGenerator(FunctionalInterfaceSpec spec, ProjectSpec proj)
     {
-        this.spec = new ThrowingInterfaceSpec(spec);
+        this.spec = new ThrowingInterfaceSpec(proj, spec);
         this.proj = proj;
     }
 

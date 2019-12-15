@@ -12,6 +12,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.DiagnosticErrorListener;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.atn.LexerATNSimulator;
 import org.antlr.v4.runtime.atn.PredictionMode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -314,6 +315,15 @@ class Test
                     TypeTypeContext tt = tov.typeType();
 
                     TerminalNode id = ctx.IDENTIFIER();
+
+                    int token = tov.start.getTokenIndex() - 1;
+
+                    while (token >= 0)
+                    {
+                        Token t = tokens.get(token);
+                        System.out.println(t);
+                        token--;
+                    }
 
                     System.out.println(String.format("%s %s", tov.VOID(), id));
                 }

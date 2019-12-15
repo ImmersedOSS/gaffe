@@ -2,11 +2,13 @@ package org.immersed.gaffe.generation;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.immersed.gaffe.FunctionalInterfaceSet;
 import org.immersed.gaffe.FunctionalInterfaceSpec;
@@ -19,15 +21,9 @@ import org.immersed.gaffe.FunctionalInterfaceSpec;
  */
 public final class ProjectGenerator
 {
-    public static void main(String... args)
+    public static void main(String... args) throws IOException
     {
-        ProjectSpec jdkProject = new ProjectSpec.Builder().projectName("Jdk")
-                                                          .projectFolder(Paths.get("../", "gaffe-jdk")
-                                                                              .toAbsolutePath())
-                                                          .functionalInterfaces(FunctionalInterfaceSet.jdk())
-                                                          .build();
-
-        new ProjectGenerator(Arrays.asList(jdkProject)).generateAll();
+        new ProjectGenerator(Arrays.asList(JdkProject.create())).generateAll();
     }
 
     private final List<ProjectSpec> projects;

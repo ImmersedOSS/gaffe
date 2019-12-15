@@ -23,21 +23,31 @@ public interface FunctionalInterfaceSpec
     }
 
     /**
-     * Gets the class name of the interface we are trying to create.
+     * Gets the {@link Class#getSimpleName() simple name} of the provided class.
      * 
-     * @return the classname as a string.
+     * @return the name of the class.
      */
-    default String className()
+    default String superClassName()
     {
         ClassInfo info = superClassInfo();
         String name = info.getSimpleName();
 
         if (info.isInnerClass())
         {
-            name = name.substring(name.lastIndexOf('$') + 1);
+            return name.substring(name.lastIndexOf('$') + 1);
         }
 
-        return "Throwing" + name;
+        return name;
+    }
+
+    /**
+     * Gets the class name of the interface we are trying to create.
+     * 
+     * @return the name of the class.
+     */
+    default String className()
+    {
+        return "Throwing" + superClassName();
     }
 
     default String packageName(String topLevelPackage)

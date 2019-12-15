@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.immersed.gaffe.FunctionalInterfaceSpec;
 
@@ -28,6 +29,8 @@ import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.TypeVariableName;
 
+import io.github.classgraph.MethodInfo;
+import io.github.classgraph.MethodParameterInfo;
 import lombok.SneakyThrows;
 
 /**
@@ -91,28 +94,33 @@ public class ThrowingInterfaceSpec
         return Arrays.asList(classGenericVars);
     }
 
-    private List<ParameterSpec> parameterSpecs(FunctionalInterfaceSpec spec)
+    private List<ParameterSpec> parameterSpecs(FunctionalInterfaceSpec spec, SourceFileParser parser)
     {
-        AtomicInteger character = new AtomicInteger('a');
         Map<String, String> typeTranslations = spec.typeParameterMappings();
 
-        return Arrays.stream(spec.superMethodInfo()
-                                 .getParameterInfo())
-                     .map(m ->
-                     {
-                         String name = m.getName();
-                         name = name == null ? Character.toString((char) character.getAndIncrement()) : name;
-                         String type = m.getTypeSignatureOrTypeDescriptor()
-                                        .toString();
-                         type = typeTranslations.getOrDefault(type, type)
-                                                .replaceAll("[$]", ".");
+        MethodInfo methodInfo = spec.superMethodInfo();
+        MethodParameterInfo[] parameterList = methodInfo.getParameterInfo();
+        List<String> parameterNames = parser.getParamNames();
 
-                         TypeName types = TYPES.getOrDefault(type, TypeVariableName.get(type));
+        AtomicInteger temp = new AtomicInteger('a');
+        return IntStream.range(0, parameterList.length)
+                        .mapToObj(i ->
+                        {
+                            String name = parameterNames.size() > i ? parameterNames.get(i)
+                                    : Character.toString((char) temp.getAndIncrement());
+                            MethodParameterInfo m = parameterList[i];
 
-                         return ParameterSpec.builder(types, name)
-                                             .build();
-                     })
-                     .collect(Collectors.toList());
+                            String type = m.getTypeSignatureOrTypeDescriptor()
+                                           .toString();
+                            type = typeTranslations.getOrDefault(type, type)
+                                                   .replaceAll("[$]", ".");
+
+                            TypeName types = TYPES.getOrDefault(type, TypeVariableName.get(type));
+
+                            return ParameterSpec.builder(types, name)
+                                                .build();
+                        })
+                        .collect(Collectors.toList());
     }
 
     private static TypeName superInterface(FunctionalInterfaceSpec spec)
@@ -146,17 +154,20 @@ public class ThrowingInterfaceSpec
      * 
      * @param spec the specification.
      */
-    public ThrowingInterfaceSpec(FunctionalInterfaceSpec spec)
+    public ThrowingInterfaceSpec(ProjectSpec proj, FunctionalInterfaceSpec spec)
     {
         this.spec = spec;
 
-        List<ParameterSpec> parameters = parameterSpecs(spec);
+        SourceFileParser sfp = new SourceFileParser(proj, spec);
+        List<ParameterSpec> parameters = parameterSpecs(spec, sfp);
 
         throwingMethod = MethodSpec.methodBuilder(spec.methodName())
                                    .addParameters(parameters)
                                    .addModifiers(PUBLIC, ABSTRACT)
                                    .addException(TypeVariableName.get(EXCEPTION_GENERIC))
                                    .returns(spec.superMethodReturns())
+                                   .addJavadoc(sfp.getMethodJavadoc())
+                                   .addJavadoc("\n@throws X any exception that may be thrown.\n")
                                    .build();
 
         overriddenMethod = MethodSpec.methodBuilder(spec.superMethodName())
@@ -175,6 +186,7 @@ public class ThrowingInterfaceSpec
                            .addModifiers(PUBLIC)
                            .addMethod(overriddenMethod)
                            .addMethod(throwingMethod)
+                           .addJavadoc(sfp.getClassJavadoc())
                            .build();
     }
 

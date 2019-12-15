@@ -6,13 +6,28 @@ import java.lang.Override;
 import java.lang.Throwable;
 import lombok.SneakyThrows;
 
+/**
+ * The listener interface for receiving
+ * <code>BeanContextServiceRevokedEvent</code> objects. A class that is
+ * interested in processing a <code>BeanContextServiceRevokedEvent</code>
+ * implements this interface.
+ * @param <X> the exception this interface may throw.
+ */
 @FunctionalInterface
 public interface ThrowingBeanContextServiceRevokedListener<X extends Throwable> extends BeanContextServiceRevokedListener {
   @Override
   @SneakyThrows
-  default void serviceRevoked(java.beans.beancontext.BeanContextServiceRevokedEvent a) {
-    tryServiceRevoked(a);
+  default void serviceRevoked(java.beans.beancontext.BeanContextServiceRevokedEvent bcsre) {
+    tryServiceRevoked(bcsre);
   }
 
-  void tryServiceRevoked(java.beans.beancontext.BeanContextServiceRevokedEvent a) throws X;
+  /**
+   * The service named has been revoked. getService requests for
+   * this service will no longer be satisfied.
+   * @param bcsre the <code>BeanContextServiceRevokedEvent</code> received
+   * by this listener.
+   *
+   * @throws X any exception that may be thrown.
+   */
+  void tryServiceRevoked(java.beans.beancontext.BeanContextServiceRevokedEvent bcsre) throws X;
 }

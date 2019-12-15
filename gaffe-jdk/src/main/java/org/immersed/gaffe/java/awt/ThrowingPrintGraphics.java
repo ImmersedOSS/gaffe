@@ -6,6 +6,12 @@ import java.lang.Override;
 import java.lang.Throwable;
 import lombok.SneakyThrows;
 
+/**
+ * An abstract class which provides a print graphics context for a page.
+ *
+ * @author      Amy Fowler
+ * @param <X> the exception this interface may throw.
+ */
 @FunctionalInterface
 public interface ThrowingPrintGraphics<X extends Throwable> extends PrintGraphics {
   @Override
@@ -14,5 +20,11 @@ public interface ThrowingPrintGraphics<X extends Throwable> extends PrintGraphic
     return tryGetPrintJob();
   }
 
+  /**
+   * Returns the PrintJob object from which this PrintGraphics
+   * object originated.
+   *
+   * @throws X any exception that may be thrown.
+   */
   java.awt.PrintJob tryGetPrintJob() throws X;
 }

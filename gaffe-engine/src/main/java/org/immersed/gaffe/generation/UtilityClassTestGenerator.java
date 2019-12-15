@@ -77,7 +77,7 @@ public class UtilityClassTestGenerator
 
     private MethodSpec throwingTest(FunctionalInterfaceSpec spec)
     {
-        ThrowingInterfaceSpec throwingSpec = new ThrowingInterfaceSpec(spec);
+        ThrowingInterfaceSpec throwingSpec = new ThrowingInterfaceSpec(proj, spec);
         String utilityMethod = utilityMethodName(spec);
 
         MethodSpec.Builder mB = MethodSpec.methodBuilder(new StringBuilder().append("test")
@@ -120,7 +120,7 @@ public class UtilityClassTestGenerator
 
     private MethodSpec standardTest(FunctionalInterfaceSpec spec)
     {
-        ThrowingInterfaceSpec throwingSpec = new ThrowingInterfaceSpec(spec);
+        ThrowingInterfaceSpec throwingSpec = new ThrowingInterfaceSpec(proj, spec);
         String utilityMethod = utilityMethodName(spec);
 
         MethodSpec.Builder mB = MethodSpec.methodBuilder(new StringBuilder().append("test")
