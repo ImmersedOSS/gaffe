@@ -19,22 +19,23 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingDSAKey<X extends Throwable> extends DSAKey {
-  @Override
-  @SneakyThrows
-  default java.security.interfaces.DSAParams getParams() {
-    return tryGetParams();
-  }
+public interface ThrowingDSAKey<X extends Throwable> extends DSAKey
+{
+    @Override
+    @SneakyThrows
+    default java.security.interfaces.DSAParams getParams()
+    {
+        return tryGetParams();
+    }
 
-  /**
-   * Returns the DSA-specific key parameters. These parameters are
-   * never secret.
-   *
-   * @return the DSA-specific key parameters.
-   *
-   * @see DSAParams
-   *
-   * @throws X any exception that may be thrown.
-   */
-  java.security.interfaces.DSAParams tryGetParams() throws X;
+    /**
+     * Returns the DSA-specific key parameters. These parameters are never secret.
+     *
+     * @return the DSA-specific key parameters.
+     *
+     * @see DSAParams
+     *
+     * @throws X any exception that may be thrown.
+     */
+    java.security.interfaces.DSAParams tryGetParams() throws X;
 }

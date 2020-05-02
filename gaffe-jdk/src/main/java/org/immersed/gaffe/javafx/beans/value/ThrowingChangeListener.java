@@ -25,31 +25,28 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingChangeListener<T, X extends Throwable> extends ChangeListener<T> {
-  @Override
-  @SneakyThrows
-  default void changed(javafx.beans.value.ObservableValue<? extends T> observable, T oldValue,
-      T newValue) {
-    tryChanged(observable,oldValue,newValue);
-  }
+public interface ThrowingChangeListener<T, X extends Throwable> extends ChangeListener<T>
+{
+    @Override
+    @SneakyThrows
+    default void changed(javafx.beans.value.ObservableValue<? extends T> observable, T oldValue, T newValue)
+    {
+        tryChanged(observable, oldValue, newValue);
+    }
 
-  /**
-   * This method needs to be provided by an implementation of
-   * {@code ChangeListener}. It is called if the value of an
-   * {@link ObservableValue} changes.
-   * <p>
-   * In general is is considered bad practice to modify the observed value in
-   * this method.
-   *
-   * @param observable
-   * The {@code ObservableValue} which value changed
-   * @param oldValue
-   * The old value
-   * @param newValue
-   * The new value
-   *
-   * @throws X any exception that may be thrown.
-   */
-  void tryChanged(javafx.beans.value.ObservableValue<? extends T> observable, T oldValue,
-      T newValue) throws X;
+    /**
+     * This method needs to be provided by an implementation of
+     * {@code ChangeListener}. It is called if the value of an
+     * {@link ObservableValue} changes.
+     * <p>
+     * In general is is considered bad practice to modify the observed value in this
+     * method.
+     *
+     * @param observable The {@code ObservableValue} which value changed
+     * @param oldValue   The old value
+     * @param newValue   The new value
+     *
+     * @throws X any exception that may be thrown.
+     */
+    void tryChanged(javafx.beans.value.ObservableValue<? extends T> observable, T oldValue, T newValue) throws X;
 }

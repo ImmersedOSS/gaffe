@@ -7,11 +7,10 @@ import java.lang.Throwable;
 import lombok.SneakyThrows;
 
 /**
- * Implementing this interface allows an object to be the target of
- * the "for-each loop" statement. See
- * <strong>
- * <a href="{@docRoot}/../technotes/guides/language/foreach.html">For-each Loop</a>
- * </strong>
+ * Implementing this interface allows an object to be the target of the
+ * "for-each loop" statement. See <strong>
+ * <a href="{@docRoot}/../technotes/guides/language/foreach.html">For-each
+ * Loop</a> </strong>
  *
  * @param <T> the type of elements returned by the iterator
  *
@@ -20,19 +19,21 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingIterable<T, X extends Throwable> extends Iterable<T> {
-  @Override
-  @SneakyThrows
-  default java.util.Iterator<T> iterator() {
-    return tryIterator();
-  }
+public interface ThrowingIterable<T, X extends Throwable> extends Iterable<T>
+{
+    @Override
+    @SneakyThrows
+    default java.util.Iterator<T> iterator()
+    {
+        return tryIterator();
+    }
 
-  /**
-   * Returns an iterator over elements of type {@code T}.
-   *
-   * @return an Iterator.
-   *
-   * @throws X any exception that may be thrown.
-   */
-  java.util.Iterator<T> tryIterator() throws X;
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     *
+     * @throws X any exception that may be thrown.
+     */
+    java.util.Iterator<T> tryIterator() throws X;
 }

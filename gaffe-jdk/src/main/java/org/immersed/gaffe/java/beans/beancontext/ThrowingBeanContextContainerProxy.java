@@ -20,20 +20,23 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingBeanContextContainerProxy<X extends Throwable> extends BeanContextContainerProxy {
-  @Override
-  @SneakyThrows
-  default java.awt.Container getContainer() {
-    return tryGetContainer();
-  }
+public interface ThrowingBeanContextContainerProxy<X extends Throwable> extends BeanContextContainerProxy
+{
+    @Override
+    @SneakyThrows
+    default java.awt.Container getContainer()
+    {
+        return tryGetContainer();
+    }
 
-  /**
-   * Gets the <code>java.awt.Container</code> associated
-   * with this <code>BeanContext</code>.
-   * @return the <code>java.awt.Container</code> associated
-   * with this <code>BeanContext</code>.
-   *
-   * @throws X any exception that may be thrown.
-   */
-  java.awt.Container tryGetContainer() throws X;
+    /**
+     * Gets the <code>java.awt.Container</code> associated with this
+     * <code>BeanContext</code>.
+     * 
+     * @return the <code>java.awt.Container</code> associated with this
+     *         <code>BeanContext</code>.
+     *
+     * @throws X any exception that may be thrown.
+     */
+    java.awt.Container tryGetContainer() throws X;
 }

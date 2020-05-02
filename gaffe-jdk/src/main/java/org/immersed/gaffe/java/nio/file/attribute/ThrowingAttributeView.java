@@ -17,19 +17,21 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingAttributeView<X extends Throwable> extends AttributeView {
-  @Override
-  @SneakyThrows
-  default java.lang.String name() {
-    return tryName();
-  }
+public interface ThrowingAttributeView<X extends Throwable> extends AttributeView
+{
+    @Override
+    @SneakyThrows
+    default java.lang.String name()
+    {
+        return tryName();
+    }
 
-  /**
-   * Returns the name of the attribute view.
-   *
-   * @return the name of the attribute view
-   *
-   * @throws X any exception that may be thrown.
-   */
-  java.lang.String tryName() throws X;
+    /**
+     * Returns the name of the attribute view.
+     *
+     * @return the name of the attribute view
+     *
+     * @throws X any exception that may be thrown.
+     */
+    java.lang.String tryName() throws X;
 }

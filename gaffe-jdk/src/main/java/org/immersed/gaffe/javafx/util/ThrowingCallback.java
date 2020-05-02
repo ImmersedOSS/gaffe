@@ -20,24 +20,25 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingCallback<P, R, X extends Throwable> extends Callback<P, R> {
-  @Override
-  @SneakyThrows
-  default R call(P param) {
-    return tryCall(param);
-  }
+public interface ThrowingCallback<P, R, X extends Throwable> extends Callback<P, R>
+{
+    @Override
+    @SneakyThrows
+    default R call(P param)
+    {
+        return tryCall(param);
+    }
 
-  /**
-   * The <code>call</code> method is called when required, and is given a
-   * single argument of type P, with a requirement that an object of type R
-   * is returned.
-   *
-   * @param param The single argument upon which the returned value should be
-   * determined.
-   * @return An object of type R that may be determined based on the provided
-   * parameter value.
-   *
-   * @throws X any exception that may be thrown.
-   */
-  R tryCall(P param) throws X;
+    /**
+     * The <code>call</code> method is called when required, and is given a single
+     * argument of type P, with a requirement that an object of type R is returned.
+     *
+     * @param param The single argument upon which the returned value should be
+     *              determined.
+     * @return An object of type R that may be determined based on the provided
+     *         parameter value.
+     *
+     * @throws X any exception that may be thrown.
+     */
+    R tryCall(P param) throws X;
 }

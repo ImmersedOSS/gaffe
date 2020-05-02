@@ -8,11 +8,12 @@ import lombok.SneakyThrows;
 
 /**
  * Represents a function that accepts an int-valued argument and produces a
- * result.  This is the {@code int}-consuming primitive specialization for
+ * result. This is the {@code int}-consuming primitive specialization for
  * {@link Function}.
  *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #apply(int)}.
+ * <p>
+ * This is a <a href="package-summary.html">functional interface</a> whose
+ * functional method is {@link #apply(int)}.
  *
  * @param <R> the type of the result of the function
  *
@@ -21,20 +22,22 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingIntFunction<R, X extends Throwable> extends IntFunction<R> {
-  @Override
-  @SneakyThrows
-  default R apply(int value) {
-    return tryApply(value);
-  }
+public interface ThrowingIntFunction<R, X extends Throwable> extends IntFunction<R>
+{
+    @Override
+    @SneakyThrows
+    default R apply(int value)
+    {
+        return tryApply(value);
+    }
 
-  /**
-   * Applies this function to the given argument.
-   *
-   * @param value the function argument
-   * @return the function result
-   *
-   * @throws X any exception that may be thrown.
-   */
-  R tryApply(int value) throws X;
+    /**
+     * Applies this function to the given argument.
+     *
+     * @param value the function argument
+     * @return the function result
+     *
+     * @throws X any exception that may be thrown.
+     */
+    R tryApply(int value) throws X;
 }

@@ -15,21 +15,22 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingECKey<X extends Throwable> extends ECKey {
-  @Override
-  @SneakyThrows
-  default java.security.spec.ECParameterSpec getParams() {
-    return tryGetParams();
-  }
+public interface ThrowingECKey<X extends Throwable> extends ECKey
+{
+    @Override
+    @SneakyThrows
+    default java.security.spec.ECParameterSpec getParams()
+    {
+        return tryGetParams();
+    }
 
-  /**
-   * Returns the domain parameters associated
-   * with this key. The domain parameters are
-   * either explicitly specified or implicitly
-   * created during key generation.
-   * @return the associated domain parameters.
-   *
-   * @throws X any exception that may be thrown.
-   */
-  java.security.spec.ECParameterSpec tryGetParams() throws X;
+    /**
+     * Returns the domain parameters associated with this key. The domain parameters
+     * are either explicitly specified or implicitly created during key generation.
+     * 
+     * @return the associated domain parameters.
+     *
+     * @throws X any exception that may be thrown.
+     */
+    java.security.spec.ECParameterSpec tryGetParams() throws X;
 }

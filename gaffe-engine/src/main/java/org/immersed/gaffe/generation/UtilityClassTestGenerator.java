@@ -1,9 +1,7 @@
 package org.immersed.gaffe.generation;
 
-import static javax.lang.model.element.Modifier.FINAL;
-import static javax.lang.model.element.Modifier.PUBLIC;
-import static org.immersed.gaffe.generation.Util.className;
-import static org.immersed.gaffe.generation.Util.utilityMethodName;
+import static javax.lang.model.element.Modifier.*;
+import static org.immersed.gaffe.generation.Util.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,6 +9,7 @@ import java.util.stream.IntStream;
 
 import javax.lang.model.element.Modifier;
 
+import org.eclipse.jdt.core.formatter.CodeFormatterApplication;
 import org.immersed.gaffe.FunctionalInterfaceSpec;
 
 import com.squareup.javapoet.AnnotationSpec;
@@ -72,6 +71,7 @@ public class UtilityClassTestGenerator
                                 .addStaticImport(ClassName.get(Constants.PACKAGE, utilityClass.name), "*")
                                 .addStaticImport(ClassName.get("org.assertj.core.api", "Assertions"), "*")
                                 .build();
+        
         file.writeTo(Files.createDirectories(proj.testFolder()));
     }
 

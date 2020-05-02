@@ -15,20 +15,22 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingListChangeListener<E, X extends Throwable> extends ListChangeListener<E> {
-  @Override
-  @SneakyThrows
-  default void onChanged(javafx.collections.ListChangeListener.Change<? extends E> c) {
-    tryOnChanged(c);
-  }
+public interface ThrowingListChangeListener<E, X extends Throwable> extends ListChangeListener<E>
+{
+    @Override
+    @SneakyThrows
+    default void onChanged(javafx.collections.ListChangeListener.Change<? extends E> c)
+    {
+        tryOnChanged(c);
+    }
 
-  /**
-   * Called after a change has been made to an ObservableList.
-   *
-   * @param c an object representing the change that was done
-   * @see Change
-   *
-   * @throws X any exception that may be thrown.
-   */
-  void tryOnChanged(javafx.collections.ListChangeListener.Change<? extends E> c) throws X;
+    /**
+     * Called after a change has been made to an ObservableList.
+     *
+     * @param c an object representing the change that was done
+     * @see Change
+     *
+     * @throws X any exception that may be thrown.
+     */
+    void tryOnChanged(javafx.collections.ListChangeListener.Change<? extends E> c) throws X;
 }

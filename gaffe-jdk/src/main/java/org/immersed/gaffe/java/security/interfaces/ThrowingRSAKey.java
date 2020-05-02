@@ -18,19 +18,21 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingRSAKey<X extends Throwable> extends RSAKey {
-  @Override
-  @SneakyThrows
-  default java.math.BigInteger getModulus() {
-    return tryGetModulus();
-  }
+public interface ThrowingRSAKey<X extends Throwable> extends RSAKey
+{
+    @Override
+    @SneakyThrows
+    default java.math.BigInteger getModulus()
+    {
+        return tryGetModulus();
+    }
 
-  /**
-   * Returns the modulus.
-   *
-   * @return the modulus
-   *
-   * @throws X any exception that may be thrown.
-   */
-  java.math.BigInteger tryGetModulus() throws X;
+    /**
+     * Returns the modulus.
+     *
+     * @return the modulus
+     *
+     * @throws X any exception that may be thrown.
+     */
+    java.math.BigInteger tryGetModulus() throws X;
 }

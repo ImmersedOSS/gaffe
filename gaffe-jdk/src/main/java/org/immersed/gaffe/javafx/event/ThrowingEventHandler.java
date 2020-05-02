@@ -14,20 +14,22 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingEventHandler<T extends javafx.event.Event, X extends Throwable> extends EventHandler<T> {
-  @Override
-  @SneakyThrows
-  default void handle(T event) {
-    tryHandle(event);
-  }
+public interface ThrowingEventHandler<T extends javafx.event.Event, X extends Throwable> extends EventHandler<T>
+{
+    @Override
+    @SneakyThrows
+    default void handle(T event)
+    {
+        tryHandle(event);
+    }
 
-  /**
-   * Invoked when a specific event of the type for which this handler is
-   * registered happens.
-   *
-   * @param event the event which occurred
-   *
-   * @throws X any exception that may be thrown.
-   */
-  void tryHandle(T event) throws X;
+    /**
+     * Invoked when a specific event of the type for which this handler is
+     * registered happens.
+     *
+     * @param event the event which occurred
+     *
+     * @throws X any exception that may be thrown.
+     */
+    void tryHandle(T event) throws X;
 }

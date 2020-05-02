@@ -8,11 +8,12 @@ import lombok.SneakyThrows;
 
 /**
  * Represents an operation on a single operand that produces a result of the
- * same type as its operand.  This is a specialization of {@code Function} for
+ * same type as its operand. This is a specialization of {@code Function} for
  * the case where the operand and result are of the same type.
  *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #apply(Object)}.
+ * <p>
+ * This is a <a href="package-summary.html">functional interface</a> whose
+ * functional method is {@link #apply(Object)}.
  *
  * @param <T> the type of the operand and result of the operator
  *
@@ -21,20 +22,22 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingUnaryOperator<T, X extends Throwable> extends UnaryOperator<T> {
-  @Override
-  @SneakyThrows
-  default T apply(T t) {
-    return tryApply(t);
-  }
+public interface ThrowingUnaryOperator<T, X extends Throwable> extends UnaryOperator<T>
+{
+    @Override
+    @SneakyThrows
+    default T apply(T t)
+    {
+        return tryApply(t);
+    }
 
-  /**
-   * Applies this function to the given argument.
-   *
-   * @param t the function argument
-   * @return the function result
-   *
-   * @throws X any exception that may be thrown.
-   */
-  T tryApply(T t) throws X;
+    /**
+     * Applies this function to the given argument.
+     *
+     * @param t the function argument
+     * @return the function result
+     *
+     * @throws X any exception that may be thrown.
+     */
+    T tryApply(T t) throws X;
 }

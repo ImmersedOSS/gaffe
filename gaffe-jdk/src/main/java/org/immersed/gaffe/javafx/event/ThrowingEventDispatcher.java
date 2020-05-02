@@ -14,9 +14,9 @@ import lombok.SneakyThrows;
  * influence the event path and the event itself. One {@code EventDispatcher}
  * can appear in multiple chains.
  * <p>
- * The system defines two successive phases of event delivery. The first
- * phase is called capturing phase and happens when when an event travels from
- * the first element of the {@code EventDispatchChain} associated with the event
+ * The system defines two successive phases of event delivery. The first phase
+ * is called capturing phase and happens when when an event travels from the
+ * first element of the {@code EventDispatchChain} associated with the event
  * target to its last element. If the event target is part of some hierarchy,
  * the direction of the event in this phase usually corresponds with the
  * direction from the root element of the hierarchy to the target. The second
@@ -33,6 +33,7 @@ import lombok.SneakyThrows;
  * during both dispatching phases in a single {@code dispatchEvent} call.
  * <p>
  * Template for {@code dispatchEvent} implementation.
+ * 
  * <PRE>
  * public Event dispatchEvent(Event event, EventDispatchChain tail) {
  * // capturing phase, can handle / modify / substitute / divert the event
@@ -49,34 +50,35 @@ import lombok.SneakyThrows;
  *
  * return notHandledYet ? event : null;
  * </PRE>
+ * 
  * }
  *
  * @since JavaFX 2.0
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingEventDispatcher<X extends Throwable> extends EventDispatcher {
-  @Override
-  @SneakyThrows
-  default javafx.event.Event dispatchEvent(javafx.event.Event event,
-      javafx.event.EventDispatchChain tail) {
-    return tryDispatchEvent(event,tail);
-  }
+public interface ThrowingEventDispatcher<X extends Throwable> extends EventDispatcher
+{
+    @Override
+    @SneakyThrows
+    default javafx.event.Event dispatchEvent(javafx.event.Event event, javafx.event.EventDispatchChain tail)
+    {
+        return tryDispatchEvent(event, tail);
+    }
 
-  /**
-   * Dispatches the specified event by this {@code EventDispatcher}. Does
-   * any required event processing. Both the event and its further path can
-   * be modified in this method. If the event is not handled / consumed during
-   * the capturing phase, it should be dispatched to the rest of the chain
-   * ({@code event = tail.dispatch(event);}).
-   *
-   * @param event the event do dispatch
-   * @param tail the rest of the chain to dispatch event to
-   * @return the return event or {@code null} if the event has been handled /
-   * consumed
-   *
-   * @throws X any exception that may be thrown.
-   */
-  javafx.event.Event tryDispatchEvent(javafx.event.Event event,
-      javafx.event.EventDispatchChain tail) throws X;
+    /**
+     * Dispatches the specified event by this {@code EventDispatcher}. Does any
+     * required event processing. Both the event and its further path can be
+     * modified in this method. If the event is not handled / consumed during the
+     * capturing phase, it should be dispatched to the rest of the chain
+     * ({@code event = tail.dispatch(event);}).
+     *
+     * @param event the event do dispatch
+     * @param tail  the rest of the chain to dispatch event to
+     * @return the return event or {@code null} if the event has been handled /
+     *         consumed
+     *
+     * @throws X any exception that may be thrown.
+     */
+    javafx.event.Event tryDispatchEvent(javafx.event.Event event, javafx.event.EventDispatchChain tail) throws X;
 }

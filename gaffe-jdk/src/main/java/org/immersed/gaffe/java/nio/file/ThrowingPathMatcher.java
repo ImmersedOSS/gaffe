@@ -17,23 +17,23 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingPathMatcher<X extends Throwable> extends PathMatcher {
-  @Override
-  @SneakyThrows
-  default boolean matches(java.nio.file.Path path) {
-    return tryMatches(path);
-  }
+public interface ThrowingPathMatcher<X extends Throwable> extends PathMatcher
+{
+    @Override
+    @SneakyThrows
+    default boolean matches(java.nio.file.Path path)
+    {
+        return tryMatches(path);
+    }
 
-  /**
-   * Tells if given path matches this matcher's pattern.
-   *
-   * @param   path
-   * the path to match
-   *
-   * @return  {@code true} if, and only if, the path matches this
-   * matcher's pattern
-   *
-   * @throws X any exception that may be thrown.
-   */
-  boolean tryMatches(java.nio.file.Path path) throws X;
+    /**
+     * Tells if given path matches this matcher's pattern.
+     *
+     * @param path the path to match
+     *
+     * @return {@code true} if, and only if, the path matches this matcher's pattern
+     *
+     * @throws X any exception that may be thrown.
+     */
+    boolean tryMatches(java.nio.file.Path path) throws X;
 }

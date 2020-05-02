@@ -13,19 +13,21 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingProtocolFamily<X extends Throwable> extends ProtocolFamily {
-  @Override
-  @SneakyThrows
-  default java.lang.String name() {
-    return tryName();
-  }
+public interface ThrowingProtocolFamily<X extends Throwable> extends ProtocolFamily
+{
+    @Override
+    @SneakyThrows
+    default java.lang.String name()
+    {
+        return tryName();
+    }
 
-  /**
-   * Returns the name of the protocol family.
-   *
-   * @return the name of the protocol family
-   *
-   * @throws X any exception that may be thrown.
-   */
-  java.lang.String tryName() throws X;
+    /**
+     * Returns the name of the protocol family.
+     *
+     * @return the name of the protocol family
+     *
+     * @throws X any exception that may be thrown.
+     */
+    java.lang.String tryName() throws X;
 }

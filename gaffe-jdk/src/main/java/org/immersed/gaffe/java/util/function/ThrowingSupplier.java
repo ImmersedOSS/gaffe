@@ -9,11 +9,13 @@ import lombok.SneakyThrows;
 /**
  * Represents a supplier of results.
  *
- * <p>There is no requirement that a new or distinct result be returned each
- * time the supplier is invoked.
+ * <p>
+ * There is no requirement that a new or distinct result be returned each time
+ * the supplier is invoked.
  *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #get()}.
+ * <p>
+ * This is a <a href="package-summary.html">functional interface</a> whose
+ * functional method is {@link #get()}.
  *
  * @param <T> the type of results supplied by this supplier
  *
@@ -21,19 +23,21 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingSupplier<T, X extends Throwable> extends Supplier<T> {
-  @Override
-  @SneakyThrows
-  default T get() {
-    return tryGet();
-  }
+public interface ThrowingSupplier<T, X extends Throwable> extends Supplier<T>
+{
+    @Override
+    @SneakyThrows
+    default T get()
+    {
+        return tryGet();
+    }
 
-  /**
-   * Gets a result.
-   *
-   * @return a result
-   *
-   * @throws X any exception that may be thrown.
-   */
-  T tryGet() throws X;
+    /**
+     * Gets a result.
+     *
+     * @return a result
+     *
+     * @throws X any exception that may be thrown.
+     */
+    T tryGet() throws X;
 }

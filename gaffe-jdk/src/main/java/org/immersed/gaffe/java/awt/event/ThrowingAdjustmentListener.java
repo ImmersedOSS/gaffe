@@ -14,17 +14,19 @@ import lombok.SneakyThrows;
  * @param <X> the exception this interface may throw.
  */
 @FunctionalInterface
-public interface ThrowingAdjustmentListener<X extends Throwable> extends AdjustmentListener {
-  @Override
-  @SneakyThrows
-  default void adjustmentValueChanged(java.awt.event.AdjustmentEvent e) {
-    tryAdjustmentValueChanged(e);
-  }
+public interface ThrowingAdjustmentListener<X extends Throwable> extends AdjustmentListener
+{
+    @Override
+    @SneakyThrows
+    default void adjustmentValueChanged(java.awt.event.AdjustmentEvent e)
+    {
+        tryAdjustmentValueChanged(e);
+    }
 
-  /**
-   * Invoked when the value of the adjustable has changed.
-   *
-   * @throws X any exception that may be thrown.
-   */
-  void tryAdjustmentValueChanged(java.awt.event.AdjustmentEvent e) throws X;
+    /**
+     * Invoked when the value of the adjustable has changed.
+     *
+     * @throws X any exception that may be thrown.
+     */
+    void tryAdjustmentValueChanged(java.awt.event.AdjustmentEvent e) throws X;
 }
