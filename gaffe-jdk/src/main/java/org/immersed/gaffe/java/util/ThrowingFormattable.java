@@ -26,8 +26,8 @@ import lombok.SneakyThrows;
  *
  * public class StockName implements Formattable {
  * private String symbol, companyName, frenchCompanyName;
- * public StockName(String symbol, String companyName,
- * String frenchCompanyName) { ... }
+ * public StockName(String symbol, String companyName, String frenchCompanyName)
+ * { ... }
  *
  * ...
  *

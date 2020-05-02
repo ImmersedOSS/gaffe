@@ -37,7 +37,7 @@ public class FormattingContext implements IApplicationContext
     {
         String source = spec.sourceFolder()
                             .toString();
-        String tests = spec.sourceFolder()
+        String tests = spec.testFolder()
                            .toString();
 
         List<String> argsList = Arrays.asList("-config", formatter.toString(), source, tests);
